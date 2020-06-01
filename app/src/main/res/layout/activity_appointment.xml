@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Appointment">
+
+    <TextView
+        android:id="@+id/actualDate"
+        android:layout_width="177dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="204dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="681dp"
+        android:text="Mecredi 18 Mai 16h40"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/returnListAppointmentsButt"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="68dp"
+        android:layout_marginBottom="667dp"
+        android:text="Retour"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/ActualDate"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/AppointmentTimeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginEnd="9dp"
+        android:layout_marginBottom="554dp"
+        android:text="Heure du rendez vous : "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/AppointmentTime"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appointmentTitleText" />
+
+    <TextView
+        android:id="@+id/appointmentTitleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="66dp"
+        android:layout_marginBottom="19dp"
+        android:text="Rendez vous : "
+        app:layout_constraintBottom_toTopOf="@+id/AppointmentTimeText"
+        app:layout_constraintEnd_toStartOf="@+id/appointmentTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/returnListAppointmentsButt" />
+
+    <TextView
+        android:id="@+id/AppointmentTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="181dp"
+        android:layout_marginBottom="555dp"
+        android:text="14H"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/AppointmentTimeText"
+        app:layout_constraintTop_toBottomOf="@+id/appointmentTitle" />
+
+    <TextView
+        android:id="@+id/appointmentTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="66dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginBottom="18dp"
+        android:text="M DUPONT"
+        app:layout_constraintBottom_toTopOf="@+id/AppointmentTime"
+        app:layout_constraintStart_toEndOf="@+id/appointmentTitleText"
+        app:layout_constraintTop_toBottomOf="@+id/actualDate" />
+
+    <TextView
+        android:id="@+id/AppointmentAdressText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="38dp"
+        android:layout_marginEnd="94dp"
+        android:layout_marginBottom="490dp"
+        android:text="Adresse : "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/AppointmentAdress"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/AppointmentTimeText" />
+
+    <TextView
+        android:id="@+id/AppointmentAdress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="94dp"
+        android:layout_marginTop="40dp"
+        android:text="16 rue de la boustifel"
+        app:layout_constraintStart_toEndOf="@+id/AppointmentAdressText"
+        app:layout_constraintTop_toBottomOf="@+id/AppointmentTime" />
+
+</android.support.constraint.ConstraintLayout>
