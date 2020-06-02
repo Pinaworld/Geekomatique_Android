@@ -114,4 +114,101 @@
         app:layout_constraintStart_toEndOf="@+id/AppointmentAdressText"
         app:layout_constraintTop_toBottomOf="@+id/AppointmentTime" />
 
+    <TextView
+        android:id="@+id/CustomerCommentText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="41dp"
+        android:layout_marginEnd="266dp"
+        android:text="Commentaire : "
+        app:layout_constraintBottom_toTopOf="@+id/CustomerComment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/AppointmentAdressText" />
+
+    <TextView
+        android:id="@+id/CustomerComment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginEnd="237dp"
+        android:layout_marginBottom="410dp"
+        android:text="CustomerComment"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CustomerCommentText" />
+
+    <TextView
+        android:id="@+id/CustomerMailText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="7dp"
+        android:layout_marginBottom="52dp"
+        android:text="Mail client : "
+        app:layout_constraintBottom_toTopOf="@+id/ModifyAppointmentButt"
+        app:layout_constraintEnd_toStartOf="@+id/CustomerMail"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/CustomerMail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="34dp"
+        android:layout_marginEnd="190dp"
+        android:layout_marginBottom="8dp"
+        android:text="CustomerMail"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/CustomerMailText"
+        app:layout_constraintTop_toBottomOf="@+id/CustomerComment"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/ModifyAppointmentButt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="161dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="162dp"
+        android:layout_marginBottom="257dp"
+        android:text="Modifier le rendez vous"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CustomerMail" />
+
+    <Button
+        android:id="@+id/CancelAppointmentButt"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="104dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="105dp"
+        android:layout_marginBottom="191dp"
+        android:text="Annuler le Rendez Vous"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ModifyAppointmentButt" />
+
+    <Button
+        android:id="@+id/SendBillButt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="161dp"
+        android:layout_marginTop="34dp"
+        android:layout_marginEnd="162dp"
+        android:layout_marginBottom="109dp"
+        android:text="Envoyer la facture au client"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CancelAppointmentButt"
+        app:layout_constraintVertical_bias="1.0" />
+
 </android.support.constraint.ConstraintLayout>
