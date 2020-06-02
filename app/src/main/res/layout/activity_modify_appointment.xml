@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Appointment">
+    tools:context=".ModifyAppointment">
 
     <TextView
         android:id="@+id/actualDate"
@@ -145,12 +145,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
+        android:layout_marginTop="34dp"
         android:layout_marginEnd="7dp"
-        android:layout_marginBottom="52dp"
         android:text="Mail client : "
-        app:layout_constraintBottom_toTopOf="@+id/CancelAppointmentButt"
         app:layout_constraintEnd_toStartOf="@+id/CustomerMail"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CustomerComment" />
 
     <TextView
         android:id="@+id/CustomerMail"
@@ -171,44 +171,62 @@
         android:id="@+id/CancelAppointmentButt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="161dp"
-        android:layout_marginTop="52dp"
-        android:layout_marginEnd="162dp"
-        android:layout_marginBottom="257dp"
+        android:layout_marginStart="104dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="105dp"
+        android:layout_marginBottom="136dp"
         android:text="Modifier le rendez vous"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/HourText" />
+
+    <TextView
+        android:id="@+id/DateText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="79dp"
+        android:layout_marginTop="46dp"
+        android:layout_marginEnd="6dp"
+        android:layout_marginBottom="33dp"
+        android:text="Nouvelle date"
+        app:layout_constraintBottom_toTopOf="@+id/HourText"
+        app:layout_constraintEnd_toStartOf="@+id/editText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CustomerMailText" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="131dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="109dp"
+        android:layout_marginBottom="99dp"
+        android:ems="10"
+        android:inputType="date"
+        app:layout_constraintBottom_toTopOf="@+id/CancelAppointmentButt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/DateText"
         app:layout_constraintTop_toBottomOf="@+id/CustomerMail" />
 
-    <Button
-        android:id="@+id/CancelAppointmentButt"
-        style="@style/Widget.AppCompat.Button.Colored"
+    <TextView
+        android:id="@+id/HourText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="104dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginEnd="105dp"
-        android:layout_marginBottom="191dp"
-        android:text="Annuler le Rendez Vous"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="79dp"
+        android:layout_marginTop="33dp"
+        android:text="Nouvel heure"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CancelAppointmentButt" />
+        app:layout_constraintTop_toBottomOf="@+id/DateText" />
 
-    <Button
-        android:id="@+id/SendBillButt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="161dp"
-        android:layout_marginTop="34dp"
-        android:layout_marginEnd="162dp"
-        android:layout_marginBottom="109dp"
-        android:text="Envoyer la facture au client"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CancelAppointmentButt"
-        app:layout_constraintVertical_bias="1.0" />
+    <EditText
+        android:id="@+id/NewHour"
+        android:layout_width="131dp"
+        android:layout_height="35dp"
+        android:ems="10"
+        android:inputType="date"
+        tools:layout_editor_absoluteX="173dp"
+        tools:layout_editor_absoluteY="460dp" />
 
 </android.support.constraint.ConstraintLayout>

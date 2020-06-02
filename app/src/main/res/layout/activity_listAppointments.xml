@@ -30,7 +30,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="68dp"
         android:layout_marginBottom="667dp"
-        android:text="Retour"
+        android:text="< Retour"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/ActualDate"
         app:layout_constraintStart_toStartOf="parent"
