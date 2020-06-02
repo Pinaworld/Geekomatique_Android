@@ -168,7 +168,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/CancelAppointmentButt"
+        android:id="@+id/ModifyAppointmentButt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="104dp"
@@ -205,7 +205,7 @@
         android:layout_marginBottom="99dp"
         android:ems="10"
         android:inputType="date"
-        app:layout_constraintBottom_toTopOf="@+id/CancelAppointmentButt"
+        app:layout_constraintBottom_toTopOf="@+id/ModifyAppointmentButt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/DateText"
         app:layout_constraintTop_toBottomOf="@+id/CustomerMail" />
