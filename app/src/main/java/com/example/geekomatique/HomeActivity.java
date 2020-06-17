@@ -17,11 +17,11 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(intent);
     }
     public void DisponibilitiesActivity(View view) {
-        Intent intent = new Intent(this, HomeActivity.class);
+        Intent intent = new Intent(this, Disponibilities.class);
         startActivity(intent);
     }
     public void PrestationsActivity(View view) {
-        Intent intent = new Intent(this, HomeActivity.class);
+        Intent intent = new Intent(this, Prestations.class);
         startActivity(intent);
     }
     public void Disconnect(View view) {
