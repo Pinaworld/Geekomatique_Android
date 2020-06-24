@@ -44,7 +44,7 @@
         android:layout_marginTop="19dp"
         android:layout_marginEnd="9dp"
         android:layout_marginBottom="554dp"
-        android:text="Heure du rendez vous : "
+        android:text="@string/appointment_hour"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/AppointmentTime"
         app:layout_constraintStart_toStartOf="parent"
@@ -58,7 +58,7 @@
         android:layout_marginTop="56dp"
         android:layout_marginEnd="66dp"
         android:layout_marginBottom="19dp"
-        android:text="@string/rendez_vous"
+        android:text="@string/appointment"
         app:layout_constraintBottom_toTopOf="@+id/AppointmentTimeText"
         app:layout_constraintEnd_toStartOf="@+id/appointmentTitle"
         app:layout_constraintStart_toStartOf="parent"
@@ -98,7 +98,7 @@
         android:layout_marginTop="38dp"
         android:layout_marginEnd="94dp"
         android:layout_marginBottom="490dp"
-        android:text="Adresse : "
+        android:text="@string/appointment_adress"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/AppointmentAdress"
         app:layout_constraintStart_toStartOf="parent"
@@ -121,7 +121,7 @@
         android:layout_marginStart="48dp"
         android:layout_marginTop="41dp"
         android:layout_marginEnd="266dp"
-        android:text="Commentaire : "
+        android:text="@string/Comment"
         app:layout_constraintBottom_toTopOf="@+id/CustomerComment"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -133,39 +133,31 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
         android:layout_marginEnd="237dp"
-        android:layout_marginBottom="410dp"
+        android:layout_marginBottom="400dp"
         android:text="CustomerComment"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CustomerCommentText" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/CustomerMailText"
         android:layout_width="wrap_content"
         android:layout_height="21dp"
         android:layout_marginStart="50dp"
-        android:layout_marginEnd="7dp"
-        android:layout_marginBottom="120dp"
         android:text="Mail client : "
-        app:layout_constraintBottom_toTopOf="@+id/ModifyAppointmentButt"
-        app:layout_constraintEnd_toStartOf="@+id/CustomerMail"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="259dp" />
 
     <TextView
         android:id="@+id/CustomerMail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="7dp"
-        android:layout_marginTop="34dp"
-        android:layout_marginEnd="190dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="120dp"
+        android:layout_marginBottom="448dp"
         android:text="CustomerMail"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/CustomerMailText"
-        app:layout_constraintTop_toBottomOf="@+id/CustomerComment"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/ModifyAppointmentButt"
@@ -209,7 +201,7 @@
         android:layout_marginEnd="162dp"
         android:layout_marginBottom="109dp"
         android:onClick="SendBill"
-        android:text="Envoyer la facture au client"
+        android:text="@string/send_bill_butt"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

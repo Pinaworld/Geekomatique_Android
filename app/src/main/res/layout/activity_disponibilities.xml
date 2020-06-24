@@ -82,7 +82,7 @@
         android:layout_marginTop="116dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="499dp"
-        android:text="au "
+        android:text="@string/au"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/LastDay"
         app:layout_constraintStart_toEndOf="@+id/FirstDay"
@@ -109,7 +109,7 @@
         android:layout_width="124dp"
         android:layout_height="24dp"
         android:layout_marginStart="64dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="13dp"
         app:layout_constraintEnd_toStartOf="@+id/AText"
         app:layout_constraintStart_toStartOf="parent"
@@ -126,7 +126,8 @@
         app:layout_constraintBottom_toTopOf="@+id/ValidateDispo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/AText"
-        app:layout_constraintTop_toBottomOf="@+id/LastDay" />
+        app:layout_constraintTop_toBottomOf="@+id/LastDay"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/AText"
@@ -136,7 +137,7 @@
         android:layout_marginTop="84dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="118dp"
-        android:text="à"
+        android:text="@string/à"
         app:layout_constraintBottom_toTopOf="@+id/ValidateDispo"
         app:layout_constraintEnd_toStartOf="@+id/LastHour"
         app:layout_constraintStart_toEndOf="@+id/FirstHour"

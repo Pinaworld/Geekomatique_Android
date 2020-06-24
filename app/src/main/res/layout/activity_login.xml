@@ -17,12 +17,12 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.135" />
+        app:layout_constraintVertical_bias="0.078" />
 
     <TextView
         android:id="@+id/SubtitleText"
-        android:layout_width="285dp"
-        android:layout_height="57dp"
+        android:layout_width="281dp"
+        android:layout_height="35dp"
         android:layout_marginTop="8dp"
         android:text="@string/admin_version"
         android:textAlignment="center"
@@ -31,67 +31,66 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.238" />
+        app:layout_constraintVertical_bias="0.172" />
 
     <EditText
         android:id="@+id/MailLoginField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="99dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="99dp"
+        android:layout_marginEnd="32dp"
         android:layout_marginBottom="8dp"
         android:ems="10"
         android:inputType="textEmailAddress"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/SubtitleText"
-        app:layout_constraintVertical_bias="0.161" />
+        app:layout_constraintVertical_bias="0.178" />
 
     <Button
         android:id="@+id/LoginButt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="161dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="162dp"
-        android:layout_marginBottom="164dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="8dp"
         android:onClick="HomeActivity"
         android:text="@string/connection_butt"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/PassdLoginField"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.205" />
 
     <TextView
         android:id="@+id/MailTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="99dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="230dp"
+        android:layout_marginEnd="32dp"
         android:layout_marginBottom="8dp"
         android:text="@string/mail_adress"
         app:layout_constraintBottom_toTopOf="@+id/MailLoginField"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.26"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.989" />
+        app:layout_constraintVertical_bias="0.991" />
 
     <TextView
         android:id="@+id/PassdTextView"
         android:layout_width="94dp"
         android:layout_height="24dp"
-        android:layout_marginStart="99dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="92dp"
-        android:layout_marginEnd="253dp"
+        android:layout_marginEnd="32dp"
         android:text="@string/psswd"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.27"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/MailTextView" />
 
@@ -99,9 +98,9 @@
         android:id="@+id/PassdLoginField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="50dp"
         android:layout_marginBottom="8dp"
         android:ems="10"
         android:inputType="textPassword"
@@ -109,6 +108,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/PassdTextView"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.027" />
 
 </android.support.constraint.ConstraintLayout>
