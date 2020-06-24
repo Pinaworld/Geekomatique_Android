@@ -16,9 +16,144 @@
         android:layout_marginEnd="307dp"
         android:layout_marginBottom="667dp"
         android:onClick="ReturnHomeAtivity"
-        android:text="< Retour"
+        android:text="@string/return_butt"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/DisponibilitiesText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="134dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="134dp"
+        android:layout_marginBottom="635dp"
+        android:text="@string/dispo"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/JourText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="75dp"
+        android:layout_marginTop="78dp"
+        android:layout_marginEnd="292dp"
+        android:layout_marginBottom="39dp"
+        android:text="@string/days"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/FirstDay"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button" />
+
+    <Spinner
+        android:id="@+id/FirstDay"
+        android:layout_width="125dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="66dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="500dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/AuText"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Spinner
+        android:id="@+id/LastDay"
+        android:layout_width="125dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="500dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/AuText" />
+
+    <TextView
+        android:id="@+id/AuText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="116dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="499dp"
+        android:text="au "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/LastDay"
+        app:layout_constraintStart_toEndOf="@+id/FirstDay"
+        app:layout_constraintTop_toBottomOf="@+id/DisponibilitiesText"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/HourText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="75dp"
+        android:layout_marginTop="47dp"
+        android:layout_marginEnd="288dp"
+        android:layout_marginBottom="10dp"
+        android:text="@string/hours"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/FirstHour"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/FirstDay" />
+
+    <Spinner
+        android:id="@+id/FirstHour"
+        android:layout_width="124dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="13dp"
+        app:layout_constraintEnd_toStartOf="@+id/AText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/HourText" />
+
+    <Spinner
+        android:id="@+id/LastHour"
+        android:layout_width="124dp"
+        android:layout_height="23dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="81dp"
+        android:layout_marginEnd="58dp"
+        android:layout_marginBottom="119dp"
+        app:layout_constraintBottom_toTopOf="@+id/ValidateDispo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/AText"
+        app:layout_constraintTop_toBottomOf="@+id/LastDay" />
+
+    <TextView
+        android:id="@+id/AText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="84dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="118dp"
+        android:text="à"
+        app:layout_constraintBottom_toTopOf="@+id/ValidateDispo"
+        app:layout_constraintEnd_toStartOf="@+id/LastHour"
+        app:layout_constraintStart_toEndOf="@+id/FirstHour"
+        app:layout_constraintTop_toBottomOf="@+id/AuText" />
+
+    <Button
+        android:id="@+id/ValidateDispo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="161dp"
+        android:layout_marginTop="118dp"
+        android:layout_marginEnd="162dp"
+        android:layout_marginBottom="229dp"
+        android:onClick="ReturnHomeAtivity"
+        android:text="@string/validate_butt"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/FirstHour" />
 </android.support.constraint.ConstraintLayout>

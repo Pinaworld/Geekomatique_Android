@@ -1,3 +1,30 @@
 <resources>
     <string name="app_name">Geekomatique</string>
+
+    <string name="admin_version">Version administrateur</string>
+    <string name="mail_adress">Adresse Mail</string>
+    <string name="psswd">Mot de passe</string>
+    <string name="connection_butt">Connexion</string>
+
+    <string name="calendar_butt">Afficher le calendrier</string>
+    <string name="disponibili_butt">Afficher mes disponibilités</string>
+    <string name="presta_butt">Modifier mes prestations</string>
+    <string name="disconnection">Déconnexion</string>
+
+    <string name="return_butt">Retour</string>
+
+    <string name="dispo">Disponibilités</string>
+    <string name="days">Jour :</string>
+    <string name="hours">Heures :</string>
+    <string name="au">au : </string>
+    <string name="à">à :</string>
+    <string name="validate_butt">Valider</string>
+
+    <string name="modif_presta">Modifier prestations</string>
+
+    <string name="rendez_vous">Rendez vous : </string>
+    <string name="rendez_vous">Rendez vous : </string>
+
+
+
 </resources>

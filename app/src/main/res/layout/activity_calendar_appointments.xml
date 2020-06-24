@@ -27,7 +27,7 @@
         android:layout_marginEnd="91dp"
         android:layout_marginBottom="80dp"
         android:onClick="ReturnHomeAtivity"
-        android:text="< Retour"
+        android:text="Retour"
         app:layout_constraintBottom_toTopOf="@+id/calender"
         app:layout_constraintEnd_toStartOf="@+id/MailShow"
         app:layout_constraintStart_toStartOf="parent"
