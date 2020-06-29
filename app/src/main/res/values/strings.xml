@@ -23,16 +23,16 @@
     <string name="modif_presta">Modifier prestations</string>
 
     <string name="appointment">Rendez vous : </string>
-    <string name="appointment_hour">Heure du rendez vous :</string>
+    <string name="appointment_hour">Heure rendez vous :</string>
     <string name="appointment_adress">Adresse : </string>
-    <string name="mail_customer">eMail client : </string>
+    <string name="mail_customer">Mail client : </string>
     <string name="Comment">Commentaire : </string>
     <string name="modify_appointment_butt">Modifier le rendez vous</string>
     <string name="cancel_appointment_butt">Annuler le Rendez Vous</string>
     <string name="send_bill_butt">Envoyer la facture au client</string>
 
-    <string name="new_date">Nouvelle date</string>
-    <string name="new_hour">Nouvelle heure</string>
+    <string name="new_date">Nouvelle date :</string>
+    <string name="new_hour">Nouvelle heure :</string>
 
     <string name="cancel_reason">Raison annulation</string>
 

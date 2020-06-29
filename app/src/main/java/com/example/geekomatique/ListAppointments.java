@@ -22,7 +22,7 @@ public class ListAppointments extends AppCompatActivity {
         actualDate.setText(date_n);
     }
 
-    public void ReturnAppointmentActivity(View view) {
+    public void ReturnAppointmentAct(View view) {
         Intent intent = new Intent(this, CalendarAppointments.class);
         startActivity(intent);
     }

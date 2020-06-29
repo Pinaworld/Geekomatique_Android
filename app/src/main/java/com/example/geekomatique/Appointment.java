@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -18,7 +19,7 @@ public class Appointment extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_appointment);
 
-        String date_n = new SimpleDateFormat("MMM dd, yyyy", Locale.getDefault()).format(new Date());
+        String date_n = new SimpleDateFormat("dd MMM yyyy", Locale.getDefault()).format(new Date());
         TextView date  = (TextView) findViewById(R.id.actualDate);
         date.setText(date_n);
     }
@@ -37,7 +38,9 @@ public class Appointment extends AppCompatActivity {
     }
 
     public void SendBill(View view){
-        Button billButt = (Button) findViewById(R.id.SendBillButt);
+        Toast toastBillSent = Toast.makeText(getApplicationContext(), "Facture envoyée !", Toast.LENGTH_SHORT);
+        toastBillSent.show();
+
         /**   button.setOnClickListener(new View.OnClickListener() {
          public void onClick(View v) {
          your handler code here
