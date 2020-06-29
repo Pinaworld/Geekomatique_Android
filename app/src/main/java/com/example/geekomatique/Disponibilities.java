@@ -20,7 +20,7 @@ public class Disponibilities extends AppCompatActivity {
         startActivity(intent);
     }
 
-
+/**
     Spinner dropdown = findViewById(R.id.FirstDay);
 
     String[] itemsFirstDay = new String[]{"Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"};
@@ -34,5 +34,5 @@ public class Disponibilities extends AppCompatActivity {
     ArrayAdapter<String> adapterFirstHour = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, itemsFirstHour);
     ArrayAdapter<String> adapterLastHour = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, itemsLastHour);
 //set the spinners adapter to the previously created one.
-//dropdown.setAdapter(adapter);
+//dropdown.setAdapter(adapter);*/
 }

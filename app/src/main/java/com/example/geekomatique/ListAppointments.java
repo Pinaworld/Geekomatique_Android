@@ -17,9 +17,9 @@ public class ListAppointments extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_appointments);
 
-        String date_n = new SimpleDateFormat("MMM dd, yyyy", Locale.getDefault()).format(new Date());
-        TextView date  = (TextView) findViewById(R.id.actualDate);
-        date.setText(date_n);
+        String date_n = new SimpleDateFormat("dd MMM yyyy", Locale.getDefault()).format(new Date());
+        TextView actualDate  = (TextView) findViewById(R.id.ActualDate);
+        actualDate.setText(date_n);
     }
 
     public void ReturnAppointmentActivity(View view) {

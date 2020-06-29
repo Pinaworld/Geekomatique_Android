@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -11,6 +12,11 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+
+        TextView mailAdress = (TextView) findViewById(R.id.MailShow);
+        mailAdress.setText("juan@pino.com");
+
     }
     public void CalendarActivity(View view) {
         Intent intent = new Intent(this, CalendarAppointments.class);
