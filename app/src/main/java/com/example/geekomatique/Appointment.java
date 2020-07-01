@@ -1,3 +1,10 @@
+/*
+ * Copyright (c) 2020
+ * Project: Geekomatique
+ * File : Appointment.java
+ * Edited by pinbe
+ */
+
 package com.example.geekomatique;
 
 import android.content.Intent;
@@ -25,7 +32,7 @@ public class Appointment extends AppCompatActivity {
     }
 
     public void ReturnListAppointmentActivity(View view) {
-        Intent intent = new Intent(this, ListAppointments.class);
+        Intent intent = new Intent(this, CalendarAppointments.class);
         startActivity(intent);
     }
     public void ModifyAppointmentActivity(View view) {

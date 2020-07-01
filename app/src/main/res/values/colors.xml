@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2020
+  ~ Project: Geekomatique
+  ~ File : colors.xml
+  ~ Edited by pinbe
+  -->
+
 <resources>
     <color name="colorPrimary">#000000</color>
     <color name="colorPrimaryDark">#5E353535</color>
     <color name="colorAccent">#D81B60</color>
     <color name="ColorBlue">#1B2ED8</color>
     <color name="ColorBlueTouch">#26EE07</color>
-    <color name="BackGroundApp">#EEE0C0</color>
-
+    <color name="BackGroundApp">#B6B6B6</color>
 </resources>

@@ -1,3 +1,10 @@
+<!--
+  ~ Copyright (c) 2020
+  ~ Project: Geekomatique
+  ~ File : strings.xml
+  ~ Edited by pinbe
+  -->
+
 <resources>
     <string name="app_name">Geekomatique</string>
 

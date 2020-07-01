@@ -1,3 +1,10 @@
+/*
+ * Copyright (c) 2020
+ * Project: Geekomatique
+ * File : HomeActivity.java
+ * Edited by pinbe
+ */
+
 package com.example.geekomatique;
 
 import android.content.Intent;
