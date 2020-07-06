@@ -8,7 +8,7 @@
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.geekomatique">
-
+    <uses-permission android:name="android.permission.INTERNET "/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -16,15 +16,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Prestations"></activity>
-        <activity android:name=".Disponibilities" />
-        <activity android:name=".CancelAppointment" />
-        <activity android:name=".ModifyAppointment" />
-        <activity android:name=".CalendarAppointments" />
-        <activity android:name=".Appointment" />
-        <activity android:name=".ListAppointments" />
-        <activity android:name=".HomeActivity" />
-        <activity android:name=".LoginActivity">
+        <activity android:name=".Activities.Prestations"></activity>
+        <activity android:name=".Activities.Disponibilities" />
+        <activity android:name=".Activities.CancelAppointment" />
+        <activity android:name=".Activities.ModifyAppointment" />
+        <activity android:name=".Activities.CalendarAppointments" />
+        <activity android:name=".Activities.Appointment" />
+        <activity android:name=".Activities.ListAppointments" />
+        <activity android:name=".Activities.HomeActivity" />
+        <activity android:name=".Activities.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
