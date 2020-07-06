@@ -7,9 +7,10 @@
 
 <resources>
     <string name="app_name">Geekomatique</string>
+    <string name="api_url">https://geekomatique.fr:5000</string>
 
     <string name="admin_version">Version administrateur</string>
-    <string name="mail_adress">Adresse Mail</string>
+    <string name="login">Identifiant</string>
     <string name="psswd">Mot de passe</string>
     <string name="connection_butt">Connexion</string>
 
@@ -42,6 +43,9 @@
     <string name="new_hour">Nouvelle heure :</string>
 
     <string name="cancel_reason">Raison annulation</string>
+
+    <string name="enter_login">Entrez votre identifiant</string>
+    <string name="enter_passwd">Entrez le mot de passe</string>
 
 
 

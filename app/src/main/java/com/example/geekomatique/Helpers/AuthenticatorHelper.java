@@ -27,25 +27,6 @@ import java.util.Map;
 
 public class AuthenticatorHelper {
 
-    public static void register(final Context context, String url, Map<String, String> params, final VolleyJSONObjectCallback callback ){
-
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, new JSONObject(params),
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        callback.onResponse(response);
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        parseErrorMEssage(error, context);
-                    }
-                });
-
-        RequestQueue requestQueue = Volley.newRequestQueue(context);
-        requestQueue.add(jsonObjectRequest);
-    }
 
     public static void authenticate(final Context context, String url, Map<String, String> params, final VolleyJSONObjectCallback callback){
 

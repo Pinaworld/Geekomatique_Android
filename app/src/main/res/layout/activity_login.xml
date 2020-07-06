@@ -11,7 +11,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    tools:context=".Activities.LoginActivity">
 
     <TextView
         android:id="@+id/GeekomatiqueText"
@@ -41,7 +41,7 @@
         app:layout_constraintVertical_bias="0.172" />
 
     <EditText
-        android:id="@+id/MailLoginField"
+        android:id="@+id/LoginField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -57,14 +57,13 @@
         app:layout_constraintVertical_bias="0.178" />
 
     <Button
-        android:id="@+id/LoginButt"
+        android:id="@+id/BtnLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="8dp"
-        android:onClick="HomeActivity"
         android:text="@string/connection_butt"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -73,20 +72,20 @@
         app:layout_constraintVertical_bias="0.205" />
 
     <TextView
-        android:id="@+id/MailTextView"
+        android:id="@+id/LoginTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="8dp"
-        android:text="@string/mail_adress"
-        app:layout_constraintBottom_toTopOf="@+id/MailLoginField"
+        android:text="@string/login"
+        app:layout_constraintBottom_toTopOf="@+id/LoginField"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.26"
+        app:layout_constraintHorizontal_bias="0.237"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.991" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/PassdTextView"
@@ -99,7 +98,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.27"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MailTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/LoginTextView" />
 
     <EditText
         android:id="@+id/PassdLoginField"
