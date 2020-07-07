@@ -46,6 +46,17 @@ public class HomeActivity extends AppCompatActivity {
         TextView mailAdress = (TextView) findViewById(R.id.MailShow);
         mailAdress.setText("juan@pino.com");
 
+
+        Button DecoBtn = (Button) findViewById(R.id.DeconnectionButt);
+        DecoBtn.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                finish();
+                System.exit(0);
+            }
+        });
+
     }
     public void CalendarActivity(View view) {
         Intent intent = new Intent(this, CalendarAppointments.class);
