@@ -11,6 +11,7 @@ package com.example.geekomatique.Activities;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -34,9 +35,12 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.geekomatique.Helpers.AuthenticatorHelper;
+import com.example.geekomatique.Helpers.HTTPRequestHelper;
 import com.example.geekomatique.R;
+import com.example.geekomatique.VolleyJSONArrayCallback;
 import com.example.geekomatique.VolleyJSONObjectCallback;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -53,6 +57,23 @@ public class Appointment extends AppCompatActivity {
         String date_n = new SimpleDateFormat("dd MMM yyyy", Locale.getDefault()).format(new Date());
         TextView date  = (TextView) findViewById(R.id.actualDate);
         date.setText(date_n);
+
+        getApointmentById();
+    }
+
+
+    private void getApointmentById(){
+        VolleyJSONArrayCallback callback =  new VolleyJSONArrayCallback(){
+            @Override
+            public void onResponse(JSONArray result) {
+/**
+                try {
+                    Log.i("getApointmentById", result.getJSONObject(0).toString());
+
+                } catch*/
+            }
+        };
+        HTTPRequestHelper.getRequest(getApplicationContext(), getString(R.string.api_url) + "/appointment/"+"1", callback);
     }
 
     public void ReturnListAppointmentActivity(View view) {

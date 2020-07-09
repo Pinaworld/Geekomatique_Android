@@ -22,11 +22,20 @@
 
     <string name="return_butt">Retour</string>
 
+
+    <string name="lundi">Lundi :</string>
+    <string name="mardi">Mardi :</string>
+    <string name="mercredi">Mercredi :</string>
+    <string name="jeudi">Jeudi :</string>
+    <string name="vendredi">Vendredi :</string>
+    <string name="samedi">Samedi :</string>
+
     <string name="dispo">Disponibilités</string>
     <string name="days">Jour :</string>
     <string name="hours">Heures :</string>
     <string name="au">au : </string>
     <string name="à">à :</string>
+    <string name="h">h</string>
     <string name="validate_butt">Valider</string>
 
     <string name="modif_presta">Modifier prestations</string>
@@ -50,6 +59,6 @@
 
     <string name="admin_user_text">Gestion des administrateurs</string>
     <string name="adding_admin_user">Ajouter un administrateur</string>
-
+    <string name="edit_admin_user">Modification administrateur</string>
 
 </resources>

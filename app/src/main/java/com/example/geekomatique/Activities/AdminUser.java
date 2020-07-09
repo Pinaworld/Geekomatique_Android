@@ -38,7 +38,7 @@ public class AdminUser extends AppCompatActivity {
 
             }
         };
-        HTTPRequestHelper.getRequest(getApplicationContext(), getString(R.string.api_url) + "/user/role/admin", callback);
+        HTTPRequestHelper.getRequest(getApplicationContext(), getString(R.string.api_url) + "/user/employee", callback);
     }
 
     public void ReturnHomeActivity(View view) {
@@ -47,6 +47,11 @@ public class AdminUser extends AppCompatActivity {
     }
     public void AddingUserActivity(View view) {
         Intent intent = new Intent(this, AddingUser.class);
+        startActivity(intent);
+    }
+
+    public void EditUserActivity(View view) {
+        Intent intent = new Intent(this, EditUserAdmin.class);
         startActivity(intent);
     }
 

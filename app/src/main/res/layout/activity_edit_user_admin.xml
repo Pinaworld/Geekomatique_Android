@@ -2,7 +2,7 @@
 <!--
   ~ Copyright (c) 2020
   ~ Project: Geekomatique
-  ~ File : activity_adding_user.xml
+  ~ File : activity_edit_user_admin.xml
   ~ Edited by pinbe
   -->
 
@@ -11,43 +11,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.AddingUser">
+    tools:context=".Activities.EditUserAdmin">
 
     <Button
         android:id="@+id/ReturnBut"
         style="@style/Widget.AppCompat.Button.Borderless"
-        android:textColor="@color/ColorSecond"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:onClick="ReturnAdminUser"
         android:text="@string/return_butt"
+        android:textColor="@color/ColorSecond"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.02"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.01999998" />
+        app:layout_constraintVertical_bias="0.011" />
 
     <TextView
-        android:id="@+id/AddingUserText"
+        android:id="@+id/ModificationText"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="22dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:text="@string/adding_admin_user"
+        android:text="@string/edit_admin_user"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.954"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.04000002" />
+        app:layout_constraintVertical_bias="0.03" />
+
 
     <EditText
         android:id="@+id/lastName"
@@ -119,13 +119,14 @@
 
     <Button
         android:id="@+id/Validate"
-        android:background="@color/ColorSecond"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:background="@color/ColorSecond"
+        android:onClick="ReturnAdminUser"
         android:text="@string/validate_butt"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -133,4 +134,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.568" />
+
 </android.support.constraint.ConstraintLayout>

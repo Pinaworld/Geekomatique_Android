@@ -7,10 +7,11 @@
   -->
 
 <resources>
-    <color name="colorPrimary">#000000</color>
-    <color name="colorPrimaryDark">#5E353535</color>
-    <color name="colorAccent">#D81B60</color>
-    <color name="ColorBlue">#1B2ED8</color>
+    <color name="colorPrimary">#1D1D1D</color>
+    <color name="colorPrimaryDark">#1D1D1D</color>
+    <color name="colorAccent">#F44336</color>
+    <color name="ColorSecond">#F3CB51</color>
+    <color name="ColorBlue">#F3CB51</color>
     <color name="ColorBlueTouch">#26EE07</color>
-    <color name="BackGroundApp">#B6B6B6</color>
+    <color name="BackGroundApp">#FFFFFF</color>
 </resources>

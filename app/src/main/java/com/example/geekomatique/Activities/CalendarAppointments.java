@@ -10,6 +10,8 @@ package com.example.geekomatique.Activities;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -32,6 +34,7 @@ import android.widget.Toast;
 
 import com.example.geekomatique.Helpers.AuthenticatorHelper;
 import com.example.geekomatique.Helpers.HTTPRequestHelper;
+import com.example.geekomatique.MyAdapter;
 import com.example.geekomatique.R;
 import com.example.geekomatique.VolleyJSONArrayCallback;
 import com.example.geekomatique.VolleyJSONObjectCallback;
@@ -44,7 +47,10 @@ import java.util.Map;
 
 public class CalendarAppointments extends AppCompatActivity {
 
-    CalendarAppointments calender;
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager layoutManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +62,18 @@ public class CalendarAppointments extends AppCompatActivity {
         /**TextView mailAdress = (TextView) findViewById(R.id.MailShow);
         mailAdress.setText("juan@pino.com");*/
         getAllAppointments();
+
+        recyclerView = (RecyclerView) findViewById(R.id.appointmentList);
+
+        recyclerView.setHasFixedSize(true);
+
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+
+        /* specify an adapter (see also next example)
+        mAdapter = new MyAdapter(myDataset);
+        recyclerView.setAdapter(mAdapter);*/
+
     }
 
 

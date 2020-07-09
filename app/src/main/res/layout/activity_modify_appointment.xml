@@ -32,6 +32,7 @@
     <Button
         android:id="@+id/returnListAppointmentsButt"
         style="@style/Widget.AppCompat.Button.Borderless"
+        android:textColor="@color/ColorSecond"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -208,6 +209,7 @@
 
     <Button
         android:id="@+id/ModifyAppointmentButt"
+        android:background="@color/ColorSecond"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
