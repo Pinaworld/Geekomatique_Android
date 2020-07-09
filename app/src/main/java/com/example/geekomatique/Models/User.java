@@ -19,15 +19,16 @@ public class User implements Serializable {
     private String firstName;
     private String lastName;
     private String login;
+    private String roleName;
 
-
-    public User(String email, String login, String firstName, String lastName) {
+    public User(long id, String email, String firstName, String lastName, String login, String roleName) {
+        this.id = id;
         this.email = email;
-        this.login = login;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.login = login;
+        this.roleName = roleName;
     }
-
 
     public String getEmail() {
         return email;
@@ -50,6 +51,14 @@ public class User implements Serializable {
         return login;
     }
 
+    public String getRoleName() {
+        return roleName;
+    }
+
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
+    }
+
     public HashMap<String, String> getHashMap(String password){
         HashMap<String, String> hashMap = new HashMap<String, String>();
         hashMap.put("email", getEmail());
@@ -57,6 +66,7 @@ public class User implements Serializable {
         hashMap.put("lastName", getLastName());
         hashMap.put("firstName", getFirstName());
         hashMap.put("login", getLogin());
+        hashMap.put("roleName", getRoleName());
 
         return hashMap;
     }

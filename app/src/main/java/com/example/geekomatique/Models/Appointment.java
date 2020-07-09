@@ -12,29 +12,36 @@ import java.util.Date;
 public class Appointment {
 
     private long id;
-    private Date date;
+    private String date;
     private String description;
     private boolean remote;
     private boolean done;
-    private String userId;
-    private String adressId;
+    private long userId;
+    private long adressId;
+    private boolean canceled;
+    private boolean validate;
 
+    public Appointment(long id, String date, String description, boolean remote, boolean done, long userId, long adressId, boolean canceled, boolean validate) {
+        this.id = id;
+        this.date = date;
+        this.description = description;
+        this.remote = remote;
+        this.done = done;
+        this.userId = userId;
+        this.adressId = adressId;
+        this.canceled = canceled;
+        this.validate = validate;
+    }
 
-        public Appointment(Date date, String description, boolean remote, boolean done,String userId, String adressId) {
+    public long getId() {
+        return id;
+    }
 
-            this.date= date;
-            this.description = description;
-            this.remote = remote ;
-            this.done = done;
-            this.userId = userId;
-            this.adressId = adressId ;
-        }
-
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
@@ -62,19 +69,35 @@ public class Appointment {
         this.done = done;
     }
 
-    public String getUserId() {
+    public long getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(long userId) {
         this.userId = userId;
     }
 
-    public String getAdressId() {
+    public long getAdressId() {
         return adressId;
     }
 
-    public void setAdressId(String adressId) {
+    public void setAdressId(long adressId) {
         this.adressId = adressId;
+    }
+
+    public boolean isCanceled() {
+        return canceled;
+    }
+
+    public void setCanceled(boolean canceled) {
+        this.canceled = canceled;
+    }
+
+    public boolean isValidate() {
+        return validate;
+    }
+
+    public void setValidate(boolean validate) {
+        this.validate = validate;
     }
 }

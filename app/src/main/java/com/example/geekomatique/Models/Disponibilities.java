@@ -12,13 +12,14 @@ import java.sql.Time;
 public class Disponibilities {
 
     private long id;
-    private Time start;
-    private Time end;
+    private String start; //Should be a time type
+    private String end; //Should be a time type
     private String title;
     private long day_number;
     private long employee_id;
 
-    public Disponibilities(Time start, Time end, String title, long day_number, long employee_id) {
+    public Disponibilities(long id, String start, String end, String title, long day_number, long employee_id) {
+        this.id = id;
         this.start = start;
         this.end = end;
         this.title = title;
@@ -30,19 +31,19 @@ public class Disponibilities {
         return id;
     }
 
-    public Time getStart() {
+    public String getStart() {
         return start;
     }
 
-    public void setStart(Time start) {
+    public void setStart(String start) {
         this.start = start;
     }
 
-    public Time getEnd() {
+    public String getEnd() {
         return end;
     }
 
-    public void setEnd(Time end) {
+    public void setEnd(String end) {
         this.end = end;
     }
 

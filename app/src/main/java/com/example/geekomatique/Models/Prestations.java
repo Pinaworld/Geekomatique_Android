@@ -13,7 +13,8 @@ public class Prestations {
     private String name;
     private String price;
 
-    public Prestations(String name, String price) {
+    public Prestations(long id, String name, String price) {
+        this.id = id;
         this.name = name;
         this.price = price;
     }

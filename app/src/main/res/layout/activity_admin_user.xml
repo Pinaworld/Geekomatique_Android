@@ -66,13 +66,13 @@
 
     <Button
         android:id="@+id/AddingUserBtn"
-        android:background="@color/ColorSecond"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="232dp"
+        android:layout_height="46dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:background="@color/ColorSecond"
         android:onClick="AddingUserActivity"
         android:text="@string/adding_admin_user"
         app:layout_constraintBottom_toBottomOf="parent"
