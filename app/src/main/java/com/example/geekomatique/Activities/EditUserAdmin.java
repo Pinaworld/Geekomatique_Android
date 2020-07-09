@@ -26,4 +26,10 @@ public class EditUserAdmin extends AppCompatActivity {
         Intent intent = new Intent(this, AdminUser.class);
         startActivity(intent);
     }
+
+    public void ValidateEditUser(View view) {
+        Intent intent = new Intent(this, AdminUser.class);
+        startActivity(intent);
+    }
+
 }

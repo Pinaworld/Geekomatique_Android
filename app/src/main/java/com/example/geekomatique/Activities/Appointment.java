@@ -66,14 +66,12 @@ public class Appointment extends AppCompatActivity {
         VolleyJSONArrayCallback callback =  new VolleyJSONArrayCallback(){
             @Override
             public void onResponse(JSONArray result) {
-/**
-                try {
-                    Log.i("getApointmentById", result.getJSONObject(0).toString());
 
-                } catch*/
+                    Log.i("getApointmentById", result.toString());
+
             }
         };
-        HTTPRequestHelper.getRequest(getApplicationContext(), getString(R.string.api_url) + "/appointment/"+"1", callback);
+        HTTPRequestHelper.getRequest(getApplicationContext(), getString(R.string.api_url) + "/appointment/", callback);
     }
 
     public void ReturnListAppointmentActivity(View view) {

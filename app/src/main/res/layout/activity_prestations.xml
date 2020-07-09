@@ -33,7 +33,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/PrestationText"
+        android:id="@+id/addingPresta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -51,21 +51,39 @@
 
     <Button
         android:id="@+id/ValidationBtn"
-        android:background="@color/ColorSecond"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="39dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="32dp"
+        android:background="@color/ColorSecond"
         android:onClick="ReturnHomeAtivity"
         android:text="@string/validate_butt"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/PrestationText"
+        app:layout_constraintTop_toBottomOf="@+id/addingPresta"
         app:layout_constraintVertical_bias="0.666" />
+
+    <Button
+        android:id="@+id/addingPrestaBtn"
+        android:layout_width="195dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
+        android:background="@color/ColorSecond"
+        android:onClick="AddingPrestationAtivity"
+        android:text="@string/adding_presta"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addingPresta"
+        app:layout_constraintVertical_bias="0.542" />
 
     <ListView
         android:id="@+id/_dynamic_presta"
@@ -80,7 +98,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/PrestationText"
+        app:layout_constraintTop_toBottomOf="@+id/addingPresta"
         app:layout_constraintVertical_bias="0.251" />
 
 </android.support.constraint.ConstraintLayout>

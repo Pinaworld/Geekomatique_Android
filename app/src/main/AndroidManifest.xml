@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.EditUserAdmin"></activity>
+        <activity android:name=".Activities.AddingPrestation"></activity>
+        <activity android:name=".Activities.EditUserAdmin" />
         <activity android:name=".Activities.AddingUser" />
         <activity android:name=".Activities.AdminUser" />
         <activity android:name=".Activities.Prestations" />
