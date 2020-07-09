@@ -9,8 +9,10 @@ package com.example.geekomatique.Helpers;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 import android.widget.Toast;
 
+import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -34,12 +36,6 @@ public class AuthenticatorHelper {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        try{
-                            saveToken( response.getString("id_token"), context);
-
-                        }catch (JSONException exception){
-                            Toast.makeText(context, exception.getMessage(), Toast.LENGTH_LONG).show();
-                        }
 
                         callback.onResponse(response);
                     }
@@ -50,6 +46,12 @@ public class AuthenticatorHelper {
                         parseErrorMEssage(error, context);
                     }
                 }) {
+            @Override
+            protected Response<JSONObject> parseNetworkResponse(NetworkResponse response) {
+                // will Volley use, we have to handle and store session cookies manually
+                saveToken( response.headers.get("Set-Cookie"), context);
+                return super.parseNetworkResponse(response);
+            }
         };
 
         RequestQueue requestQueue = Volley.newRequestQueue(context);
@@ -60,6 +62,7 @@ public class AuthenticatorHelper {
         SharedPreferences sharedPreferences = context.getSharedPreferences("TOKEN", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("token", token);
+        Log.i("tolken", token);
         editor.commit();
     }
 

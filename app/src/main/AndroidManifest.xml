@@ -1,11 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-  ~ Copyright (c) 2020
-  ~ Project: Geekomatique
-  ~ File : AndroidManifest.xml
-  ~ Edited by pinbe
-  -->
-
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.geekomatique">
 
@@ -18,7 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.Prestations"></activity>
+        <activity android:name=".Activities.AddingUser"></activity>
+        <activity android:name=".Activities.AdminUser" />
+        <activity android:name=".Activities.Prestations" />
         <activity android:name=".Activities.Disponibilities" />
         <activity android:name=".Activities.CancelAppointment" />
         <activity android:name=".Activities.ModifyAppointment" />

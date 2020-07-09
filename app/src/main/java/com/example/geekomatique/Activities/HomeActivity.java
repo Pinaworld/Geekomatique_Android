@@ -7,33 +7,22 @@
 
 package com.example.geekomatique.Activities;
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.TextView;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.text.TextUtils;
+import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ProgressBar;
-import android.widget.Toast;
+import android.widget.TextView;
 
-import com.example.geekomatique.Helpers.AuthenticatorHelper;
+import com.example.geekomatique.Helpers.HTTPRequestHelper;
 import com.example.geekomatique.R;
+import com.example.geekomatique.VolleyJSONArrayCallback;
 import com.example.geekomatique.VolleyJSONObjectCallback;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.HashMap;
-import java.util.Map;
-
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -42,22 +31,33 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        //getMailAdress();
 
-        TextView mailAdress = (TextView) findViewById(R.id.MailShow);
-        mailAdress.setText("juan@pino.com");
-
-
-        Button DecoBtn = (Button) findViewById(R.id.DeconnectionButt);
-        DecoBtn.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                finish();
-                System.exit(0);
-            }
-        });
 
     }
+
+/**
+    private void getMailAdress(){
+        VolleyJSONArrayCallback callback =  new VolleyJSONArrayCallback(){
+            @Override
+            public void onResponse(JSONArray result) {
+                TextView mailAdress = (TextView) findViewById(R.id.MailShow);
+                try {
+
+                    mailAdress.setText(String.valueOf( result.getString("lastname")));
+                } catch (JSONException e) {
+                    Log.i(" teste", e.toString());
+
+                }
+
+                Log.i("getMailAdress", result.toString());
+
+            }
+        };
+        HTTPRequestHelper.getRequest(getApplicationContext(), getString(R.string.api_url) + "/user/role/admin", callback);
+    } */
+
+
     public void CalendarActivity(View view) {
         Intent intent = new Intent(this, CalendarAppointments.class);
         startActivity(intent);
@@ -70,6 +70,12 @@ public class HomeActivity extends AppCompatActivity {
         Intent intent = new Intent(this, Prestations.class);
         startActivity(intent);
     }
+
+    public void AdminUserActivitiy(View view) {
+        Intent intent = new Intent(this, AdminUser.class);
+        startActivity(intent);
+    }
+
     public void Disconnect(View view) {
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);

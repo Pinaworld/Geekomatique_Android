@@ -8,6 +8,7 @@
 package com.example.geekomatique.Helpers;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -33,7 +34,7 @@ import java.util.Map;
 
 public class HTTPRequestHelper {
 
-    public static void getRequest(final Context context, String url, final VolleyJSONArrayCallback callback, final String token){
+    public static void getRequest(final Context context, String url, final VolleyJSONArrayCallback callback){
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
@@ -74,7 +75,7 @@ public class HTTPRequestHelper {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String>  params = new HashMap<>();
-                params.put("Authorization", "Bearer  " + token);
+                params.put("Cookie", getCookie(context));
 
                 return params;
             }
@@ -84,7 +85,7 @@ public class HTTPRequestHelper {
         requestQueue.add(stringRequest);
     }
 
-    public static void postRequest(final Context context, String url, final VolleyJSONObjectCallback callback, final String token, final JSONObject params) {
+    public static void postRequest(final Context context, String url, final VolleyJSONObjectCallback callback, final JSONObject params) {
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, params,
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -102,7 +103,7 @@ public class HTTPRequestHelper {
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String>  params = new HashMap<String, String>();
                 params.put("Content-Type", "application/json");
-                params.put("Authorization", "Bearer  " + token);
+                params.put("Cookie", getCookie(context));
 
                 return params;
             }
@@ -113,7 +114,7 @@ public class HTTPRequestHelper {
         requestQueue.add(jsonObjectRequest);
     }
 
-    public static void deleteRequest(final Context context, String url, final VolleyJSONArrayCallback callback, final String token){
+    public static void deleteRequest(final Context context, String url, final VolleyJSONArrayCallback callback){
 
         StringRequest stringRequest = new StringRequest(Request.Method.DELETE, url,
                 new Response.Listener<String>() {
@@ -133,7 +134,7 @@ public class HTTPRequestHelper {
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String>  params = new HashMap<String, String>();
                 params.put("Content-Type", "application/json");
-                params.put("Authorization", "Bearer  " + token);
+                params.put("Cookie", getCookie(context));
 
                 return params;
             }
@@ -144,7 +145,7 @@ public class HTTPRequestHelper {
         requestQueue.add(stringRequest);
     }
 
-    public static void putRequest(final Context context, String url, final VolleyJSONObjectCallback callback, final String token, final JSONObject params) {
+    public static void putRequest(final Context context, String url, final VolleyJSONObjectCallback callback, final JSONObject params) {
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.PUT, url, params,
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -162,7 +163,7 @@ public class HTTPRequestHelper {
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String>  params = new HashMap<String, String>();
                 params.put("Content-Type", "application/json");
-                params.put("Authorization", "Bearer  " + token);
+                params.put("Cookie", getCookie(context));
 
                 return params;
             }
@@ -173,7 +174,7 @@ public class HTTPRequestHelper {
         requestQueue.add(jsonObjectRequest);
     }
 
-    public static void patchRequest(final Context context, String url, final VolleyJSONObjectCallback callback, final String token, final JSONObject params) {
+    public static void patchRequest(final Context context, String url, final VolleyJSONObjectCallback callback, final JSONObject params) {
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.PATCH, url, params,
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -191,7 +192,7 @@ public class HTTPRequestHelper {
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String>  params = new HashMap<String, String>();
                 params.put("Content-Type", "application/json");
-                params.put("Authorization", "Bearer  " + token);
+                params.put("Cookie", getCookie(context));
 
                 return params;
             }
@@ -217,5 +218,10 @@ public class HTTPRequestHelper {
             }
             Toast.makeText(context, body, Toast.LENGTH_LONG).show();
         }
+    }
+
+    private static String getCookie(Context context) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("TOKEN", Context.MODE_PRIVATE);
+        return sharedPreferences.getString("token", "");
     }
 }

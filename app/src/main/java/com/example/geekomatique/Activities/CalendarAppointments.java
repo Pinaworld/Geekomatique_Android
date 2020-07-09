@@ -10,10 +10,12 @@ package com.example.geekomatique.Activities;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import 	android.widget.CalendarView;
 
+import org.json.JSONArray;
 import org.w3c.dom.Text;
 
 import android.content.Context;
@@ -29,7 +31,9 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.geekomatique.Helpers.AuthenticatorHelper;
+import com.example.geekomatique.Helpers.HTTPRequestHelper;
 import com.example.geekomatique.R;
+import com.example.geekomatique.VolleyJSONArrayCallback;
 import com.example.geekomatique.VolleyJSONObjectCallback;
 
 import org.json.JSONException;
@@ -49,15 +53,24 @@ public class CalendarAppointments extends AppCompatActivity {
         /**calender = (CalendarAppointments)
                 findViewById(R.id.calender);*/
 
-
-        TextView mailAdress = (TextView) findViewById(R.id.MailShow);
-        mailAdress.setText("juan@pino.com");
+        /**TextView mailAdress = (TextView) findViewById(R.id.MailShow);
+        mailAdress.setText("juan@pino.com");*/
+        getAllAppointments();
     }
 
 
-    public void getDate(){
+    private void getAllAppointments(){
+        VolleyJSONArrayCallback callback =  new VolleyJSONArrayCallback(){
+            @Override
+            public void onResponse(JSONArray result) {
+                Log.i("getAllAppointments", result.toString());
 
+            }
+        };
+        HTTPRequestHelper.getRequest(getApplicationContext(), getString(R.string.api_url) + "/appointment/", callback);
     }
+
+
     public void ReturnHomeAtivity(View view) {
         Intent intent = new Intent(this, HomeActivity.class);
         startActivity(intent);

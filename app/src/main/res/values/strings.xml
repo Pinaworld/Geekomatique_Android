@@ -8,13 +8,14 @@
 <resources>
     <string name="app_name">Geekomatique</string>
     <string name="api_url">https://geekomatique.fr:5000</string>
+    <string name="copyright">Powered By Lapiei</string>
 
     <string name="admin_version">Version administrateur</string>
     <string name="login">Identifiant</string>
     <string name="psswd">Mot de passe</string>
     <string name="connection_butt">Connexion</string>
 
-    <string name="calendar_butt">Afficher le calendrier</string>
+    <string name="calendar_butt">Gestion des rendez-vous</string>
     <string name="disponibili_butt">Afficher mes disponibilités</string>
     <string name="presta_butt">Modifier mes prestations</string>
     <string name="disconnection">Déconnexion</string>
@@ -47,6 +48,8 @@
     <string name="enter_login">Entrez votre identifiant</string>
     <string name="enter_passwd">Entrez le mot de passe</string>
 
+    <string name="admin_user_text">Gestion des administrateurs</string>
+    <string name="adding_admin_user">Ajouter un administrateur</string>
 
 
 </resources>
