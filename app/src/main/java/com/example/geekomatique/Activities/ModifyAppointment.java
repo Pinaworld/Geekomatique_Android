@@ -51,9 +51,18 @@ public class ModifyAppointment extends AppCompatActivity {
         TextView date  = (TextView) findViewById(R.id.actualDate);
         date.setText(date_n);
 
+        Button modifyAppointment = findViewById(R.id.CancelAppointmentButt);
+
+        modifyAppointment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ModifyAppointment(v);
+            }
+        });
+
     }
 
-    public void ModifyAppoitment(View view){
+    public void ModifyAppointment(View view){
 
         Toast toastConfirmedModification = Toast.makeText(getApplicationContext(), "Rendez-vous modifié !", Toast.LENGTH_SHORT);
         toastConfirmedModification.show();

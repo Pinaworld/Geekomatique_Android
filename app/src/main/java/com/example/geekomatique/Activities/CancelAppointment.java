@@ -50,10 +50,24 @@ public class CancelAppointment extends AppCompatActivity {
         String date_n = new SimpleDateFormat("dd MMM yyyy", Locale.getDefault()).format(new Date());
         TextView date  = (TextView) findViewById(R.id.actualDate);
         date.setText(date_n);
+
+        Button cancelAppointment = findViewById(R.id.CancelAppointmentButt);
+
+        cancelAppointment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CancelAppointment(v);
+            }
+        });
     }
 
 
-    public void CancelAppoitment(View view){
+    public void ReturnAppointmentActivity(View view) {
+        Intent intent = new Intent(this, Appointment.class);
+        startActivity(intent);
+    }
+
+    public void CancelAppointment(View view){
 
         Toast toastConfirmedCancel = Toast.makeText(getApplicationContext(), "Rendez-vous annulé !", Toast.LENGTH_SHORT);
         toastConfirmedCancel.show();
@@ -61,8 +75,4 @@ public class CancelAppointment extends AppCompatActivity {
         ReturnAppointmentActivity(view);
     }
 
-    public void ReturnAppointmentActivity(View view) {
-        Intent intent = new Intent(this, Appointment.class);
-        startActivity(intent);
-    }
 }

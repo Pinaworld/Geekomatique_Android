@@ -59,6 +59,16 @@ public class Appointment extends AppCompatActivity {
         date.setText(date_n);
 
         getApointmentById();
+
+        Button sendBillButt = findViewById(R.id.SendBillButt);
+
+        sendBillButt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SendBill(v);
+            }
+        });
+
     }
 
 
@@ -87,15 +97,11 @@ public class Appointment extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void SendBill(View view){
+    public void SendBill(View view) {
         Toast toastBillSent = Toast.makeText(getApplicationContext(), "Facture envoyée !", Toast.LENGTH_SHORT);
         toastBillSent.show();
 
-        /**   button.setOnClickListener(new View.OnClickListener() {
-         public void onClick(View v) {
-         your handler code here
-         }
-         } */
+
     }
 
 }
