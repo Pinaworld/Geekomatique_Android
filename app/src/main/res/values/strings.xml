@@ -8,7 +8,7 @@
 <resources>
     <string name="app_name">Geekomatique</string>
     <string name="api_url">https://geekomatique.fr:5000</string>
-    <string name="copyright">Powered By Lapiei</string>
+    <string name="copyright">2020 Powered By Lapiei</string>
 
     <string name="admin_version">Version administrateur</string>
     <string name="login">Identifiant</string>

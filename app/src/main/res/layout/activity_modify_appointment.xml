@@ -81,7 +81,7 @@
         app:layout_constraintVertical_bias="0.179" />
 
     <TextView
-        android:id="@+id/AppointmentTime"
+        android:id="@+id/appointmentTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -129,7 +129,7 @@
         app:layout_constraintVertical_bias="0.294" />
 
     <TextView
-        android:id="@+id/AppointmentAdress"
+        android:id="@+id/appointmentAdress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -161,7 +161,7 @@
         app:layout_constraintVertical_bias="0.406" />
 
     <TextView
-        android:id="@+id/CustomerComment"
+        android:id="@+id/customerComment"
         android:layout_width="320dp"
         android:layout_height="60dp"
         android:layout_marginStart="8dp"
@@ -193,7 +193,7 @@
         app:layout_constraintVertical_bias="0.352" />
 
     <TextView
-        android:id="@+id/CustomerMail"
+        android:id="@+id/customerMail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -209,7 +209,7 @@
         app:layout_constraintVertical_bias="0.352" />
 
     <Button
-        android:id="@+id/ModifyAppointmentButt"
+        android:id="@+id/modifyAppointmentButt"
         android:layout_width="195dp"
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
@@ -217,7 +217,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:background="@color/ColorSecond"
-        android:onClick="ModifyAppoitment"
+        android:onClick="ValidateModifyAppointment"
         android:text="@string/modify_appointment_butt"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

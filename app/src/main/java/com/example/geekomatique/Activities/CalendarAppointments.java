@@ -56,17 +56,10 @@ public class CalendarAppointments extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar_appointments);
 
-        /**calender = (CalendarAppointments)
-                findViewById(R.id.calender);*/
-
-        /**TextView mailAdress = (TextView) findViewById(R.id.MailShow);
-        mailAdress.setText("juan@pino.com");*/
         getAllAppointments();
 
         recyclerView = (RecyclerView) findViewById(R.id.appointmentList);
-
         recyclerView.setHasFixedSize(true);
-
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
@@ -95,7 +88,10 @@ public class CalendarAppointments extends AppCompatActivity {
     }
 
     public void ListAppointmentbyDayActivity(View view) {
-        Intent intent = new Intent(this, Appointment.class);
+
+        int valueIdClicked = 52; //GET FROM RECYCLERVIEW
+        Intent intent = new Intent(this, Appointment.class); //On va envoyer la valeur de l'id dans l'intent de l'activité suivante
+        intent.putExtra("id", valueIdClicked); //valueIdClicked a comme clé "id", on va le récuperer grâce à la clé
         startActivity(intent);
     }
 }

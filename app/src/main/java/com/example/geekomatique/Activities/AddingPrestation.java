@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.example.geekomatique.Activities.HomeActivity;
 import com.example.geekomatique.Activities.Prestations;
@@ -24,6 +25,10 @@ public class AddingPrestation extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_adding_prestation);
 
+        EditText prestationName = findViewById(R.id.PrestationName);
+        EditText prestationPrice = findViewById(R.id.PrestationPrice);
+
+        Button returnBtn = findViewById(R.id.ReturnBut);
         Button validationBtn = findViewById(R.id.ValidateBtn);
 
         validationBtn.setOnClickListener(new View.OnClickListener() {
@@ -40,7 +45,10 @@ public class AddingPrestation extends AppCompatActivity {
     }
 
     public void ValidateAddingPrestation(View view){
+        Intent intent = new Intent(this, Prestations.class);
 
 
+
+        startActivity(intent);
     }
 }

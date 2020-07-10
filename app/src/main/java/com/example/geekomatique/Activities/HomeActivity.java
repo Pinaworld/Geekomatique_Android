@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.geekomatique.Helpers.HTTPRequestHelper;
@@ -33,6 +34,10 @@ public class HomeActivity extends AppCompatActivity {
 
         //getMailAdress();
 
+        Button CalendarButt = (Button) findViewById(R.id.CalendarButt);
+        Button DisponibilitiesButt = (Button) findViewById(R.id.DisponibilitiesButt);
+        Button PrestationsButt = (Button) findViewById(R.id.PrestationsButt);
+        Button AdminUserBtn = (Button) findViewById(R.id.AdminUserBtn);
 
     }
 

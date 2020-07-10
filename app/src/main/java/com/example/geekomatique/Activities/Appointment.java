@@ -54,13 +54,43 @@ public class Appointment extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_appointment);
 
+        TextView appointmentTitle = (TextView) findViewById(R.id.appointmentTitle);
+        TextView appointmentTime = (TextView) findViewById(R.id.appointmentTime);
+        TextView appointmentAdress = (TextView) findViewById(R.id.appointmentAdress);
+        TextView customerMail = (TextView) findViewById(R.id.customerMail);
+        TextView customerComment = (TextView) findViewById(R.id.customerComment);
+
+
         String date_n = new SimpleDateFormat("dd MMM yyyy", Locale.getDefault()).format(new Date());
         TextView date  = (TextView) findViewById(R.id.actualDate);
         date.setText(date_n);
 
-        getApointmentById();
+        Bundle extras = getIntent().getExtras();
 
+        if (extras != null) {
+            int valueIdClicked = extras.getInt("id");//Récupération du champs de l'id
+
+            getAppointmentById(valueIdClicked);
+        }
+
+        Button returnHome = (Button) findViewById(R.id.returnListAppointmentsButt);
+        Button modifyAppointmentButt = (Button) findViewById(R.id.ModifyAppointmentButt);
+        Button cancelAppointmentButt = (Button) findViewById(R.id.CancelAppointmentButt);
         Button sendBillButt = findViewById(R.id.SendBillButt);
+
+        modifyAppointmentButt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ModifyAppointmentActivity(v);
+            }
+        });
+
+        cancelAppointmentButt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CancelAppointmentActivity(v);
+            }
+        });
 
         sendBillButt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,29 +101,34 @@ public class Appointment extends AppCompatActivity {
 
     }
 
-
-    private void getApointmentById(){
+    private void getAppointmentById(int id){
         VolleyJSONArrayCallback callback =  new VolleyJSONArrayCallback(){
             @Override
             public void onResponse(JSONArray result) {
-
                     Log.i("getApointmentById", result.toString());
-
             }
         };
-        HTTPRequestHelper.getRequest(getApplicationContext(), getString(R.string.api_url) + "/appointment/", callback);
+        HTTPRequestHelper.getRequest(getApplicationContext(), getString(R.string.api_url) + "/appointment/" + id, callback);
+
     }
 
     public void ReturnListAppointmentActivity(View view) {
         Intent intent = new Intent(this, CalendarAppointments.class);
         startActivity(intent);
     }
+
     public void ModifyAppointmentActivity(View view) {
-        Intent intent = new Intent(this, ModifyAppointment.class);
+        int valueIdClicked = 52; //GET FROM RECYCLERVIEW
+
+        Intent intent = new Intent(this, ModifyAppointment.class); //On va envoyer la valeur de l'id dans l'intent de l'activité suivante
+        intent.putExtra("id", valueIdClicked); //valueIdClicked a comme clé "id", on va le récuperer grâce à la clé
         startActivity(intent);
     }
-    public void CancelApointmentActivity(View view) {
-        Intent intent = new Intent(this, CancelAppointment.class);
+    public void CancelAppointmentActivity(View view) {
+        int valueIdClicked = 52; //GET FROM RECYCLERVIEW
+
+        Intent intent = new Intent(this, CancelAppointment.class); //On va envoyer la valeur de l'id dans l'intent de l'activité suivante
+        intent.putExtra("id", valueIdClicked); //valueIdClicked a comme clé "id", on va le récuperer grâce à la clé
         startActivity(intent);
     }
 

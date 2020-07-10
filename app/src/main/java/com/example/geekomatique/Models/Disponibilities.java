@@ -27,6 +27,14 @@ public class Disponibilities {
         this.employee_id = employee_id;
     }
 
+    public Disponibilities(String start, String end, String title, long day_number, long employee_id) {
+        this.start = start;
+        this.end = end;
+        this.title = title;
+        this.day_number = day_number;
+        this.employee_id = employee_id;
+    }
+
     public long getId() {
         return id;
     }

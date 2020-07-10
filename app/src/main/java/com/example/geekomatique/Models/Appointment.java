@@ -33,6 +33,17 @@ public class Appointment {
         this.validate = validate;
     }
 
+    public Appointment(String date, String description, boolean remote, boolean done, long userId, long adressId, boolean canceled, boolean validate) {
+        this.date = date;
+        this.description = description;
+        this.remote = remote;
+        this.done = done;
+        this.userId = userId;
+        this.adressId = adressId;
+        this.canceled = canceled;
+        this.validate = validate;
+    }
+
     public long getId() {
         return id;
     }

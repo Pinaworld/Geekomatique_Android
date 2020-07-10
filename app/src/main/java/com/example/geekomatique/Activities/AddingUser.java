@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.example.geekomatique.R;
 
@@ -22,6 +23,12 @@ public class AddingUser extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_adding_user);
 
+        EditText lastName = findViewById(R.id.lastName);
+        EditText firstName = findViewById(R.id.firstName);
+        EditText phoneField = findViewById(R.id.phoneField);
+        EditText emailField = findViewById(R.id.emailField);
+
+        Button returnBut = findViewById(R.id.ReturnBut);
         Button validationBtn = findViewById(R.id.Validate);
 
         validationBtn.setOnClickListener(new View.OnClickListener() {

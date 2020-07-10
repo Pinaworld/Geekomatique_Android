@@ -21,7 +21,7 @@
         <activity android:name=".Activities.ModifyAppointment" />
         <activity android:name=".Activities.CalendarAppointments" />
         <activity android:name=".Activities.Appointment" />
-        <activity android:name=".Activities.ListAppointments" />
+        <activity android:name=".Fragment.ListAppointments" />
         <activity android:name=".Activities.HomeActivity" />
         <activity android:name=".Activities.LoginActivity">
             <intent-filter>
