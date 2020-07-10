@@ -41,28 +41,6 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
-/**
-    private void getMailAdress(){
-        VolleyJSONArrayCallback callback =  new VolleyJSONArrayCallback(){
-            @Override
-            public void onResponse(JSONArray result) {
-                TextView mailAdress = (TextView) findViewById(R.id.MailShow);
-                try {
-
-                    mailAdress.setText(String.valueOf( result.getString("lastname")));
-                } catch (JSONException e) {
-                    Log.i(" teste", e.toString());
-
-                }
-
-                Log.i("getMailAdress", result.toString());
-
-            }
-        };
-        HTTPRequestHelper.getRequest(getApplicationContext(), getString(R.string.api_url) + "/user/role/admin", callback);
-    } */
-
-
     public void CalendarActivity(View view) {
         Intent intent = new Intent(this, CalendarAppointments.class);
         startActivity(intent);

@@ -1,0 +1,97 @@
+/*
+ * Copyright (c) 2020
+ * Project: Geekomatique
+ * File : PrestationsAdapter.java
+ * Edited by pinbe
+ */
+
+package com.example.geekomatique;
+
+
+import android.app.Presentation;
+import android.content.Context;
+import android.support.v7.widget.CardView;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.geekomatique.Helpers.HTTPRequestHelper;
+import com.example.geekomatique.Models.Prestations;
+
+import org.json.JSONArray;
+
+import java.util.List;
+
+import javax.security.auth.callback.Callback;
+
+public class PrestationsAdapter extends RecyclerView.Adapter<PrestationsAdapter.MyViewHolder> {
+
+    Context context;
+    List<Prestations> prestations;
+
+    public PrestationsAdapter(Context context, List<Prestations> prestations) {
+        this.context = context;
+        this.prestations = prestations;
+    }
+
+    @Override
+    public PrestationsAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int i) {
+        View view = LayoutInflater.from(context).inflate(R.layout.prestations_row, parent,false);
+        return new MyViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(PrestationsAdapter.MyViewHolder myViewHolder, final int position) {
+        final Prestations prestation = prestations.get(position);
+
+        myViewHolder.prestationTitleRow.setText(prestation.getName());
+        myViewHolder.prestationPriceRow.setText(prestation.getPrice());
+
+        myViewHolder.deleteBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                VolleyJSONArrayCallback callback = new VolleyJSONArrayCallback(){
+                    @Override
+                    public void onResponse(JSONArray result) {
+                        Toast.makeText(context, "Le service a bien été supprimé.", Toast.LENGTH_SHORT).show();
+                        prestations.remove(position);
+                        notifyDataSetChanged();
+                    }
+
+                };
+
+                    HTTPRequestHelper.deleteRequest(context,"https://geekomatique.fr:5000"+ "/service/" + prestation.getId(), callback);
+            }
+        });
+    }
+
+    @Override
+    public int getItemCount() {
+        return prestations.size();
+    }
+
+
+    class MyViewHolder extends RecyclerView.ViewHolder {
+        LinearLayout prestationRow;
+        TextView prestationTitleRow;
+        TextView prestationPriceRow;
+        Button deleteBtn;
+
+        public MyViewHolder(View itemView) {
+            super(itemView);
+            prestationRow = itemView.findViewById(R.id.prestationRow);
+            prestationTitleRow = itemView.findViewById(R.id.prestationTitleRow);
+            prestationPriceRow = itemView.findViewById(R.id.prestationPriceRow);
+            deleteBtn = itemView.findViewById(R.id.deleteBtn);
+
+        }
+    }
+
+}

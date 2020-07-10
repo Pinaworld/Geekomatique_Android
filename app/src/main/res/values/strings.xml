@@ -66,4 +66,6 @@
     <string name="prestation_price">Prix :</string>
     <string name="money">€</string>
 
+    <string name="suppr_presta">Supprimer</string>
+
 </resources>
