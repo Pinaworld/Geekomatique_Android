@@ -117,7 +117,7 @@ public class LoginActivity extends AppCompatActivity {
             }
 
 
-            private void saveUserSharedPreferences(String login, String password, long userId) {
+            private void saveUserSharedPreferences(String login, String password, int userId) {
                 SharedPreferences prefs = getSharedPreferences("LOGIN", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = prefs.edit();
                 editor.putString("LOGIN_PSEUDO", login);

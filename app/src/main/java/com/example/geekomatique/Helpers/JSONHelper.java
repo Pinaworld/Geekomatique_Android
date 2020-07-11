@@ -98,15 +98,15 @@ public class JSONHelper {
         Appointment appointment = null;
         try {
 
-            long id = appointmentJSONObject.getLong("id");
-            long userId = appointmentJSONObject.getLong("userId");
+            int id = appointmentJSONObject.getInt("id");
+            int userId = appointmentJSONObject.getInt("userId");
             String description = appointmentJSONObject.getString("description");
             Boolean remote = appointmentJSONObject.getBoolean("remote");
             Boolean done = appointmentJSONObject.getBoolean("done");
             Boolean validate = appointmentJSONObject.getBoolean("validate");
             Boolean canceled = appointmentJSONObject.getBoolean("canceled ");
             String date = appointmentJSONObject.getString("date") ;
-            long addressId = appointmentJSONObject.getLong("addressId ");
+            int addressId = appointmentJSONObject.getInt("addressId ");
 
             appointment = new Appointment(id, date, description, remote, done, userId, addressId, canceled, validate);
 
@@ -121,13 +121,12 @@ public class JSONHelper {
         Disponibilities disponibilities = null;
 
         try {
-            long id = disponibilityJSONobject.getLong("id");
+            int id = disponibilityJSONobject.getInt("id");
             String start = disponibilityJSONobject.getString("start");
-            //Time start = new Time(formatter.parse("start").getTime());
             String end = disponibilityJSONobject.getString("end");
             String title = disponibilityJSONobject.getString("title");
-            Long day_number = disponibilityJSONobject.getLong("day_number");
-            Long employee_id = disponibilityJSONobject.getLong("employee_id");
+            int day_number = disponibilityJSONobject.getInt("day_number");
+            int employee_id = disponibilityJSONobject.getInt("employee_id");
 
             disponibilities = new Disponibilities(id, start, end, title, day_number, employee_id);
 
@@ -143,10 +142,9 @@ public class JSONHelper {
         Prestations prestations = null;
 
         if(prestationsJSONObject != null) {
-            for (int i = 0; i < prestationsJSONObject.length(); i++) {
                 try {
 
-                    long id = prestationsJSONObject.getLong("id");
+                    int id = prestationsJSONObject.getInt("id");
                     String name = prestationsJSONObject.getString("name");
                     String price = prestationsJSONObject.getString("price");
 
@@ -156,10 +154,8 @@ public class JSONHelper {
 
                 }
             }
-            return prestations;
-        }
 
-        return null;
+        return prestations;
     }
 
     public static User userFromJSONObject(JSONObject userJSONObejct) {
@@ -167,23 +163,23 @@ public class JSONHelper {
         User user = null;
 
         if(userJSONObejct != null) {
-            for (int i = 0; i < userJSONObejct.length(); i++) {
                 try {
-                    long id = userJSONObejct.getLong("id");
+                    int id = userJSONObejct.getInt("id");
                     String email = userJSONObejct.getString("email");
                     String firstName= userJSONObejct.getString("firstName");
                     String lastName= userJSONObejct.getString("lastName");
                     String login = userJSONObejct.getString("login");
                     String roleName = userJSONObejct.getString("roleName");
+                    String phoneNumber = userJSONObejct.getString("phoneNumber");
 
-                    user = new User(id, email, firstName,lastName, login,roleName );
+                    user = new User(id, email, firstName,lastName, phoneNumber, login, roleName );
 
                 } catch (JSONException exception) {
 
                 }
-            }
-            return user;
+
         }
-        return null;
+        return user;
     }
+
 }

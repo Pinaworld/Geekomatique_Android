@@ -11,17 +11,17 @@ import java.util.Date;
 
 public class Appointment {
 
-    private long id;
+    private int id;
     private String date;
     private String description;
     private boolean remote;
     private boolean done;
-    private long userId;
-    private long adressId;
+    private int userId;
+    private int adressId;
     private boolean canceled;
     private boolean validate;
 
-    public Appointment(long id, String date, String description, boolean remote, boolean done, long userId, long adressId, boolean canceled, boolean validate) {
+    public Appointment(int id, String date, String description, boolean remote, boolean done, int userId, int adressId, boolean canceled, boolean validate) {
         this.id = id;
         this.date = date;
         this.description = description;
@@ -33,7 +33,7 @@ public class Appointment {
         this.validate = validate;
     }
 
-    public Appointment(String date, String description, boolean remote, boolean done, long userId, long adressId, boolean canceled, boolean validate) {
+    public Appointment(String date, String description, boolean remote, boolean done, int userId, int adressId, boolean canceled, boolean validate) {
         this.date = date;
         this.description = description;
         this.remote = remote;
@@ -44,7 +44,7 @@ public class Appointment {
         this.validate = validate;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
@@ -80,19 +80,19 @@ public class Appointment {
         this.done = done;
     }
 
-    public long getUserId() {
+    public int getUserId() {
         return userId;
     }
 
-    public void setUserId(long userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 
-    public long getAdressId() {
+    public int getAdressId() {
         return adressId;
     }
 
-    public void setAdressId(long adressId) {
+    public void setAdressId(int adressId) {
         this.adressId = adressId;
     }
 

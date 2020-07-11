@@ -67,5 +67,17 @@
     <string name="money">€</string>
 
     <string name="suppr_presta">Supprimer</string>
+    <string name="validate_appointment">Valider</string>
+    <string name="finish_appointment">Terminer</string>
+
+    <string name="company_name">Geekomatique</string>
+    <string name="company_country">FR</string>
+    <string name="company_city">Rambouillet</string>
+    <string name="company_siret">12345967895435</string>
+    <string name="company_zipcode">78120</string>
+    <string name="company_currency">€</string>
+    <string name="company_street">19 rue Chasles</string>
+    <string name="company_vat_percent">0</string>
+    <string name="company_vat_number"></string>
 
 </resources>

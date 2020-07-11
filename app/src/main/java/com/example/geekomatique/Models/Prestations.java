@@ -7,13 +7,15 @@
 
 package com.example.geekomatique.Models;
 
+import java.util.HashMap;
+
 public class Prestations {
 
-    private long id;
+    private int id;
     private String name;
     private String price;
 
-    public Prestations(long id, String name, String price) {
+    public Prestations(int id, String name, String price) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -28,7 +30,7 @@ public class Prestations {
         return name;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
@@ -42,5 +44,14 @@ public class Prestations {
 
     public void setPrice(String price) {
         this.price = price;
+    }
+
+
+    public HashMap<String, String> getPrestationHashMap(String password){
+        HashMap<String, String> hashMap = new HashMap<String, String>();
+
+        hashMap.put("name", getName());
+        hashMap.put("price", String.valueOf(getPrice()));
+        return hashMap;
     }
 }

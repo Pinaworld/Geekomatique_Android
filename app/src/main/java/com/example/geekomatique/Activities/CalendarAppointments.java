@@ -17,7 +17,10 @@ import android.view.View;
 
 import org.json.JSONArray;
 
+import com.example.geekomatique.Adapters.AppointmentsAdapter;
+import com.example.geekomatique.Adapters.PrestationsAdapter;
 import com.example.geekomatique.Helpers.HTTPRequestHelper;
+import com.example.geekomatique.Helpers.JSONHelper;
 import com.example.geekomatique.R;
 import com.example.geekomatique.VolleyJSONArrayCallback;
 
@@ -25,7 +28,6 @@ public class CalendarAppointments extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
-    private RecyclerView.LayoutManager layoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,12 +38,7 @@ public class CalendarAppointments extends AppCompatActivity {
 
         recyclerView = (RecyclerView) findViewById(R.id.appointmentList);
         recyclerView.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
-
-        /* specify an adapter (see also next example)
-        mAdapter = new MyAdapter(myDataset);
-        recyclerView.setAdapter(mAdapter);*/
+        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
 
     }
 
@@ -52,8 +49,11 @@ public class CalendarAppointments extends AppCompatActivity {
             public void onResponse(JSONArray result) {
                 Log.i("getAllAppointments", result.toString());
 
+                final RecyclerView.Adapter adapter = new AppointmentsAdapter(getApplicationContext(), JSONHelper.appointmentListFromJSONObject(result));
+                recyclerView.setAdapter(adapter);
             }
         };
+
         HTTPRequestHelper.getRequest(getApplicationContext(), getString(R.string.api_url) + "/appointment/", callback);
     }
 

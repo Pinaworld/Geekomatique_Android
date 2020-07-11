@@ -1,0 +1,156 @@
+package com.example.geekomatique.Models;
+
+import java.io.Serializable;
+import java.util.HashMap;
+
+public class Invoice implements Serializable
+{
+
+    private Integer id;
+    private String invoiceNumber;
+    private String invoiceDate;
+    private String renderedServicesDate;
+    private Boolean paid;
+    private String city;
+    private String street;
+    private String userName;
+    private Integer zipcode;
+    private String country;
+    private String email;
+    private String phoneNumber;
+    private Integer appointmentId;
+    private Integer userId;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getInvoiceNumber() {
+        return invoiceNumber;
+    }
+
+    public void setInvoiceNumber(String invoiceNumber) {
+        this.invoiceNumber = invoiceNumber;
+    }
+
+    public String getInvoiceDate() {
+        return invoiceDate;
+    }
+
+    public void setInvoiceDate(String invoiceDate) {
+        this.invoiceDate = invoiceDate;
+    }
+
+    public String getRenderedServicesDate() {
+        return renderedServicesDate;
+    }
+
+    public void setRenderedServicesDate(String renderedServicesDate) {
+        this.renderedServicesDate = renderedServicesDate;
+    }
+
+    public Boolean getPaid() {
+        return paid;
+    }
+
+    public void setPaid(Boolean paid) {
+        this.paid = paid;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public Integer getZipcode() {
+        return zipcode;
+    }
+
+    public void setZipcode(Integer zipcode) {
+        this.zipcode = zipcode;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public Integer getAppointmentId() {
+        return appointmentId;
+    }
+
+    public void setAppointmentId(Integer appointmentId) {
+        this.appointmentId = appointmentId;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
+
+    public HashMap<String, String> getInvoiceHashMap(String password){
+        HashMap<String, String> hashMap = new HashMap<String, String>();
+
+        hashMap.put("invoice_date", getInvoiceDate());
+        hashMap.put("rendered_services_date", getRenderedServicesDate());
+        hashMap.put("paid", String.valueOf(getPaid()));
+        hashMap.put("city", getCity());
+        hashMap.put("street", getStreet());
+        hashMap.put("user_name", getUserName());
+        hashMap.put("zipcode", String.valueOf(getZipcode()));
+        hashMap.put("country", getCountry());
+        hashMap.put("email", getEmail());
+        hashMap.put("phone_number", getPhoneNumber());
+        hashMap.put("appointment_id", String.valueOf(getAppointmentId()));
+        hashMap.put("user_id", String.valueOf(getUserId()));
+
+        return hashMap;
+    }
+
+}

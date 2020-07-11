@@ -8,17 +8,18 @@
 package com.example.geekomatique.Models;
 
 import java.sql.Time;
+import java.util.HashMap;
 
 public class Disponibilities {
 
-    private long id;
+    private int id;
     private String start; //Should be a time type
     private String end; //Should be a time type
     private String title;
-    private long day_number;
-    private long employee_id;
+    private int day_number;
+    private int employee_id;
 
-    public Disponibilities(long id, String start, String end, String title, long day_number, long employee_id) {
+    public Disponibilities(int id, String start, String end, String title, int day_number, int employee_id) {
         this.id = id;
         this.start = start;
         this.end = end;
@@ -27,7 +28,7 @@ public class Disponibilities {
         this.employee_id = employee_id;
     }
 
-    public Disponibilities(String start, String end, String title, long day_number, long employee_id) {
+    public Disponibilities(String start, String end, String title, int day_number, int employee_id) {
         this.start = start;
         this.end = end;
         this.title = title;
@@ -35,7 +36,7 @@ public class Disponibilities {
         this.employee_id = employee_id;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
@@ -63,19 +64,31 @@ public class Disponibilities {
         this.title = title;
     }
 
-    public long getDay_number() {
+    public int getDay_number() {
         return day_number;
     }
 
-    public void setDay_number(long day_number) {
+    public void setDay_number(int day_number) {
         this.day_number = day_number;
     }
 
-    public long getEmployee_id() {
+    public int getEmployee_id() {
         return employee_id;
     }
 
-    public void setEmployee_id(long employee_id) {
+    public void setEmployee_id(int employee_id) {
         this.employee_id = employee_id;
+    }
+
+
+    public HashMap<String, String> getDisponibilityHashMap(){
+        HashMap<String, String> hashMap = new HashMap<String, String>();
+
+        hashMap.put("start", getStart());
+        hashMap.put("end", getEnd());
+        hashMap.put("title", getTitle());
+        hashMap.put("day_number", String.valueOf(getDay_number()));
+        hashMap.put("employee_id",String.valueOf(getEmployee_id()));
+        return hashMap;
     }
 }
