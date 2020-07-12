@@ -66,7 +66,6 @@ public class PrestationsAdapter extends RecyclerView.Adapter<PrestationsAdapter.
                     }
 
                 };
-
                     HTTPRequestHelper.deleteRequest(context,"https://geekomatique.fr:5000"+ "/service/" + prestation.getId(), callback);
             }
         });
