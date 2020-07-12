@@ -25,18 +25,19 @@
         <TextView
             android:id="@+id/prestationTitleRow"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="35dp"
             android:layout_weight="5"
             android:fontFamily="serif"
             android:text="name"
             android:textSize="14sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            />
 
         <TextView
             android:id="@+id/prestationPriceRow"
-            android:layout_width="wrap_content"
+            android:layout_width="23dp"
+            android:layout_height="33dp"
             android:layout_weight="5"
-            android:layout_height="wrap_content"
             android:fontFamily="serif"
             android:text="price"
             android:textSize="14sp"
@@ -44,13 +45,13 @@
 
         <Button
             android:id="@+id/deleteBtn"
+            style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="wrap_content"
-            android:layout_weight="5"
             android:layout_height="wrap_content"
+            android:layout_weight="5"
             android:background="@color/colorAccent"
-            android:fontFamily="serif"
             android:text="@string/suppr_presta"
-            android:textSize="10dp"
+            android:textSize="12sp"
             android:textStyle="italic" />
 
     </LinearLayout>

@@ -48,22 +48,28 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Appointment extends AppCompatActivity {
-
+//Cette activité doit prendre en charge l'affichage d'un rendez vous de l'administrateur
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_appointment);
 
+        //On genere les differents composants du Layout
         TextView appointmentTitle = (TextView) findViewById(R.id.appointmentTitle);
         TextView appointmentTime = (TextView) findViewById(R.id.appointmentTime);
         TextView appointmentAdress = (TextView) findViewById(R.id.appointmentAdress);
         TextView customerMail = (TextView) findViewById(R.id.customerMail);
         TextView customerComment = (TextView) findViewById(R.id.customerComment);
 
+        Button returnHome = (Button) findViewById(R.id.returnListAppointmentsButt);
+        Button modifyAppointmentButt = (Button) findViewById(R.id.ModifyAppointmentButt);
+        Button cancelAppointmentButt = (Button) findViewById(R.id.CancelAppointmentButt);
+        Button sendBillButt = findViewById(R.id.SendBillButt);
 
         String date_n = new SimpleDateFormat("dd MMM yyyy", Locale.getDefault()).format(new Date());
         TextView date  = (TextView) findViewById(R.id.actualDate);
-        date.setText(date_n);
+        date.setText(date_n); //Permet d'afficher la date du jour
+
 
         Bundle extras = getIntent().getExtras();
 
@@ -73,11 +79,7 @@ public class Appointment extends AppCompatActivity {
             getAppointmentById(valueIdClicked);
         }
 
-        Button returnHome = (Button) findViewById(R.id.returnListAppointmentsButt);
-        Button modifyAppointmentButt = (Button) findViewById(R.id.ModifyAppointmentButt);
-        Button cancelAppointmentButt = (Button) findViewById(R.id.CancelAppointmentButt);
-        Button sendBillButt = findViewById(R.id.SendBillButt);
-
+        //On associe à chaque button un Listener qui va faire appel à une fonction
         modifyAppointmentButt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -109,7 +111,7 @@ public class Appointment extends AppCompatActivity {
             }
         };
         HTTPRequestHelper.getRequest(getApplicationContext(), getString(R.string.api_url) + "/appointment/" + id, callback);
-
+        //Cette requete recupére les rendez vous accéptée de l'admin
     }
 
     public void ReturnListAppointmentActivity(View view) {
@@ -118,6 +120,7 @@ public class Appointment extends AppCompatActivity {
     }
 
     public void ModifyAppointmentActivity(View view) {
+        //Lance l'activité de modification d'un rendez vous avec l'id du Rendez-vous
         int valueIdClicked = 52; //GET FROM RECYCLERVIEW
 
         Intent intent = new Intent(this, ModifyAppointment.class); //On va envoyer la valeur de l'id dans l'intent de l'activité suivante
@@ -125,6 +128,7 @@ public class Appointment extends AppCompatActivity {
         startActivity(intent);
     }
     public void CancelAppointmentActivity(View view) {
+        //Lance l'activité de suppression d'un rendez vous avec l'id du Rendez-vous
         int valueIdClicked = 52; //GET FROM RECYCLERVIEW
 
         Intent intent = new Intent(this, CancelAppointment.class); //On va envoyer la valeur de l'id dans l'intent de l'activité suivante
@@ -133,6 +137,7 @@ public class Appointment extends AppCompatActivity {
     }
 
     public void SendBill(View view) {
+        //Envoie la facture au client
         Toast toastBillSent = Toast.makeText(getApplicationContext(), "Facture envoyée !", Toast.LENGTH_SHORT);
         toastBillSent.show();
 

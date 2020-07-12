@@ -17,6 +17,9 @@ import android.widget.EditText;
 import com.example.geekomatique.R;
 
 public class AddingUser extends AppCompatActivity {
+
+    //Cette activité doit prendre en charge l'ajout des administrateurs par l'administrateur
+
     private EditText lastName;
     private EditText firstName;
     private EditText phoneField;
@@ -29,6 +32,7 @@ public class AddingUser extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_adding_user);
 
+        //On implemente les differents composants presents dans l'activité
         lastName = findViewById(R.id.lastName);
         firstName = findViewById(R.id.firstName);
         phoneField = findViewById(R.id.phoneField);
@@ -37,10 +41,11 @@ public class AddingUser extends AppCompatActivity {
         returnBut = findViewById(R.id.ReturnBut);
         validationBtn = findViewById(R.id.Validate);
 
+        //On set les listeners des boutons
         validationBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ValidateNewUser(v);
+                ValidateNewUser(v); //On appel la fonction de création des Users
             }
         });
     }

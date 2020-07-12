@@ -1,3 +1,10 @@
+/*
+ * Copyright (c) 2020
+ * Project: Geekomatique
+ * File : PrestationsModel.java
+ * Edited by pinbe
+ */
+
 package com.example.geekomatique.Models;
 
 import java.io.Serializable;

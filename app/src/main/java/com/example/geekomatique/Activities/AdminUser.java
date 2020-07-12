@@ -22,12 +22,14 @@ import com.example.geekomatique.VolleyJSONArrayCallback;
 import org.json.JSONArray;
 
 public class AdminUser extends AppCompatActivity {
-
+//Cette activité doit prendre en charge l'afficharge des adminstrateurs
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_user);
 
+
+        //On implemente les differents composants presents dans l'activité
         Button returnBut = findViewById(R.id.ReturnBut);
         Button ToErase = findViewById(R.id.YODOO); //RECYCLERVIEW OnclickListener // A SUPP
         Button addingUserBtn = findViewById(R.id.AddingUserBtn); //RECYCLERVIEW OnclickListener
@@ -45,7 +47,7 @@ public class AdminUser extends AppCompatActivity {
     }
 
 
-    private void getAllAdminUser(){
+    private void getAllAdminUser(){ //On va get les Users admin dans l'API
         VolleyJSONArrayCallback callback =  new VolleyJSONArrayCallback(){
             @Override
             public void onResponse(JSONArray result) {
@@ -54,6 +56,7 @@ public class AdminUser extends AppCompatActivity {
             }
         };
         HTTPRequestHelper.getRequest(getApplicationContext(), getString(R.string.api_url) + "/user/employee", callback);
+        //Cette requete recupére les AdminUSers
     }
 
     public void ReturnHomeActivity(View view) {
@@ -66,6 +69,7 @@ public class AdminUser extends AppCompatActivity {
     }
 
     public void EditUserActivity(View view) {
+
         int valueIdClicked = 52; //GET FROM RECYCLERVIEW
 
         Intent intent = new Intent(this, EditUserAdmin.class); //On va envoyer la valeur de l'id dans l'intent de l'activité suivante

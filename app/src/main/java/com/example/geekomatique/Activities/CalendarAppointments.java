@@ -25,7 +25,7 @@ import com.example.geekomatique.R;
 import com.example.geekomatique.VolleyJSONArrayCallback;
 
 public class CalendarAppointments extends AppCompatActivity {
-
+//Cette activité va prendre en charge l'affichage de tout les rendez-vous pour l'administration
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
 
