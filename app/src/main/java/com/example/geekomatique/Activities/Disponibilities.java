@@ -1,71 +1,66 @@
-/*
+package com.example.geekomatique.Activities;/*
  * Copyright (c) 2020
  * Project: Geekomatique
- * File : Disponibilities.java
+ * File : DisponibilitiesModel.java
  * Edited by pinbe
  */
 
-package com.example.geekomatique.Activities;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
-import android.widget.Toast;
 
-import com.example.geekomatique.Helpers.AuthenticatorHelper;
 import com.example.geekomatique.Helpers.HTTPRequestHelper;
+import com.example.geekomatique.Helpers.JSONHelper;
+import com.example.geekomatique.Models.DisponibilitiesModel;
 import com.example.geekomatique.R;
 import com.example.geekomatique.VolleyJSONArrayCallback;
-import com.example.geekomatique.VolleyJSONObjectCallback;
 
 import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
 
 public class Disponibilities extends AppCompatActivity {
-
-
+    private EditText day_1_Monday_Start;
+    private EditText day_1_Monday_End;
+    private EditText day_2_Thursday_Start;
+    private EditText day_2_Thursday_End;
+    private EditText day_3_Wednesday_Start;
+    private EditText day_3_Wednesday_End;
+    private EditText day_4_Thursday_Start;
+    private EditText day_4_Thursday_End;
+    private EditText day_5_Friday_Start;
+    private EditText day_5_Friday_End;
+    private EditText day_6_Saturday_Start;
+    private EditText day_6_Saturday_End;
+    private List<DisponibilitiesModel> disponibilitiesList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_disponibilities);
 
-        EditText day_1_Monday_Start = (EditText) findViewById(R.id.MondayStart);
-        EditText day_1_Monday_End = (EditText) findViewById(R.id.MondayEnd);
+        day_1_Monday_Start = findViewById(R.id.MondayStart);
+        day_1_Monday_End = findViewById(R.id.MondayEnd);
 
-        EditText day_2_Thursday_Start = (EditText) findViewById(R.id.tuesdayStart);
-        EditText day_2_Thursday_End = (EditText) findViewById(R.id.tuesdayEnd);
+        day_2_Thursday_Start = findViewById(R.id.tuesdayStart);
+        day_2_Thursday_End = findViewById(R.id.tuesdayEnd);
 
-        EditText day_3_Wednesday_Start = (EditText) findViewById(R.id.wednesdayStart);
-        EditText day_3_Wednesday_End = (EditText) findViewById(R.id.wednesdayEnd);
+        day_3_Wednesday_Start = findViewById(R.id.wednesdayStart);
+        day_3_Wednesday_End = findViewById(R.id.wednesdayEnd);
 
-        EditText day_4_Thursday_Start = (EditText) findViewById(R.id.thursdayStart);
-        EditText day_4_Thursday_End = (EditText) findViewById(R.id.thursdayEnd);
+        day_4_Thursday_Start = findViewById(R.id.thursdayStart);
+        day_4_Thursday_End = findViewById(R.id.thursdayEnd);
 
-        EditText day_5_Friday_Start = (EditText) findViewById(R.id.fridayStart);
-        EditText day_5_Friday_End = (EditText) findViewById(R.id.fridayEnd);
+        day_5_Friday_Start = findViewById(R.id.fridayStart);
+        day_5_Friday_End = findViewById(R.id.fridayEnd);
 
-        EditText day_6_Saturday_Start = (EditText) findViewById(R.id.saturdayStart);
-        EditText day_6_Saturday_End = (EditText) findViewById(R.id.saturdayEnd);
-
+        day_6_Saturday_Start = findViewById(R.id.saturdayStart);
+        day_6_Saturday_End = findViewById(R.id.saturdayEnd);
         getAllDisponibilities();
 
         Button validationBtn = findViewById(R.id.ValidateDispo);
@@ -83,16 +78,49 @@ public class Disponibilities extends AppCompatActivity {
             public void onResponse(JSONArray result) {
 
                 Log.i("getAllDisponibilities", result.toString());
-
+                disponibilitiesList = JSONHelper.disponibilitiesListFromJSONArray(result);
+                setDisponibilities();
             }
         };
         HTTPRequestHelper.getRequest(getApplicationContext(), getString(R.string.api_url) + "/time_slot/", callback);
+    }
+
+    private void setDisponibilities() {
+        disponibilitiesList.forEach((disponibility) -> {
+            switch (disponibility.getDay_number()) {
+                case 1:
+                    day_1_Monday_Start.setText(disponibility.getStart());
+                    day_1_Monday_End.setText(disponibility.getEnd());
+                    break;
+                case 2:
+                    day_2_Thursday_Start.setText(disponibility.getStart());
+                    day_2_Thursday_End.setText(disponibility.getEnd());
+                    break;
+                case 3:
+                    day_3_Wednesday_Start.setText(disponibility.getStart());
+                    day_3_Wednesday_End.setText(disponibility.getEnd());
+                    break;
+                case 4:
+                    day_4_Thursday_Start.setText(disponibility.getStart());
+                    day_4_Thursday_End.setText(disponibility.getEnd());
+                    break;
+                case 5:
+                    day_5_Friday_Start.setText(disponibility.getStart());
+                    day_5_Friday_End.setText(disponibility.getEnd());
+                    break;
+                case 6:
+                    day_6_Saturday_Start.setText(disponibility.getStart());
+                    day_6_Saturday_End.setText(disponibility.getEnd());
+                    break;
+            }
+        });
     }
 
     public void ReturnHomeAtivity(View view) {
         Intent intent = new Intent(this, HomeActivity.class);
         startActivity(intent);
     }
+
     public void UpdateDisponibilities(){
         Intent intent = new Intent(this, HomeActivity.class);
 

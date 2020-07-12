@@ -5,14 +5,11 @@
  * Edited by pinbe
  */
 
-package com.example.geekomatique;
+package com.example.geekomatique.Adapters;
 
 
-import android.app.Presentation;
 import android.content.Context;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,20 +19,20 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.geekomatique.Helpers.HTTPRequestHelper;
-import com.example.geekomatique.Models.Prestations;
+import com.example.geekomatique.Models.PrestationsModel;
+import com.example.geekomatique.R;
+import com.example.geekomatique.VolleyJSONArrayCallback;
 
 import org.json.JSONArray;
 
 import java.util.List;
 
-import javax.security.auth.callback.Callback;
-
 public class PrestationsAdapter extends RecyclerView.Adapter<PrestationsAdapter.MyViewHolder> {
 
     Context context;
-    List<Prestations> prestations;
+    List<PrestationsModel> prestations;
 
-    public PrestationsAdapter(Context context, List<Prestations> prestations) {
+    public PrestationsAdapter(Context context, List<PrestationsModel> prestations) {
         this.context = context;
         this.prestations = prestations;
     }
@@ -48,7 +45,7 @@ public class PrestationsAdapter extends RecyclerView.Adapter<PrestationsAdapter.
 
     @Override
     public void onBindViewHolder(PrestationsAdapter.MyViewHolder myViewHolder, final int position) {
-        final Prestations prestation = prestations.get(position);
+        final PrestationsModel prestation = prestations.get(position);
 
         myViewHolder.prestationTitleRow.setText(prestation.getName());
         myViewHolder.prestationPriceRow.setText(prestation.getPrice());

@@ -14,6 +14,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -106,7 +107,7 @@ public class LoginActivity extends AppCompatActivity {
                 if(!authenticated){
 
                     try {
-                        this.saveUserSharedPreferences(login,password, Long.valueOf(response.getString("id_user")));
+                        this.saveUserSharedPreferences(login,password, response.getJSONObject("user").getInt("id"));
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -117,7 +118,7 @@ public class LoginActivity extends AppCompatActivity {
             }
 
 
-            private void saveUserSharedPreferences(String login, String password, long userId) {
+            private void saveUserSharedPreferences(String login, String password, int userId) {
                 SharedPreferences prefs = getSharedPreferences("LOGIN", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = prefs.edit();
                 editor.putString("LOGIN_PSEUDO", login);

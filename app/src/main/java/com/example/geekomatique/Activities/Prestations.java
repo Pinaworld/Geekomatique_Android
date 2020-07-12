@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2020
  * Project: Geekomatique
- * File : Prestations.java
+ * File : PrestationsModel.java
  * Edited by pinbe
  */
 
@@ -20,7 +20,7 @@ import android.widget.Toast;
 
 import com.example.geekomatique.Helpers.HTTPRequestHelper;
 import com.example.geekomatique.Helpers.JSONHelper;
-import com.example.geekomatique.PrestationsAdapter;
+import com.example.geekomatique.Adapters.PrestationsAdapter;
 import com.example.geekomatique.R;
 import com.example.geekomatique.VolleyJSONArrayCallback;
 
