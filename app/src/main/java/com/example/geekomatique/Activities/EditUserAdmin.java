@@ -22,12 +22,14 @@ import com.example.geekomatique.VolleyJSONArrayCallback;
 import org.json.JSONArray;
 
 public class EditUserAdmin extends AppCompatActivity {
+//Cette activité va prendre en charge la gestion des administrateurs
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_user_admin);
 
+        //On genere les differents composants du Layout
         Button ReturnBut = findViewById(R.id.ReturnBut);
 
         EditText lastName = (EditText) findViewById(R.id.lastName);

@@ -20,10 +20,12 @@ import com.example.geekomatique.R;
 
 public class AddingPrestation extends AppCompatActivity {
  //Cette activité doit prendre en charge l'ajout des services ou prestations proposé par l'administrateur
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_adding_prestation);
+
         //On implemente les differents composants presents dans l'activité
         EditText prestationName = findViewById(R.id.PrestationName);
         EditText prestationPrice = findViewById(R.id.PrestationPrice);

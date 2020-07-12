@@ -36,6 +36,7 @@ public class CalendarAppointments extends AppCompatActivity {
 
         getAllAppointments();
 
+        //On genere les differents composants du Layout
         recyclerView = (RecyclerView) findViewById(R.id.appointmentList);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
@@ -55,6 +56,7 @@ public class CalendarAppointments extends AppCompatActivity {
         };
 
         HTTPRequestHelper.getRequest(getApplicationContext(), getString(R.string.api_url) + "/appointment/", callback);
+        //Cette requete doit recuperer les differents rendez-vous
     }
 
 

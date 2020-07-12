@@ -28,9 +28,11 @@ import org.json.JSONArray;
 
 
 public class Prestations extends AppCompatActivity {
-
+//Cette activité doit gerer les prestations proposé par l'admin
 
     private RecyclerView prestationsRecyclerView;
+    private EditText prestationName, prestationPrice;
+    private Button returnBtn, validationBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,11 +40,12 @@ public class Prestations extends AppCompatActivity {
         setContentView(R.layout.activity_prestations);
 
 
-        EditText prestationName = findViewById(R.id.PrestationName);
-        EditText prestationPrice = findViewById(R.id.PrestationPrice);
+        //On implemente les differents composants presents dans l'activité
+        prestationName = findViewById(R.id.PrestationName);
+        prestationPrice = findViewById(R.id.PrestationPrice);
 
-        Button returnBtn = findViewById(R.id.ReturnBut);
-        Button validationBtn = findViewById(R.id.addingPrestaBtn);
+        returnBtn = findViewById(R.id.ReturnBut);
+        validationBtn = findViewById(R.id.addingPrestaBtn);
 
         validationBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,13 +63,14 @@ public class Prestations extends AppCompatActivity {
             public void onResponse(JSONArray result) {
                 Log.i("getAllService", result.toString());
 
-                prestationsRecyclerView = findViewById(R.id.prestationsAdapterView);
+                prestationsRecyclerView = findViewById(R.id.prestationsAdapterView);//On remplie le recyclerview avec les prestations
                 prestationsRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                 final RecyclerView.Adapter adapter = new PrestationsAdapter(getApplicationContext(), JSONHelper.prestationsListFromJSONObject(result) );
                 prestationsRecyclerView.setAdapter(adapter);
             }
         };
         HTTPRequestHelper.getRequest(getApplicationContext(), getString(R.string.api_url) + "/service/", callback);
+        //Requette pour get les prestations
     }
 
 

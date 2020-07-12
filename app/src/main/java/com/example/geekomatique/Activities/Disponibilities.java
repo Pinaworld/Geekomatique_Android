@@ -26,6 +26,8 @@ import java.util.List;
 
 
 public class Disponibilities extends AppCompatActivity {
+
+    //Cette activité va prendre en compte la gestion des disponibilités horaires par l'administrateur
     private EditText day_1_Monday_Start;
     private EditText day_1_Monday_End;
     private EditText day_2_Thursday_Start;
@@ -44,6 +46,7 @@ public class Disponibilities extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_disponibilities);
 
+        //On genere les differents composants du Layout
         day_1_Monday_Start = findViewById(R.id.MondayStart);
         day_1_Monday_End = findViewById(R.id.MondayEnd);
 
@@ -63,6 +66,7 @@ public class Disponibilities extends AppCompatActivity {
         day_6_Saturday_End = findViewById(R.id.saturdayEnd);
         getAllDisponibilities();
 
+        //On associe au button un Listener qui va faire appel à une fonction pour valider
         Button validationBtn = findViewById(R.id.ValidateDispo);
         validationBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,9 +87,11 @@ public class Disponibilities extends AppCompatActivity {
             }
         };
         HTTPRequestHelper.getRequest(getApplicationContext(), getString(R.string.api_url) + "/time_slot/", callback);
+        //Cette requete recupére les disponibilités de l'administrateur
     }
 
     private void setDisponibilities() {
+        //On affiche les disponibilités dans chaques champs
         disponibilitiesList.forEach((disponibility) -> {
             switch (disponibility.getDay_number()) {
                 case 1:

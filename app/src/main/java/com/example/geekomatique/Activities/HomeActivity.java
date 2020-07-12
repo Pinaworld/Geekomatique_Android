@@ -26,14 +26,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class HomeActivity extends AppCompatActivity {
+//Cette activité est l'écran d'accueil de l'application
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        //getMailAdress();
-
+        //On genere les differents composants du Layout
         Button CalendarButt = (Button) findViewById(R.id.CalendarButt);
         Button DisponibilitiesButt = (Button) findViewById(R.id.DisponibilitiesButt);
         Button PrestationsButt = (Button) findViewById(R.id.PrestationsButt);
@@ -45,10 +45,12 @@ public class HomeActivity extends AppCompatActivity {
         Intent intent = new Intent(this, CalendarAppointments.class);
         startActivity(intent);
     }
+
     public void DisponibilitiesActivity(View view) {
         Intent intent = new Intent(this, Disponibilities.class);
         startActivity(intent);
     }
+
     public void PrestationsActivity(View view) {
         Intent intent = new Intent(this, Prestations.class);
         startActivity(intent);

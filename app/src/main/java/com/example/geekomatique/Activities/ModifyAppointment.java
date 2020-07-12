@@ -44,12 +44,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ModifyAppointment extends AppCompatActivity {
+//Cette activité doit permettre la modification d'un rendez vous en fonction d'un id
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modify_appointment);
 
+
+        //On implemente les differents composants presents dans l'activité
         TextView appointmentTitle = (TextView) findViewById(R.id.appointmentTitle);
         TextView appointmentTime = (TextView) findViewById(R.id.appointmentTime);
         TextView appointmentAdress = (TextView) findViewById(R.id.appointmentAdress );
@@ -61,7 +64,7 @@ public class ModifyAppointment extends AppCompatActivity {
 
         String date_n = new SimpleDateFormat("dd MMM yyyy", Locale.getDefault()).format(new Date());
         TextView date  = (TextView) findViewById(R.id.actualDate);
-        date.setText(date_n);
+        date.setText(date_n);//On récupére la date actuelle et on l'affiche dans un TextView
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -71,6 +74,7 @@ public class ModifyAppointment extends AppCompatActivity {
 
         Button modifyAppointmentBtn = findViewById(R.id.modifyAppointmentButt);
 
+        //On set les listeners des boutons
         modifyAppointmentBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,7 +83,7 @@ public class ModifyAppointment extends AppCompatActivity {
         });
     }
 
-    private void showAppointment(int id){
+    private void showAppointment(int id){//Affiche le rendez vous
         VolleyJSONArrayCallback callback =  new VolleyJSONArrayCallback(){
             @Override
             public void onResponse(JSONArray result) {
@@ -87,10 +91,11 @@ public class ModifyAppointment extends AppCompatActivity {
             }
         };
         HTTPRequestHelper.getRequest(getApplicationContext(), getString(R.string.api_url) + "/appointment/" + id, callback);
-
+        //Requette pour afficher le rendez vous en fonction de son id
     }
 
     public void ValidateModifyAppointment(View view){
+        //Valider la modification du rendez vous
 
         Toast toastConfirmedModification = Toast.makeText(getApplicationContext(), "Rendez-vous modifié !", Toast.LENGTH_SHORT);
         toastConfirmedModification.show();
@@ -99,7 +104,7 @@ public class ModifyAppointment extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void ReturnAppointmentActivity(View view) {
+    public void ReturnAppointmentActivity(View view) {//Retourne au rendez vous
         Intent intent = new Intent(this, Appointment.class);
         startActivity(intent);
     }
