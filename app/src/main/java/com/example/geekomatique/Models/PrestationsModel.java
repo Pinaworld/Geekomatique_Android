@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2020
  * Project: Geekomatique
- * File : Prestations.java
+ * File : PrestationsModel.java
  * Edited by pinbe
  */
 
@@ -9,19 +9,19 @@ package com.example.geekomatique.Models;
 
 import java.util.HashMap;
 
-public class Prestations {
+public class PrestationsModel {
 
     private int id;
     private String name;
     private String price;
 
-    public Prestations(int id, String name, String price) {
+    public PrestationsModel(int id, String name, String price) {
         this.id = id;
         this.name = name;
         this.price = price;
     }
 
-    public Prestations(String name, String price) {
+    public PrestationsModel(String name, String price) {
         this.name = name;
         this.price = price;
     }

@@ -3,7 +3,7 @@ package com.example.geekomatique.Models;
 import java.io.Serializable;
 import java.util.HashMap;
 
-public class Invoice implements Serializable
+public class InvoiceModel implements Serializable
 {
 
     private Integer id;

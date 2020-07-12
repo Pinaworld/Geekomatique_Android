@@ -49,7 +49,7 @@ public class CalendarAppointments extends AppCompatActivity {
             public void onResponse(JSONArray result) {
                 Log.i("getAllAppointments", result.toString());
 
-                final RecyclerView.Adapter adapter = new AppointmentsAdapter(getApplicationContext(), JSONHelper.appointmentListFromJSONObject(result));
+                final RecyclerView.Adapter adapter = new AppointmentsAdapter(getApplicationContext(), JSONHelper.appointmentListFromJSONArray(result));
                 recyclerView.setAdapter(adapter);
             }
         };

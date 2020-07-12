@@ -1,16 +1,15 @@
 /*
  * Copyright (c) 2020
  * Project: Geekomatique
- * File : Disponibilities.java
+ * File : DisponibilitiesModel.java
  * Edited by pinbe
  */
 
 package com.example.geekomatique.Models;
 
-import java.sql.Time;
 import java.util.HashMap;
 
-public class Disponibilities {
+public class DisponibilitiesModel {
 
     private int id;
     private String start; //Should be a time type
@@ -19,7 +18,7 @@ public class Disponibilities {
     private int day_number;
     private int employee_id;
 
-    public Disponibilities(int id, String start, String end, String title, int day_number, int employee_id) {
+    public DisponibilitiesModel(int id, String start, String end, String title, int day_number, int employee_id) {
         this.id = id;
         this.start = start;
         this.end = end;
@@ -28,7 +27,7 @@ public class Disponibilities {
         this.employee_id = employee_id;
     }
 
-    public Disponibilities(String start, String end, String title, int day_number, int employee_id) {
+    public DisponibilitiesModel(String start, String end, String title, int day_number, int employee_id) {
         this.start = start;
         this.end = end;
         this.title = title;

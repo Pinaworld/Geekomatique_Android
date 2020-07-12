@@ -66,9 +66,9 @@ public class HTTPRequestHelper {
                             callback.onResponse(null);
                         }
                         else{
+                            Toast.makeText(context, error.toString(), Toast.LENGTH_LONG).show();
                             parseErrorMEssage(error, context);
                         }
-
                     }
                 }) {
 

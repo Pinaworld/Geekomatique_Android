@@ -17,19 +17,25 @@ import android.widget.EditText;
 import com.example.geekomatique.R;
 
 public class AddingUser extends AppCompatActivity {
+    private EditText lastName;
+    private EditText firstName;
+    private EditText phoneField;
+    private EditText emailField;
+    Button returnBut;
+    Button validationBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_adding_user);
 
-        EditText lastName = findViewById(R.id.lastName);
-        EditText firstName = findViewById(R.id.firstName);
-        EditText phoneField = findViewById(R.id.phoneField);
-        EditText emailField = findViewById(R.id.emailField);
+        lastName = findViewById(R.id.lastName);
+        firstName = findViewById(R.id.firstName);
+        phoneField = findViewById(R.id.phoneField);
+        emailField = findViewById(R.id.emailField);
 
-        Button returnBut = findViewById(R.id.ReturnBut);
-        Button validationBtn = findViewById(R.id.Validate);
+        returnBut = findViewById(R.id.ReturnBut);
+        validationBtn = findViewById(R.id.Validate);
 
         validationBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,8 +52,6 @@ public class AddingUser extends AppCompatActivity {
 
     public void ValidateNewUser(View view) {
         Intent intent = new Intent(this, AdminUser.class);
-
-
         startActivity(intent);
     }
 }

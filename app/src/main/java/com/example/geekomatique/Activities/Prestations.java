@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2020
  * Project: Geekomatique
- * File : Prestations.java
+ * File : PrestationsModel.java
  * Edited by pinbe
  */
 

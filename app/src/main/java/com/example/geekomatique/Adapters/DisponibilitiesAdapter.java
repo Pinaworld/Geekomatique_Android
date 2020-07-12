@@ -18,7 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.geekomatique.Helpers.HTTPRequestHelper;
-import com.example.geekomatique.Models.Disponibilities;
+import com.example.geekomatique.Models.DisponibilitiesModel;
 import com.example.geekomatique.R;
 import com.example.geekomatique.VolleyJSONArrayCallback;
 
@@ -29,9 +29,9 @@ import java.util.List;
 public class DisponibilitiesAdapter extends RecyclerView.Adapter<DisponibilitiesAdapter.MyViewHolder> {
 
     Context context;
-    List<Disponibilities> disponibilities;
+    List<DisponibilitiesModel> disponibilities;
 
-    public DisponibilitiesAdapter(Context context, List<Disponibilities> disponibilities) {
+    public DisponibilitiesAdapter(Context context, List<DisponibilitiesModel> disponibilities) {
         this.context = context;
         this.disponibilities = disponibilities;
     }
@@ -44,10 +44,10 @@ public class DisponibilitiesAdapter extends RecyclerView.Adapter<Disponibilities
 
     @Override
     public void onBindViewHolder(DisponibilitiesAdapter.MyViewHolder myViewHolder, final int position) {
-        final Disponibilities disponibility = disponibilities.get(position);
+        final DisponibilitiesModel disponibility = disponibilities.get(position);
 
-        myViewHolder.disponibilityTitleRow.setText(disponibility.get());
-        myViewHolder.disponibilityPriceRow.setText(disponibility.getPrice());
+        //myViewHolder.disponibilityTitleRow.setText(disponibility.get());
+        //myViewHolder.disponibilityPriceRow.setText(disponibility.getPrice());
 
         myViewHolder.deleteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,9 +82,9 @@ public class DisponibilitiesAdapter extends RecyclerView.Adapter<Disponibilities
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            disponibilityRow = itemView.findViewById(R.id.disponibilityRow);
-            disponibilityTitleRow = itemView.findViewById(R.id.disponibilityTitleRow);
-            disponibilityPriceRow = itemView.findViewById(R.id.disponibilityPriceRow);
+            //disponibilityRow = itemView.findViewById(R.id.disponibilityRow);
+            //disponibilityTitleRow = itemView.findViewById(R.id.disponibilityTitleRow);
+            //disponibilityPriceRow = itemView.findViewById(R.id.disponibilityPriceRow);
             deleteBtn = itemView.findViewById(R.id.deleteBtn);
 
         }

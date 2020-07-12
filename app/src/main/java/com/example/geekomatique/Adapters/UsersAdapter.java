@@ -18,7 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.geekomatique.Helpers.HTTPRequestHelper;
-import com.example.geekomatique.Models.User;
+import com.example.geekomatique.Models.UserModel;
 import com.example.geekomatique.R;
 import com.example.geekomatique.VolleyJSONArrayCallback;
 
@@ -29,9 +29,9 @@ import java.util.List;
 public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.MyViewHolder> {
 
     Context context;
-    List<User> users;
+    List<UserModel> users;
 
-    public UsersAdapter(Context context, List<User> users) {
+    public UsersAdapter(Context context, List<UserModel> users) {
         this.context = context;
         this.users = users;
     }
@@ -44,10 +44,10 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.MyViewHolder
 
     @Override
     public void onBindViewHolder(UsersAdapter.MyViewHolder myViewHolder, final int position) {
-        final User user = users.get(position);
+        final UserModel user = users.get(position);
 
-        myViewHolder.userTitleRow.setText(user.getName());
-        myViewHolder.userPriceRow.setText(user.getPrice());
+        //myViewHolder.userTitleRow.setText(user.getName());
+        //myViewHolder.userPriceRow.setText(user.getPrice());
 
         myViewHolder.deleteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,10 +82,10 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.MyViewHolder
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            userRow = itemView.findViewById(R.id.userRow);
-            userTitleRow = itemView.findViewById(R.id.userTitleRow);
-            userPriceRow = itemView.findViewById(R.id.userPriceRow);
-            deleteBtn = itemView.findViewById(R.id.deleteBtn);
+            //userRow = itemView.findViewById(R.id.userRow);
+            //userTitleRow = itemView.findViewById(R.id.userTitleRow);
+            //userPriceRow = itemView.findViewById(R.id.userPriceRow);
+            //deleteBtn = itemView.findViewById(R.id.deleteBtn);
 
         }
     }

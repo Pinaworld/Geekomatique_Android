@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2020
  * Project: Geekomatique
- * File : User.java
+ * File : UserModel.java
  * Edited by pinbe
  */
 
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class User implements Serializable {
+public class UserModel implements Serializable {
 
     private int id;
     private String email;
@@ -24,7 +24,7 @@ public class User implements Serializable {
     private int roleID;
     private int credentialId;
 
-    public User(int id, String email, String firstName, String lastName, String phoneNumber, String login, String roleName) {
+    public UserModel(int id, String email, String firstName, String lastName, String phoneNumber, String login, String roleName) {
         this.id = id;
         this.email = email;
         this.firstName = firstName;
@@ -34,7 +34,7 @@ public class User implements Serializable {
         this.roleName = roleName;
     }
 
-    public User(String email, String firstName, String lastName, String phoneNumber, String login) {
+    public UserModel(String email, String firstName, String lastName, String phoneNumber, String login) {
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -42,7 +42,7 @@ public class User implements Serializable {
         this.login = login;
     }
 
-    public User(int id, String email, String firstName, String lastName, String phoneNumber) {
+    public UserModel(int id, String email, String firstName, String lastName, String phoneNumber) {
         this.id = id;
         this.email = email;
         this.firstName = firstName;
