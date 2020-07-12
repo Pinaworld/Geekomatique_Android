@@ -10,6 +10,7 @@ package com.example.geekomatique.Models;
 import java.util.HashMap;
 
 public class PrestationsModel {
+    //Model d'une prestation
 
     private int id;
     private String name;

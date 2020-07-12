@@ -10,6 +10,7 @@ package com.example.geekomatique.Models;
 import java.util.Date;
 
 public class Appointment {
+//Model d'un Appointment
 
     private int id;
     private String date;

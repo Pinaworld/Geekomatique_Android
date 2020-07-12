@@ -49,25 +49,29 @@ import java.util.Map;
 
 public class Appointment extends AppCompatActivity {
 //Cette activité doit prendre en charge l'affichage d'un rendez vous de l'administrateur
+
+    TextView appointmentTitle, appointmentTime, appointmentAdress, customerMail, customerComment, date;
+    Button returnHome, modifyAppointmentButt, cancelAppointmentButt, sendBillButt;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_appointment);
 
         //On genere les differents composants du Layout
-        TextView appointmentTitle = (TextView) findViewById(R.id.appointmentTitle);
-        TextView appointmentTime = (TextView) findViewById(R.id.appointmentTime);
-        TextView appointmentAdress = (TextView) findViewById(R.id.appointmentAdress);
-        TextView customerMail = (TextView) findViewById(R.id.customerMail);
-        TextView customerComment = (TextView) findViewById(R.id.customerComment);
+        appointmentTitle = (TextView) findViewById(R.id.appointmentTitle);
+        appointmentTime = (TextView) findViewById(R.id.appointmentTime);
+        appointmentAdress = (TextView) findViewById(R.id.appointmentAdress);
+        customerMail = (TextView) findViewById(R.id.customerMail);
+        customerComment = (TextView) findViewById(R.id.customerComment);
 
-        Button returnHome = (Button) findViewById(R.id.returnListAppointmentsButt);
-        Button modifyAppointmentButt = (Button) findViewById(R.id.ModifyAppointmentButt);
-        Button cancelAppointmentButt = (Button) findViewById(R.id.CancelAppointmentButt);
-        Button sendBillButt = findViewById(R.id.SendBillButt);
+        returnHome = (Button) findViewById(R.id.returnListAppointmentsButt);
+        modifyAppointmentButt = (Button) findViewById(R.id.ModifyAppointmentButt);
+        cancelAppointmentButt = (Button) findViewById(R.id.CancelAppointmentButt);
+        sendBillButt = findViewById(R.id.SendBillButt);
 
         String date_n = new SimpleDateFormat("dd MMM yyyy", Locale.getDefault()).format(new Date());
-        TextView date  = (TextView) findViewById(R.id.actualDate);
+        date  = (TextView) findViewById(R.id.actualDate);
         date.setText(date_n); //Permet d'afficher la date du jour
 
 

@@ -29,10 +29,12 @@ import org.json.JSONObject;
 import java.util.List;
 
 public class AppointmentsAdapter extends RecyclerView.Adapter<AppointmentsAdapter.MyViewHolder> {
+//Cette classe va gerer l'adapter du RecyclerView des rendez vous
 
     Context context;
     List<Appointment> appointments;
 
+    //Constructeur
     public AppointmentsAdapter(Context context, List<Appointment> appointments) {
         this.context = context;
         this.appointments = appointments;

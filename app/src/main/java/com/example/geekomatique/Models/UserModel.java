@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class UserModel implements Serializable {
+    //Model d'un user
 
     private int id;
     private String email;

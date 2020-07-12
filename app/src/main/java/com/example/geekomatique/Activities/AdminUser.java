@@ -23,6 +23,10 @@ import org.json.JSONArray;
 
 public class AdminUser extends AppCompatActivity {
 //Cette activité doit prendre en charge l'afficharge des adminstrateurs
+
+    Button returnBut, ToErase, addingUserBtn;
+    RecyclerView AdminUserList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,11 +34,12 @@ public class AdminUser extends AppCompatActivity {
 
 
         //On implemente les differents composants presents dans l'activité
-        Button returnBut = findViewById(R.id.ReturnBut);
-        Button ToErase = findViewById(R.id.YODOO); //RECYCLERVIEW OnclickListener // A SUPP
-        Button addingUserBtn = findViewById(R.id.AddingUserBtn); //RECYCLERVIEW OnclickListener
+        addingUserBtn = findViewById(R.id.AddingUserBtn); //RECYCLERVIEW OnclickListener
+        returnBut = findViewById(R.id.ReturnBut);
 
-        RecyclerView AdminUserList = findViewById(R.id.AdminUserList);
+        ToErase = findViewById(R.id.YODOO); //RECYCLERVIEW OnclickListener // A SUPP
+
+        AdminUserList = findViewById(R.id.AdminUserList);
 
         getAllAdminUser();
 

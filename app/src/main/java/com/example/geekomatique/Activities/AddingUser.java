@@ -45,7 +45,6 @@ public class AddingUser extends AppCompatActivity {
         validationBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ValidateNewUser(v); //On appel la fonction de création des Users
             }
         });
     }

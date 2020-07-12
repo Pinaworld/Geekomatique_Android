@@ -10,6 +10,7 @@ package com.example.geekomatique.Models;
 import java.util.HashMap;
 
 public class DisponibilitiesModel {
+    //Model d'une disponibilité
 
     private int id;
     private String start; //Should be a time type
