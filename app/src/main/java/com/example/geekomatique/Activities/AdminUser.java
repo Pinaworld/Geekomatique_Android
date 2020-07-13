@@ -10,12 +10,16 @@ package com.example.geekomatique.Activities;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.geekomatique.Adapters.PrestationsAdapter;
+import com.example.geekomatique.Adapters.UsersAdapter;
 import com.example.geekomatique.Helpers.HTTPRequestHelper;
+import com.example.geekomatique.Helpers.JSONHelper;
 import com.example.geekomatique.R;
 import com.example.geekomatique.VolleyJSONArrayCallback;
 
@@ -25,7 +29,7 @@ public class AdminUser extends AppCompatActivity {
 //Cette activité doit prendre en charge l'afficharge des adminstrateurs
 
     Button returnBut, ToErase, addingUserBtn;
-    RecyclerView AdminUserList;
+    RecyclerView AdminUserRecyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +42,6 @@ public class AdminUser extends AppCompatActivity {
         returnBut = findViewById(R.id.ReturnBut);
 
         ToErase = findViewById(R.id.YODOO); //RECYCLERVIEW OnclickListener // A SUPP
-
-        AdminUserList = findViewById(R.id.AdminUserList);
 
         getAllAdminUser();
 
@@ -57,6 +59,11 @@ public class AdminUser extends AppCompatActivity {
             @Override
             public void onResponse(JSONArray result) {
                 Log.i("getAllAdminUser", result.toString());
+
+                AdminUserRecyclerView = findViewById(R.id.AdminUserList);//On remplie le recyclerview avec les users
+                AdminUserRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+                final RecyclerView.Adapter adapter = new UsersAdapter(getApplicationContext(), JSONHelper.userListFromJSONArray(result) );
+                AdminUserRecyclerView.setAdapter(adapter);
 
             }
         };

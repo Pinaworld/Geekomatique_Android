@@ -25,6 +25,7 @@ import com.example.geekomatique.R;
 import com.example.geekomatique.VolleyJSONArrayCallback;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 
 
 public class Prestations extends AppCompatActivity {
