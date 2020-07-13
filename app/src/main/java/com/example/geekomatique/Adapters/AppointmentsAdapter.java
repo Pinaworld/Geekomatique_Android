@@ -9,6 +9,7 @@ package com.example.geekomatique.Adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.geekomatique.Helpers.HTTPRequestHelper;
-import com.example.geekomatique.Models.Appointment;
+import com.example.geekomatique.Models.AppointmentModel;
 import com.example.geekomatique.R;
 import com.example.geekomatique.VolleyJSONArrayCallback;
 import com.example.geekomatique.VolleyJSONObjectCallback;
@@ -31,11 +32,12 @@ import java.util.List;
 public class AppointmentsAdapter extends RecyclerView.Adapter<AppointmentsAdapter.MyViewHolder> {
 
     Context context;
-    List<Appointment> appointments;
+    List<AppointmentModel> appointments;
 
-    public AppointmentsAdapter(Context context, List<Appointment> appointments) {
+    public AppointmentsAdapter(Context context, List<AppointmentModel> appointments) {
         this.context = context;
         this.appointments = appointments;
+        Log.i("adapt", appointments.toString());
     }
 
     @Override
@@ -45,8 +47,8 @@ public class AppointmentsAdapter extends RecyclerView.Adapter<AppointmentsAdapte
     }
 
     @Override
-    public void onBindViewHolder(AppointmentsAdapter.MyViewHolder myViewHolder, final int position) {
-        final Appointment appointment = appointments.get(position);
+    public void onBindViewHolder(final AppointmentsAdapter.MyViewHolder myViewHolder, int position) {
+        final AppointmentModel appointment = appointments.get(position);
 
         myViewHolder.appointmentDecriptionRow.setText(appointment.getDescription());
         myViewHolder.appointmentStatusRow.setText((appointment.isDone()) ? "Terminé": "En cours");
@@ -57,8 +59,12 @@ public class AppointmentsAdapter extends RecyclerView.Adapter<AppointmentsAdapte
             myViewHolder.finishAppButton.setVisibility(View.GONE);
             myViewHolder.validateAppButton.setVisibility(View.GONE);
         }
-        if(appointment.isValidate()){
+        else if(appointment.isValidate()){
             myViewHolder.validateAppButton.setVisibility(View.GONE);
+        }
+        else{
+            myViewHolder.finishAppButton.setVisibility(View.GONE);
+
         }
 
         myViewHolder.deleteBtn.setOnClickListener(new View.OnClickListener() {
@@ -134,13 +140,14 @@ public class AppointmentsAdapter extends RecyclerView.Adapter<AppointmentsAdapte
 
         public MyViewHolder(View itemView) {
             super(itemView);
+
             appointmentRow = itemView.findViewById(R.id.appointmentRow);
             appointmentDecriptionRow = itemView.findViewById(R.id.appointmentDescriptionRow);
             appointmentStatusRow = itemView.findViewById(R.id.appointmentStatusRow);
             appointmentDateRow = itemView.findViewById(R.id.appointmentDateRow);
             deleteBtn = itemView.findViewById(R.id.deleteAppBtn);
-            deleteBtn = itemView.findViewById(R.id.validateAppButton);
-            deleteBtn = itemView.findViewById(R.id.finishAppButton);
+            validateAppButton = itemView.findViewById(R.id.validateAppButton);
+            finishAppButton = itemView.findViewById(R.id.finishAppButton);
         }
     }
 

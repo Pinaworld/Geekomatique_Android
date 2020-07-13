@@ -9,7 +9,7 @@ package com.example.geekomatique.Helpers;
 
 import android.util.Log;
 
-import com.example.geekomatique.Models.Appointment;
+import com.example.geekomatique.Models.AppointmentModel;
 import com.example.geekomatique.Models.DisponibilitiesModel;
 import com.example.geekomatique.Models.PrestationsModel;
 import com.example.geekomatique.Models.UserModel;
@@ -23,8 +23,8 @@ import java.util.List;
 
 public class JSONHelper {
 
-    public static List<Appointment> appointmentListFromJSONArray(JSONArray appointmentJSONArray) {
-        List<Appointment> appointmentList = new ArrayList<>();
+    public static List<AppointmentModel> appointmentListFromJSONArray(JSONArray appointmentJSONArray) {
+        List<AppointmentModel> appointmentList = new ArrayList<>();
 
         if(appointmentJSONArray != null) {
             for (int i = 0; i < appointmentJSONArray.length(); i++) {
@@ -93,24 +93,25 @@ public class JSONHelper {
         return null;
     }
 
-    public static Appointment appointmentFromJSONObject(JSONObject appointmentJSONObject) {
-        Log.i("Test", appointmentJSONObject.toString());
-
-        Appointment appointment = null;
+    public static AppointmentModel appointmentFromJSONObject(JSONObject appointmentJSONObject) {
+        AppointmentModel appointment = null;
         try {
             int id = appointmentJSONObject.getInt("id");
-            int userId = appointmentJSONObject.getInt("userId");
+            int userId = appointmentJSONObject.getInt("user_id");
             String description = appointmentJSONObject.getString("description");
             Boolean remote = appointmentJSONObject.getBoolean("remote");
             Boolean done = appointmentJSONObject.getBoolean("done");
             Boolean validate = appointmentJSONObject.getBoolean("validate");
-            Boolean canceled = appointmentJSONObject.getBoolean("canceled ");
-            String date = appointmentJSONObject.getString("date") ;
-            int addressId = appointmentJSONObject.getInt("addressId ");
-            Log.i("Test", appointmentJSONObject.getString("description"));
-            appointment = new Appointment(id, date, description, remote, done, userId, addressId, canceled, validate);
-        } catch (JSONException exception) {
+            Boolean canceled = appointmentJSONObject.getBoolean("canceled");
+            String date = appointmentJSONObject.getString("date");
+            int addressId = appointmentJSONObject.optInt("address_id");
+            int addressInvoiceId = appointmentJSONObject.optInt("address_invoice_id");
 
+            appointment = new AppointmentModel(id, date, description, remote, done, userId, addressId, addressInvoiceId, canceled, validate);
+            Log.i("excpet", appointment.toString());
+
+        } catch (JSONException exception) {
+            Log.i("excpet", exception.toString());
         }
 
         return appointment;

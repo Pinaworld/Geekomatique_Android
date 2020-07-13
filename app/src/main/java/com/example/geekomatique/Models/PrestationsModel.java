@@ -11,11 +11,11 @@ import java.util.HashMap;
 
 public class PrestationsModel {
 
-    private int id;
+    private Integer id;
     private String name;
     private String price;
 
-    public PrestationsModel(int id, String name, String price) {
+    public PrestationsModel(Integer id, String name, String price) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -30,7 +30,7 @@ public class PrestationsModel {
         return name;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 

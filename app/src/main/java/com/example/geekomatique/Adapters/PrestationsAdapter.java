@@ -44,8 +44,8 @@ public class PrestationsAdapter extends RecyclerView.Adapter<PrestationsAdapter.
     }
 
     @Override
-    public void onBindViewHolder(PrestationsAdapter.MyViewHolder myViewHolder, final int position) {
-        final PrestationsModel prestation = prestations.get(position);
+    public void onBindViewHolder(final PrestationsAdapter.MyViewHolder myViewHolder, int position) {
+        final PrestationsModel prestation = prestations.get(myViewHolder.getLayoutPosition());
 
         myViewHolder.prestationTitleRow.setText(prestation.getName());
         myViewHolder.prestationPriceRow.setText(prestation.getPrice());

@@ -84,4 +84,15 @@ public class AuthenticatorHelper {
         }
     }
 
+    public static void clearSharedPreferences(Context context){
+        SharedPreferences prefs = context.getSharedPreferences("LOGIN", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString("LOGIN_PSEUDO", "");
+        editor.putString("LOGIN_PWD", "");
+        editor.commit();
+        prefs = context.getSharedPreferences("USER", Context.MODE_PRIVATE);
+        editor.putString("USERID", "");
+        editor.commit();
+    }
+
 }

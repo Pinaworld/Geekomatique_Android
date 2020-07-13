@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2020
  * Project: Geekomatique
- * File : Appointment.java
+ * File : AppointmentModel.java
  * Edited by pinbe
  */
 

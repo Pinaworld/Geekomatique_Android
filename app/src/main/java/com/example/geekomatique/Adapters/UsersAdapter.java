@@ -43,8 +43,8 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.MyViewHolder
     }
 
     @Override
-    public void onBindViewHolder(UsersAdapter.MyViewHolder myViewHolder, final int position) {
-        final UserModel user = users.get(position);
+    public void onBindViewHolder(final UsersAdapter.MyViewHolder myViewHolder, int position) {
+        final UserModel user = users.get(myViewHolder.getLayoutPosition());
 
         //myViewHolder.userTitleRow.setText(user.getName());
         //myViewHolder.userPriceRow.setText(user.getPrice());
@@ -52,15 +52,13 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.MyViewHolder
         myViewHolder.deleteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 VolleyJSONArrayCallback callback = new VolleyJSONArrayCallback(){
                     @Override
                     public void onResponse(JSONArray result) {
                         Toast.makeText(context, "Le service a bien été supprimé.", Toast.LENGTH_SHORT).show();
-                        users.remove(position);
+                        users.remove(myViewHolder.getLayoutPosition());
                         notifyDataSetChanged();
                     }
-
                 };
 
                 HTTPRequestHelper.deleteRequest(context,"https://geekomatique.fr:5000"+ "/service/" + user.getId(), callback);

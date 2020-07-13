@@ -1,27 +1,30 @@
 /*
  * Copyright (c) 2020
  * Project: Geekomatique
- * File : Appointment.java
+ * File : AppoIntegerment.java
  * Edited by pinbe
  */
 
 package com.example.geekomatique.Models;
 
+import android.util.Log;
+
 import java.util.Date;
 
-public class Appointment {
+public class AppointmentModel {
 
-    private int id;
+    private Integer id;
     private String date;
     private String description;
     private boolean remote;
     private boolean done;
-    private int userId;
-    private int adressId;
+    private Integer userId;
+    private Integer adressId;
+    private Integer adressInvoiceId;
     private boolean canceled;
     private boolean validate;
 
-    public Appointment(int id, String date, String description, boolean remote, boolean done, int userId, int adressId, boolean canceled, boolean validate) {
+    public AppointmentModel(Integer id, String date, String description, boolean remote, boolean done, Integer userId, Integer adressId, Integer adressInvoiceId, boolean canceled, boolean validate) {
         this.id = id;
         this.date = date;
         this.description = description;
@@ -29,23 +32,29 @@ public class Appointment {
         this.done = done;
         this.userId = userId;
         this.adressId = adressId;
+        this.adressInvoiceId = adressInvoiceId;
         this.canceled = canceled;
         this.validate = validate;
     }
 
-    public Appointment(String date, String description, boolean remote, boolean done, int userId, int adressId, boolean canceled, boolean validate) {
+    public AppointmentModel(String date, String description, boolean remote, boolean done, Integer userId, Integer adressId, Integer adressInvoiceId, boolean canceled, boolean validate) {
         this.date = date;
         this.description = description;
         this.remote = remote;
         this.done = done;
         this.userId = userId;
         this.adressId = adressId;
+        this.adressInvoiceId = adressInvoiceId;
         this.canceled = canceled;
         this.validate = validate;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getDate() {
@@ -80,19 +89,19 @@ public class Appointment {
         this.done = done;
     }
 
-    public int getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
 
-    public int getAdressId() {
+    public Integer getAdressId() {
         return adressId;
     }
 
-    public void setAdressId(int adressId) {
+    public void setAdressId(Integer adressId) {
         this.adressId = adressId;
     }
 
@@ -110,5 +119,13 @@ public class Appointment {
 
     public void setValidate(boolean validate) {
         this.validate = validate;
+    }
+
+    public Integer getAdressInvoiceId() {
+        return adressInvoiceId;
+    }
+
+    public void setAdressInvoiceId(Integer adressInvoiceId) {
+        this.adressInvoiceId = adressInvoiceId;
     }
 }
