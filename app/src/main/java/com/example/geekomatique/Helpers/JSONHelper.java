@@ -32,6 +32,8 @@ public class JSONHelper {
                 try {
                     appointmentList.add(appointmentFromJSONObject(appointmentJSONArray.getJSONObject(i)));
                 } catch (JSONException exception) {
+                    Log.i("jsonexcept", exception.toString());
+
                 }
             }
             return appointmentList;
@@ -49,6 +51,7 @@ public class JSONHelper {
                     disponibilitiesModelList.add(disponibilityFromJSONObject(disponibilitiesJSONArray.getJSONObject(i)));
 
                 } catch (JSONException exception) {
+                    Log.i("jsonexcept", exception.toString());
 
                 }
             }
@@ -66,6 +69,7 @@ public class JSONHelper {
                 try {
                   prestationsList.add(prestationFromJSONObject(prestationsJSONArray.getJSONObject(i)));
                 } catch (JSONException exception) {
+                    Log.i("jsonexcept", exception.toString());
 
                 }
             }
@@ -84,6 +88,7 @@ public class JSONHelper {
                 try {
                     userList.add(userFromJSONObject(userJSONArray.getJSONObject(i)));
                 } catch (JSONException exception) {
+                    Log.i("jsonexcept", exception.toString());
 
                 }
             }
@@ -108,10 +113,9 @@ public class JSONHelper {
             int addressInvoiceId = appointmentJSONObject.optInt("address_invoice_id");
 
             appointment = new AppointmentModel(id, date, description, remote, done, userId, addressId, addressInvoiceId, canceled, validate);
-            Log.i("excpet", appointment.toString());
 
         } catch (JSONException exception) {
-            Log.i("excpet", exception.toString());
+            Log.i("jsonexcept", exception.toString());
         }
 
         return appointment;
@@ -132,6 +136,7 @@ public class JSONHelper {
             disponibilitiesModel = new DisponibilitiesModel(id, start, end, title, day_number, employee_id);
 
         } catch (JSONException exception) {
+            Log.i("jsonexcept", exception.toString());
 
         }
         return disponibilitiesModel;
@@ -152,6 +157,7 @@ public class JSONHelper {
                     prestations= new PrestationsModel(id, name, price);
 
                 } catch (JSONException exception) {
+                    Log.i("jsonexcept", exception.toString());
 
                 }
             }
@@ -176,6 +182,7 @@ public class JSONHelper {
                     user = new UserModel(id, firstName,lastName, phoneNumber, login, roleName );
 
                 } catch (JSONException exception) {
+                    Log.i("jsonexcept", exception.toString());
 
                 }
 

@@ -8,6 +8,7 @@
 package com.example.geekomatique;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.example.geekomatique.Helpers.HTTPRequestHelper;
 import com.example.geekomatique.Models.InvoiceModel;
@@ -28,7 +29,7 @@ public class MailService {
 
         }
 
-        HTTPRequestHelper.postRequest(context,"https://geekomatique.fr:5000"+ "mail/send/admin", callback, jsonObject);
+        HTTPRequestHelper.postRequest(context,"https://geekomatique.fr:5000"+ "/mail/send/admin", callback, jsonObject);
     }
 
     public static void sendMailToClient(Context context,String subject, String message, String email, VolleyJSONObjectCallback callback){
@@ -42,7 +43,8 @@ public class MailService {
         catch (JSONException exception){
 
         }
-        HTTPRequestHelper.postRequest(context,"https://geekomatique.fr:5000"+ "mail/send/client", callback, jsonObject);
+        Log.i("mailClient", email);
+        HTTPRequestHelper.postRequest(context,"https://geekomatique.fr:5000"+ "/mail/send/user", callback, jsonObject);
     }
 
     public static void sendMailToWithAttachment(Context context, String subject, String message, String email, InvoiceModel invoice, VolleyJSONObjectCallback callback){
@@ -58,6 +60,6 @@ public class MailService {
         catch (JSONException exception){
 
         }
-        HTTPRequestHelper.postRequest(context,"https://geekomatique.fr:5000"+ "mail/send/invoice", callback, jsonObject);
+        HTTPRequestHelper.postRequest(context,"https://geekomatique.fr:5000"+ "/mail/send/invoice", callback, jsonObject);
     }
 }

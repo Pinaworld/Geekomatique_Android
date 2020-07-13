@@ -36,14 +36,12 @@ public class AuthenticatorHelper {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        Log.i("Test connect", response.toString());
                         callback.onResponse(response);
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Log.i("Test connect", error.toString());
                         parseErrorMEssage(error, context);
                     }
                 }) {

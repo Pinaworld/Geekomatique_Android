@@ -50,7 +50,7 @@ public class AppointmentsAdapter extends RecyclerView.Adapter<AppointmentsAdapte
 
     @Override
     public void onBindViewHolder(final AppointmentsAdapter.MyViewHolder myViewHolder, int position) {
-        final AppointmentModel appointment = appointments.get(position);
+        final AppointmentModel appointment = appointments.get(myViewHolder.getLayoutPosition());
 
         myViewHolder.appointmentDecriptionRow.setText(appointment.getDescription());
         myViewHolder.appointmentStatusRow.setText((appointment.isDone()) ? "Terminé": "En cours");
@@ -58,7 +58,6 @@ public class AppointmentsAdapter extends RecyclerView.Adapter<AppointmentsAdapte
 
         if(appointment.isDone()){
             myViewHolder.deleteBtn.setVisibility(View.GONE);
-            myViewHolder.finishAppButton.setVisibility(View.GONE);
             myViewHolder.validateAppButton.setVisibility(View.GONE);
         }
         else if(appointment.isValidate()){
@@ -66,7 +65,6 @@ public class AppointmentsAdapter extends RecyclerView.Adapter<AppointmentsAdapte
         }
         else{
             myViewHolder.finishAppButton.setVisibility(View.GONE);
-
         }
 
         if(appointment.isValidate()){
@@ -129,9 +127,9 @@ public class AppointmentsAdapter extends RecyclerView.Adapter<AppointmentsAdapte
         myViewHolder.validateAppButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                VolleyJSONObjectCallback callback = new VolleyJSONObjectCallback(){
+                VolleyJSONArrayCallback callback = new VolleyJSONArrayCallback(){
                     @Override
-                    public void onResponse(JSONObject result) {
+                    public void onResponse(JSONArray result) {
                         VolleyJSONArrayCallback callback2 = new VolleyJSONArrayCallback(){
                             @Override
                             public void onResponse(JSONArray result) {
@@ -157,16 +155,16 @@ public class AppointmentsAdapter extends RecyclerView.Adapter<AppointmentsAdapte
                         HTTPRequestHelper.getRequest(context,"https://geekomatique.fr:5000"+ "/user/" + appointment.getUserId(), callback2);
                     }
                 };
-                HTTPRequestHelper.putRequest(context,"https://geekomatique.fr:5000"+ "/appointment/validate/" + appointment.getId(), callback, new JSONObject());
+                HTTPRequestHelper.putRequest(context,"https://geekomatique.fr:5000"+ "/appointment/validate/" + appointment.getId(), callback, new JSONArray());
             }
         });
 
         myViewHolder.finishAppButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                VolleyJSONObjectCallback callback = new VolleyJSONObjectCallback(){
+                VolleyJSONArrayCallback callback = new VolleyJSONArrayCallback(){
                     @Override
-                    public void onResponse(JSONObject result) {
+                    public void onResponse(JSONArray result) {
                         VolleyJSONArrayCallback callback2 = new VolleyJSONArrayCallback(){
                             @Override
                             public void onResponse(JSONArray result) {
@@ -187,13 +185,12 @@ public class AppointmentsAdapter extends RecyclerView.Adapter<AppointmentsAdapte
                                     }
                                 });
                             }
-
                         };
                         HTTPRequestHelper.getRequest(context,"https://geekomatique.fr:5000"+ "/user/" + appointment.getUserId(), callback2);
                     }
 
                 };
-                HTTPRequestHelper.putRequest(context,"https://geekomatique.fr:5000"+ "/appointment/validate/" + appointment.getId(), callback, new JSONObject());
+                HTTPRequestHelper.putRequest(context,"https://geekomatique.fr:5000"+ "/appointment/validate/" + appointment.getId(), callback, new JSONArray());
 
             }
         });
