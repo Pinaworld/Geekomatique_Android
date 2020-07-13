@@ -23,7 +23,7 @@
 
         <TextView
             android:id="@+id/appointmentDescriptionRow"
-            android:layout_width="131dp"
+            android:layout_width="138dp"
             android:layout_height="match_parent"
             android:fontFamily="serif"
             android:text="Description"
@@ -73,7 +73,7 @@
 
         <Button
             android:id="@+id/deleteAppBtn"
-            android:layout_width="40dp"
+            android:layout_width="34dp"
             android:layout_height="match_parent"
             android:layout_gravity="bottom|right"
             android:background="@color/colorAccent"

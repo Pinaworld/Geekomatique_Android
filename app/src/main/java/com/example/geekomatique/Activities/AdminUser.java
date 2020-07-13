@@ -28,7 +28,7 @@ import org.json.JSONArray;
 public class AdminUser extends AppCompatActivity {
 //Cette activité doit prendre en charge l'afficharge des adminstrateurs
 
-    Button returnBut, ToErase, addingUserBtn, ModifyOwnInfoBtn;
+    Button returnBut, addingUserBtn, ModifyOwnInfoBtn;
     RecyclerView AdminUserRecyclerView;
 
     @Override
@@ -42,16 +42,9 @@ public class AdminUser extends AppCompatActivity {
         returnBut = findViewById(R.id.ReturnBut);
         ModifyOwnInfoBtn = findViewById(R.id.ModifyOwnInfoBtn);
 
-        ToErase = findViewById(R.id.YODOO); //RECYCLERVIEW OnclickListener // A SUPP
-
         getAllAdminUser();
 
-        ToErase.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                EditUserActivity(v);
-            }
-        });
+
     }
 
 
@@ -61,10 +54,10 @@ public class AdminUser extends AppCompatActivity {
             public void onResponse(JSONArray result) {
                 Log.i("getAllAdminUser", result.toString());
 
-               /* AdminUserRecyclerView = findViewById(R.id.AdminUserList);//On remplie le recyclerview avec les users
+                AdminUserRecyclerView = findViewById(R.id.AdminUserList);//On remplie le recyclerview avec les users
                 AdminUserRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                 final RecyclerView.Adapter adapter = new UsersAdapter(getApplicationContext(), JSONHelper.userListFromJSONArray(result) );
-                AdminUserRecyclerView.setAdapter(adapter); */
+                AdminUserRecyclerView.setAdapter(adapter);
 
             }
         };
