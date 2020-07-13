@@ -25,7 +25,7 @@ public class InvoiceModel implements Serializable{
     private String country;
     private String email;
     private String phoneNumber;
-    private Integer appointmentId;
+    private Integer appoIntegermentId;
     private Integer userId;
 
     public Integer getId() {
@@ -124,12 +124,12 @@ public class InvoiceModel implements Serializable{
         this.phoneNumber = phoneNumber;
     }
 
-    public Integer getAppointmentId() {
-        return appointmentId;
+    public Integer getAppoIntegermentId() {
+        return appoIntegermentId;
     }
 
-    public void setAppointmentId(Integer appointmentId) {
-        this.appointmentId = appointmentId;
+    public void setAppoIntegermentId(Integer appoIntegermentId) {
+        this.appoIntegermentId = appoIntegermentId;
     }
 
     public Integer getUserId() {
@@ -154,7 +154,7 @@ public class InvoiceModel implements Serializable{
         hashMap.put("country", getCountry());
         hashMap.put("email", getEmail());
         hashMap.put("phone_number", getPhoneNumber());
-        hashMap.put("appointment_id", String.valueOf(getAppointmentId()));
+        hashMap.put("appoIntegerment_id", String.valueOf(getAppoIntegermentId()));
         hashMap.put("user_id", String.valueOf(getUserId()));
 
         return hashMap;

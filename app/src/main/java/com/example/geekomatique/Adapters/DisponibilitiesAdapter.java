@@ -43,8 +43,8 @@ public class DisponibilitiesAdapter extends RecyclerView.Adapter<Disponibilities
     }
 
     @Override
-    public void onBindViewHolder(DisponibilitiesAdapter.MyViewHolder myViewHolder, final int position) {
-        final DisponibilitiesModel disponibility = disponibilities.get(position);
+    public void onBindViewHolder(final DisponibilitiesAdapter.MyViewHolder myViewHolder, int position) {
+        final DisponibilitiesModel disponibility = disponibilities.get(myViewHolder.getLayoutPosition());
 
         //myViewHolder.disponibilityTitleRow.setText(disponibility.get());
         //myViewHolder.disponibilityPriceRow.setText(disponibility.getPrice());
@@ -57,7 +57,7 @@ public class DisponibilitiesAdapter extends RecyclerView.Adapter<Disponibilities
                     @Override
                     public void onResponse(JSONArray result) {
                         Toast.makeText(context, "Le service a bien été supprimé.", Toast.LENGTH_SHORT).show();
-                        disponibilities.remove(position);
+                        disponibilities.remove(myViewHolder.getLayoutPosition());
                         notifyDataSetChanged();
                     }
 

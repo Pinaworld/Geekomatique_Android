@@ -15,17 +15,17 @@ import java.util.List;
 public class UserModel implements Serializable {
     //Model d'un user
 
-    private int id;
+    private Integer id;
     private String email;
     private String firstName;
     private String lastName;
     private String phoneNumber;
     private String login;
     private String roleName;
-    private int roleID;
-    private int credentialId;
+    private Integer roleID;
+    private Integer credentialId;
 
-    public UserModel(int id, String email, String firstName, String lastName, String phoneNumber, String login, String roleName) {
+    public UserModel(Integer id, String email, String firstName, String lastName, String phoneNumber, String login, String roleName) {
         this.id = id;
         this.email = email;
         this.firstName = firstName;
@@ -43,7 +43,7 @@ public class UserModel implements Serializable {
         this.login = login;
     }
 
-    public UserModel(int id, String email, String firstName, String lastName, String phoneNumber) {
+    public UserModel(Integer id, String email, String firstName, String lastName, String phoneNumber) {
         this.id = id;
         this.email = email;
         this.firstName = firstName;
@@ -53,11 +53,11 @@ public class UserModel implements Serializable {
 
 
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -109,19 +109,19 @@ public class UserModel implements Serializable {
         this.roleName = roleName;
     }
 
-    public int getRoleID() {
+    public Integer getRoleID() {
         return roleID;
     }
 
-    public void setRoleID(int roleID) {
+    public void setRoleID(Integer roleID) {
         this.roleID = roleID;
     }
 
-    public int getCredentialId() {
+    public Integer getCredentialId() {
         return credentialId;
     }
 
-    public void setCredentialId(int credentialId) {
+    public void setCredentialId(Integer credentialId) {
         this.credentialId = credentialId;
     }
 

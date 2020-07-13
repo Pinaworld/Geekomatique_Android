@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.geekomatique.Helpers.AuthenticatorHelper;
 import com.example.geekomatique.Helpers.HTTPRequestHelper;
 import com.example.geekomatique.R;
 import com.example.geekomatique.VolleyJSONArrayCallback;
@@ -62,6 +63,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void Disconnect(View view) {
+        AuthenticatorHelper.clearSharedPreferences(getApplicationContext());
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }

@@ -18,11 +18,13 @@ import android.view.View;
 import org.json.JSONArray;
 
 import com.example.geekomatique.Adapters.AppointmentsAdapter;
-import com.example.geekomatique.Adapters.PrestationsAdapter;
 import com.example.geekomatique.Helpers.HTTPRequestHelper;
 import com.example.geekomatique.Helpers.JSONHelper;
+import com.example.geekomatique.Models.AppointmentModel;
 import com.example.geekomatique.R;
 import com.example.geekomatique.VolleyJSONArrayCallback;
+
+import java.util.List;
 
 public class CalendarAppointments extends AppCompatActivity {
 //Cette activité va prendre en charge l'affichage de tout les rendez-vous pour l'administration
@@ -48,9 +50,9 @@ public class CalendarAppointments extends AppCompatActivity {
         VolleyJSONArrayCallback callback =  new VolleyJSONArrayCallback(){
             @Override
             public void onResponse(JSONArray result) {
-                Log.i("getAllAppointments", result.toString());
-
-                final RecyclerView.Adapter adapter = new AppointmentsAdapter(getApplicationContext(), JSONHelper.appointmentListFromJSONArray(result));
+                List<AppointmentModel> appointmentList= JSONHelper.appointmentListFromJSONArray(result);
+                Log.i("getAllAppointments", appointmentList.toString());
+                final RecyclerView.Adapter adapter = new AppointmentsAdapter(getApplicationContext(), appointmentList);
                 recyclerView.setAdapter(adapter);
             }
         };

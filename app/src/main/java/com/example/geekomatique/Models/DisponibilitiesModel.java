@@ -12,14 +12,14 @@ import java.util.HashMap;
 public class DisponibilitiesModel {
     //Model d'une disponibilité
 
-    private int id;
+    private Integer id;
     private String start; //Should be a time type
     private String end; //Should be a time type
     private String title;
-    private int day_number;
-    private int employee_id;
+    private Integer day_number;
+    private Integer employee_id;
 
-    public DisponibilitiesModel(int id, String start, String end, String title, int day_number, int employee_id) {
+    public DisponibilitiesModel(Integer id, String start, String end, String title, Integer day_number, Integer employee_id) {
         this.id = id;
         this.start = start;
         this.end = end;
@@ -28,7 +28,7 @@ public class DisponibilitiesModel {
         this.employee_id = employee_id;
     }
 
-    public DisponibilitiesModel(String start, String end, String title, int day_number, int employee_id) {
+    public DisponibilitiesModel(String start, String end, String title, Integer day_number, Integer employee_id) {
         this.start = start;
         this.end = end;
         this.title = title;
@@ -36,7 +36,7 @@ public class DisponibilitiesModel {
         this.employee_id = employee_id;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -64,19 +64,19 @@ public class DisponibilitiesModel {
         this.title = title;
     }
 
-    public int getDay_number() {
+    public Integer getDay_number() {
         return day_number;
     }
 
-    public void setDay_number(int day_number) {
+    public void setDay_number(Integer day_number) {
         this.day_number = day_number;
     }
 
-    public int getEmployee_id() {
+    public Integer getEmployee_id() {
         return employee_id;
     }
 
-    public void setEmployee_id(int employee_id) {
+    public void setEmployee_id(Integer employee_id) {
         this.employee_id = employee_id;
     }
 
