@@ -86,5 +86,6 @@
     <string name="quantity_presta">Quantité :</string>
     <string name="adding_service">Ajouter service</string>
     <string name="validate_invoice">Valider la facture</string>
+    <string name="modify_own_info">Modifier mes informations</string>
 
 </resources>

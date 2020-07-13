@@ -7,7 +7,10 @@
 
 package com.example.geekomatique.Activities;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,13 +19,24 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.geekomatique.Helpers.HTTPRequestHelper;
+import com.example.geekomatique.Helpers.JSONHelper;
+import com.example.geekomatique.Models.DisponibilitiesModel;
+import com.example.geekomatique.Models.UserModel;
 import com.example.geekomatique.R;
 import com.example.geekomatique.VolleyJSONArrayCallback;
 
 import org.json.JSONArray;
 
+import java.util.List;
+
 public class EditUserAdmin extends AppCompatActivity {
 //Cette activité va prendre en charge la gestion des administrateurs
+
+
+
+    private List<UserModel> UserModel;
+    EditText lastName, firstName, phoneField, email;
+    Button validationBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,20 +46,17 @@ public class EditUserAdmin extends AppCompatActivity {
         //On genere les differents composants du Layout
         Button ReturnBut = findViewById(R.id.ReturnBut);
 
-        EditText lastName = (EditText) findViewById(R.id.lastName);
-        EditText firstName = (EditText) findViewById(R.id.firstName);
-        EditText phoneField = (EditText) findViewById(R.id.phoneField);
-        EditText email = (EditText) findViewById(R.id.email);
+        lastName = findViewById(R.id.lastName);
+        firstName =  findViewById(R.id.firstName);
+        phoneField =  findViewById(R.id.phoneField);
+        email =  findViewById(R.id.email);
 
-        Bundle extras = getIntent().getExtras();
 
-        if (extras != null) {
-            int valueIdClicked = extras.getInt("id");//Récupération du champs de l'id
 
-            getAdminUserById(valueIdClicked);
-        }
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        prefs.getBoolean("keystring", true);
 
-        Button validationBtn = findViewById(R.id.Validate);
+        validationBtn = findViewById(R.id.Validate);
 
         validationBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,16 +66,30 @@ public class EditUserAdmin extends AppCompatActivity {
         });
     }
 
-    private void getAdminUserById(int id){
+    private void getAdminUserInfo(){
         VolleyJSONArrayCallback callback =  new VolleyJSONArrayCallback(){
             @Override
             public void onResponse(JSONArray result) {
-                Log.i("getAdminUserById", result.toString());
+
+                Log.i("getAdminUserInfo", result.toString());
+                UserModel = JSONHelper.userListFromJSONArray(result);
+                setUserInfo();
             }
         };
-        HTTPRequestHelper.getRequest(getApplicationContext(), getString(R.string.api_url) + "/user/" + id, callback);
-
+        HTTPRequestHelper.getRequest(getApplicationContext(), getString(R.string.api_url) + "/user/", callback);
+        //Cette requete recupére les disponibilités de l'administrateur
     }
+
+    private void setUserInfo() {
+        //On affiche les inforamtions de l'admin
+        UserModel.forEach((disponibility) -> {
+            firstName.setText("P");
+            lastName.setText("P");
+            phoneField.setText("P");
+            email.setText("P");
+        });
+    }
+
 
     public void ReturnAdminUser(View view) {
         Intent intent = new Intent(this, AdminUser.class);

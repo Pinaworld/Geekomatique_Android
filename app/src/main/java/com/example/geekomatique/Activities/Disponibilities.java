@@ -64,6 +64,7 @@ public class Disponibilities extends AppCompatActivity {
 
         day_6_Saturday_Start = findViewById(R.id.saturdayStart);
         day_6_Saturday_End = findViewById(R.id.saturdayEnd);
+
         getAllDisponibilities();
 
         //On associe au button un Listener qui va faire appel à une fonction pour valider

@@ -26,7 +26,6 @@ public class AddingUser extends AppCompatActivity {
     private EditText emailField;
     Button returnBut;
     Button validationBtn;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
