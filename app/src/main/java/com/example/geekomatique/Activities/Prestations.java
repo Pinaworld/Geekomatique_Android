@@ -66,7 +66,7 @@ public class Prestations extends AppCompatActivity {
 
                 prestationsRecyclerView = findViewById(R.id.prestationsAdapterView);//On remplie le recyclerview avec les prestations
                 prestationsRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-                final RecyclerView.Adapter adapter = new PrestationsAdapter(getApplicationContext(), JSONHelper.prestationsListFromJSONObject(result) );
+                final RecyclerView.Adapter adapter = new PrestationsAdapter(getApplicationContext(), JSONHelper.prestationsListFromJSONArray(result) );
                 prestationsRecyclerView.setAdapter(adapter);
             }
         };
