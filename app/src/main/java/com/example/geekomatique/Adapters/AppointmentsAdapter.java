@@ -17,13 +17,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.geekomatique.Activities.Appointment;
 import com.example.geekomatique.Activities.AppointmentPrestations;
-import com.example.geekomatique.Activities.CalendarAppointments;
 import com.example.geekomatique.Helpers.HTTPRequestHelper;
-import com.example.geekomatique.Helpers.JSONHelper;
 import com.example.geekomatique.MailService;
 import com.example.geekomatique.Models.AppointmentModel;
 import com.example.geekomatique.R;

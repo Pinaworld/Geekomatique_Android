@@ -70,4 +70,9 @@ public class PrestationsModel {
         hashMap.put("price", String.valueOf(getPrice()));
         return hashMap;
     }
+
+    @Override
+    public String toString() {
+        return name + " - Prix: "+ price;
+    }
 }

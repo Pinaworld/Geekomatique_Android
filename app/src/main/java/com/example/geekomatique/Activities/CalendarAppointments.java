@@ -7,6 +7,7 @@
 
 package com.example.geekomatique.Activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -36,7 +37,7 @@ public class CalendarAppointments extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar_appointments);
 
-        getAllAppointments();
+        getAllAppointments(this);
 
         //On genere les differents composants du Layout
         recyclerView = (RecyclerView) findViewById(R.id.appointmentList);
@@ -46,13 +47,13 @@ public class CalendarAppointments extends AppCompatActivity {
     }
 
 
-    private void getAllAppointments(){
+    private void getAllAppointments(Context context){
         VolleyJSONArrayCallback callback =  new VolleyJSONArrayCallback(){
             @Override
             public void onResponse(JSONArray result) {
                 List<AppointmentModel> appointmentList= JSONHelper.appointmentListFromJSONArray(result);
                 Log.i("getAllAppointments", appointmentList.toString());
-                final RecyclerView.Adapter adapter = new AppointmentsAdapter(getApplicationContext(), appointmentList);
+                final RecyclerView.Adapter adapter = new AppointmentsAdapter(context, appointmentList);
                 recyclerView.setAdapter(adapter);
             }
         };

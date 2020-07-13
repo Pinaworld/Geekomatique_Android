@@ -62,14 +62,12 @@ public class AppointmentPrestations extends AppCompatActivity {
         listServiceAdded = findViewById(R.id.listServiceAdded);
 
         selectedServices = new ArrayList<>();
+        services = new ArrayList<>();
 
-        ArrayList<Prestations> arrayListPresta = new ArrayList<>();
-        ArrayAdapter arrayAdapterPresta = new ArrayAdapter(this, android.R.layout.simple_list_item_1, arrayListPresta);
-
+        ArrayAdapter arrayAdapterPresta = new ArrayAdapter(this, android.R.layout.simple_list_item_1, selectedServices);
         listServiceAdded.setAdapter(arrayAdapterPresta);
 
-        ArrayAdapter servicesAdapter = new ArrayAdapter(this, R.layout.spinner);
-        spinnerPresta.setAdapter(servicesAdapter);
+
 
         ValidateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,7 +86,7 @@ public class AppointmentPrestations extends AppCompatActivity {
                     quantity = "1";
                 }
 
-                UpdateListServiceAdded(arrayAdapterPresta, arrayListPresta, quantity, presta);
+                //UpdateListServiceAdded(arrayAdapterPresta, services, quantity, presta);
             }
         });
 
@@ -97,11 +95,17 @@ public class AppointmentPrestations extends AppCompatActivity {
         getAllServices();
     }
 
+    private void refreshSpinnerAdapter(){
+        ArrayAdapter servicesAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, services);
+        spinnerPresta.setAdapter(servicesAdapter);
+    }
+
     private void getAllServices() {
         VolleyJSONArrayCallback callback = new VolleyJSONArrayCallback(){
             @Override
             public void onResponse(JSONArray result) {
               services = JSONHelper.prestationsListFromJSONArray(result);
+                refreshSpinnerAdapter();
             }
         };
         HTTPRequestHelper.getRequest(getApplicationContext(),"https://geekomatique.fr:5000"+ "/service/", callback);
@@ -147,11 +151,7 @@ public class AppointmentPrestations extends AppCompatActivity {
         }
     }
 
-    public void UpdateListServiceAdded(ArrayAdapter arrayAdapterPresta, ArrayList arrayListPresta,String quantity, String presta){
-
-        arrayListPresta.add("Préstation : " + presta + " \n" + "Quantité : " + quantity);
-
-        arrayAdapterPresta.notifyDataSetChanged();
+    public void UpdateListServiceAdded(String quantity, String presta){
 
     }
 
