@@ -57,6 +57,7 @@
     <string name="enter_login">Entrez votre identifiant</string>
     <string name="enter_passwd">Entrez le mot de passe</string>
 
+    <string name="admin_allowed_only">L\'application est uniquement accessible par les administrateurs de Geekomatique</string>
     <string name="admin_user_text">Gestion des administrateurs</string>
     <string name="adding_admin_user">Ajouter un administrateur</string>
     <string name="edit_admin_user">Modification administrateur</string>

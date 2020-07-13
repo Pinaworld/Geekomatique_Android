@@ -9,6 +9,7 @@ package com.example.geekomatique.Helpers;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -17,6 +18,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
@@ -96,6 +98,8 @@ public class HTTPRequestHelper {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        Log.i("post", error.toString());
+
                         parseErrorMEssage(error, context);
                     }
                 }){
@@ -127,6 +131,7 @@ public class HTTPRequestHelper {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        Log.i("delete", error.toString());
                         parseErrorMEssage(error, context);
                     }
                 }){
@@ -145,17 +150,18 @@ public class HTTPRequestHelper {
         requestQueue.add(stringRequest);
     }
 
-    public static void putRequest(final Context context, String url, final VolleyJSONObjectCallback callback, final JSONObject params) {
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.PUT, url, params,
-                new Response.Listener<JSONObject>() {
+    public static void putRequest(final Context context, String url, final VolleyJSONArrayCallback callback, final JSONArray params) {
+        JsonArrayRequest jsonArrayCallback = new JsonArrayRequest(Request.Method.PUT, url, params,
+                new Response.Listener<JSONArray>() {
                     @Override
-                    public void onResponse(JSONObject response) {
+                    public void onResponse(JSONArray response) {
                         callback.onResponse(response);
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        Log.i("put", error.toString());
                         parseErrorMEssage(error, context);
                     }
                 }){
@@ -171,7 +177,7 @@ public class HTTPRequestHelper {
 
 
         RequestQueue requestQueue = Volley.newRequestQueue(context);
-        requestQueue.add(jsonObjectRequest);
+        requestQueue.add(jsonArrayCallback);
     }
 
     public static void patchRequest(final Context context, String url, final VolleyJSONObjectCallback callback, final JSONObject params) {

@@ -19,6 +19,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.geekomatique.Helpers.AuthenticatorHelper;
@@ -37,6 +38,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private EditText inputLogin, inputPassword;
     private Button btnLogin;
+    private TextView errorText;
 
     private boolean authenticated = false;
     @Override
@@ -49,8 +51,9 @@ public class LoginActivity extends AppCompatActivity {
         //On implemente les differents composants presents dans l'activité
         inputLogin = findViewById(R.id.LoginField);
         inputPassword = findViewById(R.id.PassdLoginField);
+        errorText = findViewById(R.id.errorMessage);
         btnLogin = findViewById(R.id.BtnLogin);
-
+        errorText.setVisibility(View.GONE);
         //On set les listeners des boutons
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,19 +111,37 @@ public class LoginActivity extends AppCompatActivity {
         VolleyJSONObjectCallback callback = new VolleyJSONObjectCallback() {
             @Override
             public void onResponse(JSONObject response) {
-                if(!authenticated){ //Si il est déja authentifié, on le connecte
-
-                    try {
-                        this.saveUserSharedPreferences(login,password, response.getJSONObject("user").getInt("id"));
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
+                Integer userRoleId = 0;
+                Integer userID = 0;
+                try {
+                    userRoleId = response.getJSONObject("user").getInt("role_id");
+                    userID = response.getJSONObject("user").getInt("id");
+                } catch (JSONException e) {
+                    Log.i("authParse", e.toString());
                 }
 
+                if(!authenticated){ //Si il est déja authentifié, on le connecte
+                        Log.i("role_id", userRoleId.toString());
+                        if(userRoleId != 2){
+                            this.saveUserSharedPreferences(login,password, userID);
+                            startActivityHome();
+                        }
+                        else{
+                            errorText.setVisibility(View.VISIBLE);
+                            errorText.setText(R.string.admin_allowed_only);
+                        }
+                }
+                else{
+                    startActivityHome();
+                }
+
+            }
+
+
+            private void startActivityHome(){
                 finish();
                 startActivity(new Intent(LoginActivity.this, HomeActivity.class));
             }
-
 
             private void saveUserSharedPreferences(String login, String password, int userId) {
                 //Les informations sont inscrites dans les données du téléphone
