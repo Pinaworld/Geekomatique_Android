@@ -81,4 +81,10 @@
     <string name="company_vat_percent">0</string>
     <string name="company_vat_number"></string>
 
+    <string name="choice_presta">Services ajoutés à la facture</string>
+    <string name="choosed_presta">Prestation effectuée :</string>
+    <string name="quantity_presta">Quantité :</string>
+    <string name="adding_service">Ajouter service</string>
+    <string name="validate_invoice">Valider la facture</string>
+
 </resources>

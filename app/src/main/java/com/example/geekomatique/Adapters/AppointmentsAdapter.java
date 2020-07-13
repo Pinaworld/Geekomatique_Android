@@ -8,6 +8,7 @@
 package com.example.geekomatique.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,6 +19,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.geekomatique.Activities.Appointment;
+import com.example.geekomatique.Activities.AppointmentPrestations;
+import com.example.geekomatique.Activities.CalendarAppointments;
 import com.example.geekomatique.Helpers.HTTPRequestHelper;
 import com.example.geekomatique.MailService;
 import com.example.geekomatique.Models.AppointmentModel;
@@ -164,7 +168,11 @@ public class AppointmentsAdapter extends RecyclerView.Adapter<AppointmentsAdapte
         myViewHolder.finishAppButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                VolleyJSONArrayCallback callback = new VolleyJSONArrayCallback(){
+
+                Intent intent = new Intent(context, AppointmentPrestations.class);
+                context.startActivity(intent);
+
+                /**VolleyJSONArrayCallback callback = new VolleyJSONArrayCallback(){
                     @Override
                     public void onResponse(JSONArray result) {
                         VolleyJSONArrayCallback callback2 = new VolleyJSONArrayCallback(){
@@ -191,8 +199,8 @@ public class AppointmentsAdapter extends RecyclerView.Adapter<AppointmentsAdapte
                         HTTPRequestHelper.getRequest(context,"https://geekomatique.fr:5000"+ "/user/" + appointment.getUserId(), callback2);
                     }
 
-                };
-                HTTPRequestHelper.putRequest(context,"https://geekomatique.fr:5000"+ "/appointment/validate/" + appointment.getId(), callback, new JSONArray());
+                }; */
+                //HTTPRequestHelper.putRequest(context,"https://geekomatique.fr:5000"+ "/appointment/validate/" + appointment.getId(), callback, new JSONArray());
 
             }
         });
