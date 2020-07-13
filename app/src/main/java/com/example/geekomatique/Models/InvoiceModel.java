@@ -20,6 +20,27 @@ public class InvoiceModel implements Serializable
     private String phoneNumber;
     private Integer appoIntegermentId;
     private Integer userId;
+    private String base64;
+
+    public InvoiceModel(String invoiceNumber, String invoiceDate, String renderedServicesDate,
+                        Boolean paid, String city, String street, String userName, Integer zipcode,
+                        String country, String email, String phoneNumber, Integer appoIntegermentId,
+                        Integer userId, String base64) {
+        this.invoiceNumber = invoiceNumber;
+        this.invoiceDate = invoiceDate;
+        this.renderedServicesDate = renderedServicesDate;
+        this.paid = paid;
+        this.city = city;
+        this.street = street;
+        this.userName = userName;
+        this.zipcode = zipcode;
+        this.country = country;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.appoIntegermentId = appoIntegermentId;
+        this.userId = userId;
+        this.base64 = base64;
+    }
 
     public Integer getId() {
         return id;
@@ -133,6 +154,13 @@ public class InvoiceModel implements Serializable
         this.userId = userId;
     }
 
+    public String getBase64() {
+        return base64;
+    }
+
+    public void setBase64(String base64) {
+        this.base64 = base64;
+    }
 
     public HashMap<String, String> getInvoiceHashMap(String password){
         HashMap<String, String> hashMap = new HashMap<String, String>();

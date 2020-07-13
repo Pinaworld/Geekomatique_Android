@@ -19,12 +19,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.geekomatique.Helpers.HTTPRequestHelper;
+import com.example.geekomatique.MailService;
 import com.example.geekomatique.Models.AppointmentModel;
 import com.example.geekomatique.R;
 import com.example.geekomatique.VolleyJSONArrayCallback;
 import com.example.geekomatique.VolleyJSONObjectCallback;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.List;
@@ -67,57 +69,131 @@ public class AppointmentsAdapter extends RecyclerView.Adapter<AppointmentsAdapte
 
         }
 
-        myViewHolder.deleteBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        if(appointment.isValidate()){
+            myViewHolder.deleteBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
-                VolleyJSONArrayCallback callback = new VolleyJSONArrayCallback(){
-                    @Override
-                    public void onResponse(JSONArray result) {
-                        Toast.makeText(context, "Le rendez-vous a bien été annulé.", Toast.LENGTH_SHORT).show();
-                        appointments.remove(position);
-                        notifyDataSetChanged();
-                    }
+                    VolleyJSONArrayCallback callback = new VolleyJSONArrayCallback(){
+                        @Override
+                        public void onResponse(JSONArray result) {
+                            appointments.remove(position);
+                            notifyDataSetChanged();
+                        }
+                    };
 
-                };
+                    HTTPRequestHelper.deleteRequest(context,"https://geekomatique.fr:5000"+ "/appointment/" + appointment.getId(), callback);
+                }
+            });
+        }
+        else{
+            myViewHolder.deleteBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    VolleyJSONObjectCallback callback = new VolleyJSONObjectCallback(){
+                        @Override
+                        public void onResponse(JSONObject result) {
+                            VolleyJSONArrayCallback callback2 = new VolleyJSONArrayCallback(){
+                                @Override
+                                public void onResponse(JSONArray result) {
+                                    String message =   "Bonjour, <br ><br > Votre rendez-vous du "+ appointment.getDate() +" a été totalement annulé en raison d'une indisponibilité du technicien." +
+                                            "<br ><br > Nous vous invitons à prendre un nouveau rendez-vous sur https://geekomatique.fr.<br ><br > " +
+                                            "Nous sommes désolé pour ce désagréement.<br ><br >";
+                                    String email = "";
+                                    try{
+                                        email = result.getJSONObject(0).getString("email");
+                                    }catch (JSONException ex){
 
-                HTTPRequestHelper.deleteRequest(context,"https://geekomatique.fr:5000"+ "/service/" + appointment.getId(), callback);
-            }
-        });
+                                    }
+
+                                    MailService.sendMailToClient(context, "Rendez-vous Annulé", message, email, new VolleyJSONObjectCallback() {
+                                        @Override
+                                        public void onResponse(JSONObject response) {
+                                            appointments.remove(position);
+                                            notifyDataSetChanged();
+                                        }
+                                    });
+                                }
+
+                            };
+                            HTTPRequestHelper.getRequest(context,"https://geekomatique.fr:5000"+ "/user/" + appointment.getUserId(), callback2);
+                        }
+
+                    };
+                    HTTPRequestHelper.putRequest(context,"https://geekomatique.fr:5000"+ "/appointment/validate/" + appointment.getId(), callback, new JSONObject());
+                }
+            });
+        }
+
 
         myViewHolder.validateAppButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 VolleyJSONObjectCallback callback = new VolleyJSONObjectCallback(){
                     @Override
                     public void onResponse(JSONObject result) {
-                        Toast.makeText(context, "Le rendez-vous a bien été validé.", Toast.LENGTH_SHORT).show();
-                        appointment.setValidate(true);
-                        notifyDataSetChanged();
+                        VolleyJSONArrayCallback callback2 = new VolleyJSONArrayCallback(){
+                            @Override
+                            public void onResponse(JSONArray result) {
+                                String message = "Bonjour, <br><br>Votre rendez-vous du " + appointment.getDate() + " est validé. <br><br>" +
+                                        (appointment.isRemote() ? "Un technicien se présentera chez vous à la date indiquée." : "Un technicien vous contactera au numéro de téléphone de votre compte à la date indiquée.<br><br> assurez vous d\'être disponible.");
+                                String email = "";
+                                try{
+                                    email = result.getJSONObject(0).getString("email");
+                                }catch (JSONException ex){
+
+                                }
+
+                                MailService.sendMailToClient(context, "Confirmation de rendez-vous", message, email, new VolleyJSONObjectCallback() {
+                                    @Override
+                                    public void onResponse(JSONObject response) {
+                                        appointment.setValidate(true);
+                                        notifyDataSetChanged();
+                                    }
+                                });
+                            }
+
+                        };
+                        HTTPRequestHelper.getRequest(context,"https://geekomatique.fr:5000"+ "/user/" + appointment.getUserId(), callback2);
                     }
-
                 };
-
                 HTTPRequestHelper.putRequest(context,"https://geekomatique.fr:5000"+ "/appointment/validate/" + appointment.getId(), callback, new JSONObject());
-
             }
         });
 
         myViewHolder.finishAppButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 VolleyJSONObjectCallback callback = new VolleyJSONObjectCallback(){
                     @Override
                     public void onResponse(JSONObject result) {
-                        Toast.makeText(context, "Le rendez-vous a bien été clôturé.", Toast.LENGTH_SHORT).show();
-                        appointment.setDone(true);
-                        notifyDataSetChanged();
-                    }
-                };
+                        VolleyJSONArrayCallback callback2 = new VolleyJSONArrayCallback(){
+                            @Override
+                            public void onResponse(JSONArray result) {
+                                String message = "Votre rendez-vous du " + appointment.getDate() +
+                                        " est validé. <br><br>" + (appointment.isRemote() ? "Un technicien se présentera chez vous à la date indiquée." : "Un technicien vous contactera au numéro de téléphone de votre compte à la date indiquée.<br><br> assurez vous d\'être disponible.");
+                                String email = "";
+                                try{
+                                    email = result.getJSONObject(0).getString("email");
+                                }catch (JSONException ex){
 
-                HTTPRequestHelper.putRequest(context,"https://geekomatique.fr:5000"+ "/appointment/finish/" + appointment.getId(), callback, new JSONObject());
+                                }
+
+                                MailService.sendMailToClient(context, "Confirmation de rendez-vous", message, email, new VolleyJSONObjectCallback() {
+                                    @Override
+                                    public void onResponse(JSONObject response) {
+                                        appointment.setValidate(true);
+                                        notifyDataSetChanged();
+                                    }
+                                });
+                            }
+
+                        };
+                        HTTPRequestHelper.getRequest(context,"https://geekomatique.fr:5000"+ "/user/" + appointment.getUserId(), callback2);
+                    }
+
+                };
+                HTTPRequestHelper.putRequest(context,"https://geekomatique.fr:5000"+ "/appointment/validate/" + appointment.getId(), callback, new JSONObject());
 
             }
         });
