@@ -109,6 +109,7 @@ public class AppointmentsAdapter extends RecyclerView.Adapter<AppointmentsAdapte
                                     MailService.sendMailToClient(context, "Rendez-vous Annulé", message, email, new VolleyJSONObjectCallback() {
                                         @Override
                                         public void onResponse(JSONObject response) {
+                                            Log.i("sendMail", response.toString());
                                             appointments.remove(position);
                                             notifyDataSetChanged();
                                         }
@@ -147,6 +148,7 @@ public class AppointmentsAdapter extends RecyclerView.Adapter<AppointmentsAdapte
                                 MailService.sendMailToClient(context, "Confirmation de rendez-vous", message, email, new VolleyJSONObjectCallback() {
                                     @Override
                                     public void onResponse(JSONObject response) {
+                                        Log.i("sendMailVali", response.toString());
                                         appointment.setValidate(true);
                                         notifyDataSetChanged();
                                     }
