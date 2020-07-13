@@ -27,7 +27,7 @@ import com.example.geekomatique.VolleyJSONArrayCallback;
 import java.util.List;
 
 public class CalendarAppointments extends AppCompatActivity {
-
+//Cette activité va prendre en charge l'affichage de tout les rendez-vous pour l'administration
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
 
@@ -38,6 +38,7 @@ public class CalendarAppointments extends AppCompatActivity {
 
         getAllAppointments();
 
+        //On genere les differents composants du Layout
         recyclerView = (RecyclerView) findViewById(R.id.appointmentList);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
@@ -57,6 +58,7 @@ public class CalendarAppointments extends AppCompatActivity {
         };
 
         HTTPRequestHelper.getRequest(getApplicationContext(), getString(R.string.api_url) + "/appointment/", callback);
+        //Cette requete doit recuperer les differents rendez-vous
     }
 
 

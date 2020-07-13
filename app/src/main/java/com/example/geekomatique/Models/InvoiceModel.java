@@ -1,10 +1,17 @@
+/*
+ * Copyright (c) 2020
+ * Project: Geekomatique
+ * File : PrestationsModel.java
+ * Edited by pinbe
+ */
+
 package com.example.geekomatique.Models;
 
 import java.io.Serializable;
 import java.util.HashMap;
 
-public class InvoiceModel implements Serializable
-{
+public class InvoiceModel implements Serializable{
+    //Model d'une facture
 
     private Integer id;
     private String invoiceNumber;

@@ -43,25 +43,32 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.MyViewHolder
     }
 
     @Override
-    public void onBindViewHolder(final UsersAdapter.MyViewHolder myViewHolder, int position) {
-        final UserModel user = users.get(myViewHolder.getLayoutPosition());
+    public void onBindViewHolder(UsersAdapter.MyViewHolder myViewHolder, final int position) {
 
-        //myViewHolder.userTitleRow.setText(user.getName());
-        //myViewHolder.userPriceRow.setText(user.getPrice());
+        final UserModel user = users.get(position);
+
+        myViewHolder.loginRow.setText(user.getLogin());
+        myViewHolder.lastName.setText(user.getLastName());
+        myViewHolder.firstName.setText(user.getFirstName());
+        myViewHolder.phoneNumber.setText(user.getPhoneNumber());
+        myViewHolder.role.setText(user.getRoleName());
+
 
         myViewHolder.deleteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 VolleyJSONArrayCallback callback = new VolleyJSONArrayCallback(){
                     @Override
                     public void onResponse(JSONArray result) {
-                        Toast.makeText(context, "Le service a bien été supprimé.", Toast.LENGTH_SHORT).show();
-                        users.remove(myViewHolder.getLayoutPosition());
+                        Toast.makeText(context, "L'utilisateur a bien été supprimé.", Toast.LENGTH_SHORT).show();
+                        users.remove(position);
                         notifyDataSetChanged();
                     }
+
                 };
 
-                HTTPRequestHelper.deleteRequest(context,"https://geekomatique.fr:5000"+ "/service/" + user.getId(), callback);
+                HTTPRequestHelper.deleteRequest(context,"https://geekomatique.fr:5000"+ "/user/" + user.getId(), callback);
             }
         });
     }
@@ -74,17 +81,19 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.MyViewHolder
 
     class MyViewHolder extends RecyclerView.ViewHolder {
         LinearLayout userRow;
-        TextView userTitleRow;
-        TextView userPriceRow;
+        TextView loginRow, lastName, firstName, phoneNumber, role;
+
         Button deleteBtn;
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            //userRow = itemView.findViewById(R.id.userRow);
-            //userTitleRow = itemView.findViewById(R.id.userTitleRow);
-            //userPriceRow = itemView.findViewById(R.id.userPriceRow);
-            //deleteBtn = itemView.findViewById(R.id.deleteBtn);
+            userRow = itemView.findViewById(R.id.usersRow);
 
+            loginRow = itemView.findViewById(R.id.loginRow);
+            lastName = itemView.findViewById(R.id.lastName);
+            firstName = itemView.findViewById(R.id.firstName);
+            phoneNumber = itemView.findViewById(R.id.phoneNumber);
+            role = itemView.findViewById(R.id.role);
         }
     }
 

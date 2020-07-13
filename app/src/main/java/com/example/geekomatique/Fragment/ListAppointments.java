@@ -40,6 +40,7 @@ import java.util.Map;
 
 
 public class ListAppointments extends AppCompatActivity {
+//Peut etre utilisé pour l'affichage d'une liste dans un fragment
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

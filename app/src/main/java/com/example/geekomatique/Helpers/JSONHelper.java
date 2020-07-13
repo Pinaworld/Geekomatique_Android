@@ -166,14 +166,14 @@ public class JSONHelper {
         if(userJSONObecjt != null) {
                 try {
                     int id = userJSONObecjt.getInt("id");
-                    String email = userJSONObecjt.getString("email");
+                    //String email = userJSONObecjt.getString("email");
                     String firstName= userJSONObecjt.getString("firstName");
                     String lastName= userJSONObecjt.getString("lastName");
                     String login = userJSONObecjt.getString("login");
                     String roleName = userJSONObecjt.getString("roleName");
                     String phoneNumber = userJSONObecjt.getString("phoneNumber");
 
-                    user = new UserModel(id, email, firstName,lastName, phoneNumber, login, roleName );
+                    user = new UserModel(id, firstName,lastName, phoneNumber, login, roleName );
 
                 } catch (JSONException exception) {
 

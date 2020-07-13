@@ -13,20 +13,20 @@ import java.util.HashMap;
 import java.util.List;
 
 public class UserModel implements Serializable {
+    //Model d'un user
 
-    private Integer id;
-    private String email;
+    private int id;
+    //private String email;
     private String firstName;
     private String lastName;
     private String phoneNumber;
     private String login;
     private String roleName;
-    private Integer roleID;
-    private Integer credentialId;
+    private int roleID;
+    private int credentialId;
 
-    public UserModel(Integer id, String email, String firstName, String lastName, String phoneNumber, String login, String roleName) {
+    public UserModel(int id, String firstName, String lastName, String phoneNumber, String login, String roleName) {
         this.id = id;
-        this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
@@ -34,17 +34,15 @@ public class UserModel implements Serializable {
         this.roleName = roleName;
     }
 
-    public UserModel(String email, String firstName, String lastName, String phoneNumber, String login) {
-        this.email = email;
+    public UserModel(String firstName, String lastName, String phoneNumber, String login) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
         this.login = login;
     }
 
-    public UserModel(Integer id, String email, String firstName, String lastName, String phoneNumber) {
+    public UserModel(int id, String firstName, String lastName, String phoneNumber) {
         this.id = id;
-        this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
@@ -52,20 +50,12 @@ public class UserModel implements Serializable {
 
 
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getFirstName() {
@@ -108,25 +98,25 @@ public class UserModel implements Serializable {
         this.roleName = roleName;
     }
 
-    public Integer getRoleID() {
+    public int getRoleID() {
         return roleID;
     }
 
-    public void setRoleID(Integer roleID) {
+    public void setRoleID(int roleID) {
         this.roleID = roleID;
     }
 
-    public Integer getCredentialId() {
+    public int getCredentialId() {
         return credentialId;
     }
 
-    public void setCredentialId(Integer credentialId) {
+    public void setCredentialId(int credentialId) {
         this.credentialId = credentialId;
     }
 
     public HashMap<String, String> getUserHashMap(){
         HashMap<String, String> hashMap = new HashMap<String, String>();
-        hashMap.put("email", getEmail());
+        //hashMap.put("email", getEmail());
 
         hashMap.put("lastname", getLastName());
         hashMap.put("fisrtname", getFirstName());
@@ -137,7 +127,7 @@ public class UserModel implements Serializable {
 
     public HashMap<String, String> getUserCredentialsHashMap(String password){
         HashMap<String, String> hashMap = new HashMap<String, String>();
-        hashMap.put("email", getEmail());
+        //hashMap.put("email", getEmail());
 
         hashMap.put("password", password);
         hashMap.put("login", getLogin());

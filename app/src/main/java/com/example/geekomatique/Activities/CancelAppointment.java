@@ -29,12 +29,13 @@ import java.util.Locale;
 
 
 public class CancelAppointment extends AppCompatActivity {
-
+//Cette activité va prendre en compte la suppression d'un rendez vous par l'administrateur
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cancel_appointment);
 
+        //On genere les differents composants du Layout
         TextView appointmentTitle = (TextView) findViewById(R.id.appointmentTitle);
         TextView appointmentTime = (TextView) findViewById(R.id.appointmentTime);
         TextView appointmentAdress = (TextView) findViewById(R.id.appointmentAdress );
@@ -46,7 +47,7 @@ public class CancelAppointment extends AppCompatActivity {
 
         String date_n = new SimpleDateFormat("dd MMM yyyy", Locale.getDefault()).format(new Date());
         TextView date  = (TextView) findViewById(R.id.actualDate);
-        date.setText(date_n);
+        date.setText(date_n);//Récupération de la date
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -55,6 +56,7 @@ public class CancelAppointment extends AppCompatActivity {
         }
 
 
+        //On associe à chaque button un Listener qui va faire appel à une fonction
         Button cancelAppointment = findViewById(R.id.CancelAppointmentButt);
         cancelAppointment.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,7 +66,7 @@ public class CancelAppointment extends AppCompatActivity {
         });
     }
 
-    private void showAppointment(int id){
+    private void showAppointment(int id){ //Affichage des rendez vous
         VolleyJSONArrayCallback callback =  new VolleyJSONArrayCallback(){
             @Override
             public void onResponse(JSONArray result) {
@@ -72,7 +74,7 @@ public class CancelAppointment extends AppCompatActivity {
             }
         };
         HTTPRequestHelper.getRequest(getApplicationContext(), getString(R.string.api_url) + "/appointment/" + id, callback);
-
+        //Cette requete recupére le rendez vous pour l'afficher
     }
 
     public void ReturnAppointmentActivity(View view) {
@@ -81,7 +83,7 @@ public class CancelAppointment extends AppCompatActivity {
     }
 
     public void CancelAppointment(View view){
-
+        //Suppression du rendez vous
         Toast toastConfirmedCancel = Toast.makeText(getApplicationContext(), "Rendez-vous annulé !", Toast.LENGTH_SHORT);
         toastConfirmedCancel.show();
 
