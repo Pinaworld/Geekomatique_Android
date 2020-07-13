@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -20,6 +21,9 @@ import android.widget.TextView;
 import com.example.geekomatique.R;
 
 import org.w3c.dom.Text;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 public class AppointmentPrestations extends AppCompatActivity {
 
@@ -45,11 +49,30 @@ public class AppointmentPrestations extends AppCompatActivity {
         AddPrestaBtn = findViewById(R.id.AddPrestaBtn);
         listServiceAdded = findViewById(R.id.listServiceAdded);
 
+        ArrayList<String> arrayListPresta = new ArrayList<>();
+        ArrayAdapter arrayAdapterPresta = new ArrayAdapter(this, android.R.layout.simple_list_item_1, arrayListPresta);
+
+        listServiceAdded.setAdapter(arrayAdapterPresta);
 
         ValidateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ValidatePrestaAppointment(v);
+            }
+        });
+
+        AddPrestaBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String presta = "yolo";//spinnerPresta.getTag().toString();
+                String quantity = quantity_presta.getText().toString();
+
+                if( quantity == null){
+                    quantity = "1";
+                }
+
+                UpdateListServiceAdded(arrayAdapterPresta, arrayListPresta, quantity, presta);
             }
         });
     }
@@ -62,7 +85,11 @@ public class AppointmentPrestations extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void UpdateListServiceAdded(){
+    public void UpdateListServiceAdded(ArrayAdapter arrayAdapterPresta, ArrayList arrayListPresta,String quantity, String presta){
+
+        arrayListPresta.add("Préstation : " + presta + " \n" + "Quantité : " + quantity);
+
+        arrayAdapterPresta.notifyDataSetChanged();
 
     }
 
