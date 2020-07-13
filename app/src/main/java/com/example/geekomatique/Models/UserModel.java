@@ -15,46 +15,53 @@ import java.util.List;
 public class UserModel implements Serializable {
     //Model d'un user
 
-    private int id;
+    private Integer id;
     //private String email;
     private String firstName;
     private String lastName;
     private String phoneNumber;
     private String login;
     private String roleName;
-    private int roleID;
-    private int credentialId;
+    private String email;
+    private Integer roleID;
+    private Integer credentialId;
 
-    public UserModel(int id, String firstName, String lastName, String phoneNumber, String login, String roleName) {
+    public UserModel(Integer id, String firstName, String lastName, String phoneNumber, String login, String roleName, String email, Integer roleID, Integer credentialId) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
         this.login = login;
         this.roleName = roleName;
+        this.email = email;
+        this.roleID = roleID;
+        this.credentialId = credentialId;
     }
 
-    public UserModel(String firstName, String lastName, String phoneNumber, String login) {
+    public UserModel(String firstName, String lastName, String phoneNumber, String login, String roleName, String email, Integer roleID, Integer credentialId) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
         this.login = login;
+        this.roleName = roleName;
+        this.email = email;
+        this.roleID = roleID;
+        this.credentialId = credentialId;
     }
 
-    public UserModel(int id, String firstName, String lastName, String phoneNumber) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.phoneNumber = phoneNumber;
+    public String getEmail() {
+        return email;
     }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -98,19 +105,19 @@ public class UserModel implements Serializable {
         this.roleName = roleName;
     }
 
-    public int getRoleID() {
+    public Integer getRoleID() {
         return roleID;
     }
 
-    public void setRoleID(int roleID) {
+    public void setRoleID(Integer roleID) {
         this.roleID = roleID;
     }
 
-    public int getCredentialId() {
+    public Integer getCredentialId() {
         return credentialId;
     }
 
-    public void setCredentialId(int credentialId) {
+    public void setCredentialId(Integer credentialId) {
         this.credentialId = credentialId;
     }
 

@@ -45,15 +45,15 @@ public class MailService {
         HTTPRequestHelper.postRequest(context,"https://geekomatique.fr:5000"+ "mail/send/client", callback, jsonObject);
     }
 
-    public static void sendMailToWithAttachment(Context context, String subject, String message, String email, InvoiceModel invoice, VolleyJSONObjectCallback callback){
+    public static void sendMailToWithAttachment(Context context, String subject, String message, String email, JSONObject invoice, VolleyJSONObjectCallback callback){
         JSONObject jsonObject = new JSONObject();
 
         try{
             jsonObject.put("message", message);
             jsonObject.put("receiverMail", email);
             jsonObject.put("subject", subject);
-            jsonObject.put("invoiceBase64", invoice.getBase64());
-            jsonObject.put("invoiceNumber", invoice.getInvoiceNumber());
+            jsonObject.put("invoiceBase64", invoice.getString("Invoice_Base64"));
+            jsonObject.put("invoiceNumber", invoice.getString("invoice_number"));
         }
         catch (JSONException exception){
 

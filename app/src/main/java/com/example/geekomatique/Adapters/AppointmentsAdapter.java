@@ -23,6 +23,7 @@ import com.example.geekomatique.Activities.Appointment;
 import com.example.geekomatique.Activities.AppointmentPrestations;
 import com.example.geekomatique.Activities.CalendarAppointments;
 import com.example.geekomatique.Helpers.HTTPRequestHelper;
+import com.example.geekomatique.Helpers.JSONHelper;
 import com.example.geekomatique.MailService;
 import com.example.geekomatique.Models.AppointmentModel;
 import com.example.geekomatique.R;
@@ -71,27 +72,11 @@ public class AppointmentsAdapter extends RecyclerView.Adapter<AppointmentsAdapte
             myViewHolder.finishAppButton.setVisibility(View.GONE);
         }
 
-        if(appointment.isValidate()){
+        if(!appointment.isValidate()){
             myViewHolder.deleteBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
-                    VolleyJSONArrayCallback callback = new VolleyJSONArrayCallback(){
-                        @Override
-                        public void onResponse(JSONArray result) {
-                            appointments.remove(position);
-                            notifyDataSetChanged();
-                        }
-                    };
-
-                    HTTPRequestHelper.deleteRequest(context,"https://geekomatique.fr:5000"+ "/appointment/" + appointment.getId(), callback);
-                }
-            });
-        }
-        else{
-            myViewHolder.deleteBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
                     VolleyJSONArrayCallback callback = new VolleyJSONArrayCallback(){
                         @Override
                         public void onResponse(JSONArray result) {
@@ -111,7 +96,6 @@ public class AppointmentsAdapter extends RecyclerView.Adapter<AppointmentsAdapte
                                     MailService.sendMailToClient(context, "Rendez-vous Annulé", message, email, new VolleyJSONObjectCallback() {
                                         @Override
                                         public void onResponse(JSONObject response) {
-                                            Log.i("sendMail", response.toString());
                                             appointments.remove(position);
                                             notifyDataSetChanged();
                                         }
@@ -124,6 +108,38 @@ public class AppointmentsAdapter extends RecyclerView.Adapter<AppointmentsAdapte
 
                     };
                     HTTPRequestHelper.deleteRequest(context,"https://geekomatique.fr:5000"+ "/appointment/" + appointment.getId(), callback);
+
+                }
+            });
+        }
+        else{
+            myViewHolder.deleteBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    VolleyJSONArrayCallback callback2 = new VolleyJSONArrayCallback(){
+                        @Override
+                        public void onResponse(JSONArray result) {
+                            String message =   "Bonjour, <br ><br > Votre rendez-vous du "+ appointment.getDate() +" a été annulé." +
+                                    "<br ><br >Vous recevrez prochainement un mail s'il a été repris en charge ou s'il a été complètement annulé.<br ><br > " +
+                                    "Nous sommes désolé pour ce désagréement.<br ><br >";
+                            String email = "";
+                            try{
+                                email = result.getJSONObject(0).getString("email");
+                            }catch (JSONException ex){
+
+                            }
+
+                            MailService.sendMailToClient(context, "Rendez-vous Annulé", message, email, new VolleyJSONObjectCallback() {
+                                @Override
+                                public void onResponse(JSONObject response) {
+                                    appointments.remove(position);
+                                    notifyDataSetChanged();
+                                }
+                            });
+                        }
+
+                    };
+                    HTTPRequestHelper.putRequest(context,"https://geekomatique.fr:5000"+ "/appointment/cancel/" + appointment.getUserId(), callback2, new JSONArray());
                 }
             });
         }
@@ -150,7 +166,6 @@ public class AppointmentsAdapter extends RecyclerView.Adapter<AppointmentsAdapte
                                 MailService.sendMailToClient(context, "Confirmation de rendez-vous", message, email, new VolleyJSONObjectCallback() {
                                     @Override
                                     public void onResponse(JSONObject response) {
-                                        Log.i("sendMailVali", response.toString());
                                         appointment.setValidate(true);
                                         notifyDataSetChanged();
                                     }
@@ -168,40 +183,9 @@ public class AppointmentsAdapter extends RecyclerView.Adapter<AppointmentsAdapte
         myViewHolder.finishAppButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent intent = new Intent(context, AppointmentPrestations.class);
+                intent.putExtra("appointment", appointment);
                 context.startActivity(intent);
-
-                /**VolleyJSONArrayCallback callback = new VolleyJSONArrayCallback(){
-                    @Override
-                    public void onResponse(JSONArray result) {
-                        VolleyJSONArrayCallback callback2 = new VolleyJSONArrayCallback(){
-                            @Override
-                            public void onResponse(JSONArray result) {
-                                String message = "Votre rendez-vous du " + appointment.getDate() +
-                                        " est validé. <br><br>" + (appointment.isRemote() ? "Un technicien se présentera chez vous à la date indiquée." : "Un technicien vous contactera au numéro de téléphone de votre compte à la date indiquée.<br><br> assurez vous d\'être disponible.");
-                                String email = "";
-                                try{
-                                    email = result.getJSONObject(0).getString("email");
-                                }catch (JSONException ex){
-
-                                }
-
-                                MailService.sendMailToClient(context, "Confirmation de rendez-vous", message, email, new VolleyJSONObjectCallback() {
-                                    @Override
-                                    public void onResponse(JSONObject response) {
-                                        appointment.setValidate(true);
-                                        notifyDataSetChanged();
-                                    }
-                                });
-                            }
-                        };
-                        HTTPRequestHelper.getRequest(context,"https://geekomatique.fr:5000"+ "/user/" + appointment.getUserId(), callback2);
-                    }
-
-                }; */
-                //HTTPRequestHelper.putRequest(context,"https://geekomatique.fr:5000"+ "/appointment/validate/" + appointment.getId(), callback, new JSONArray());
-
             }
         });
     }

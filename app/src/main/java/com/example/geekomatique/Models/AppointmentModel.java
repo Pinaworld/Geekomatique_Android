@@ -9,9 +9,10 @@ package com.example.geekomatique.Models;
 
 import android.util.Log;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class AppointmentModel {
+public class AppointmentModel implements Serializable {
 
     private Integer id;
     private String date;

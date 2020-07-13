@@ -9,10 +9,13 @@ package com.example.geekomatique.Helpers;
 
 import android.util.Log;
 
+import com.example.geekomatique.Activities.Appointment;
+import com.example.geekomatique.Models.AddressModel;
 import com.example.geekomatique.Models.AppointmentModel;
 import com.example.geekomatique.Models.DisponibilitiesModel;
 import com.example.geekomatique.Models.PrestationsModel;
 import com.example.geekomatique.Models.UserModel;
+import com.example.geekomatique.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -61,7 +64,7 @@ public class JSONHelper {
         return null;
     }
 
-    public static List<PrestationsModel> prestationsListFromJSONObject(JSONArray prestationsJSONArray) {
+    public static List<PrestationsModel> prestationsListFromJSONArray(JSONArray prestationsJSONArray) {
         List<PrestationsModel> prestationsList = new ArrayList<>();
 
         if(prestationsJSONArray != null) {
@@ -165,21 +168,22 @@ public class JSONHelper {
         return prestations;
     }
 
-    public static UserModel userFromJSONObject(JSONObject userJSONObecjt) {
+    public static UserModel userFromJSONObject(JSONObject userJSONObject) {
 
         UserModel user = null;
 
-        if(userJSONObecjt != null) {
+        if(userJSONObject != null) {
                 try {
-                    int id = userJSONObecjt.getInt("id");
-                    //String email = userJSONObecjt.getString("email");
-                    String firstName= userJSONObecjt.getString("firstName");
-                    String lastName= userJSONObecjt.getString("lastName");
-                    String login = userJSONObecjt.getString("login");
-                    String roleName = userJSONObecjt.getString("roleName");
-                    String phoneNumber = userJSONObecjt.getString("phoneNumber");
+                    Integer id = userJSONObject.getInt("id");
+                    String email = userJSONObject.getString("email");
+                    String firstName= userJSONObject.getString("firstName");
+                    String lastName= userJSONObject.getString("lastName");
+                    String login = userJSONObject.getString("login");
+                    String roleName = userJSONObject.getString("role_name");
+                    Integer roleID = userJSONObject.getInt("role_id");
+                    String phoneNumber = userJSONObject.getString("phoneNumber");
 
-                    user = new UserModel(id, firstName,lastName, phoneNumber, login, roleName );
+                    user = new UserModel(id, firstName, lastName, phoneNumber, login, roleName, email, roleID, id);
 
                 } catch (JSONException exception) {
                     Log.i("jsonexcept", exception.toString());
@@ -188,6 +192,110 @@ public class JSONHelper {
 
         }
         return user;
+    }
+
+    public static AddressModel addressListFromJSONObject(JSONObject userJSONObject) {
+
+        AddressModel address = null;
+
+        if(userJSONObject != null) {
+            try {
+                Integer id = userJSONObject.getInt("id");
+                String city = userJSONObject.getString("city");
+                String street= userJSONObject.getString("street");
+                Integer zipcode= userJSONObject.getInt("zipcode");
+                String country = userJSONObject.getString("country");
+                String type = userJSONObject.getString("type");
+                Integer userId = userJSONObject.getInt("user_id");
+
+                address = new AddressModel(id, city, street, zipcode, country, type, userId);
+
+            } catch (JSONException exception) {
+                Log.i("jsonexcept", exception.toString());
+            }
+
+        }
+        return address;
+    }
+
+
+
+    public static JSONObject makePdfJSONObject(JSONObject invoice){
+        JSONObject invoicePdf = new JSONObject();
+        JSONObject  company = makeCompanyJSONObject();
+
+        try{
+            invoicePdf.put("company", company);
+            invoicePdf.put("invoice", invoice);
+        }catch (JSONException ex){
+            Log.i("parseex", ex.getMessage());
+        }
+
+        return invoicePdf;
+    }
+
+    public static JSONObject makeInvoiceJSONObject(UserModel user, List<PrestationsModel> services, AddressModel address, AppointmentModel appointment){
+        JSONObject invoice = new JSONObject();
+
+        try{
+            invoice.put("rendered_services_date", appointment.getDate());
+            invoice.put("city", address.getCity());
+            invoice.put("street", address.getStreet());
+            invoice.put("user_name", user.getFirstName() + " " + user.getLastName());
+            invoice.put("zipcode", address.getZipcode());
+            invoice.put("phone_number", user.getPhoneNumber());
+            invoice.put("country", address.getCountry());
+            invoice.put("appointment_id", appointment.getId());
+            invoice.put("user_id", address.getCity());
+            invoice.put("services", makeServicesJSONArray(services));
+
+        }catch (JSONException ex){
+            Log.i("parseex", ex.getMessage());
+        }
+
+        return invoice;
+    }
+
+    public static JSONArray makeServicesJSONArray(List<PrestationsModel> services){
+        JSONArray servicesArray = new JSONArray();
+
+        services.forEach((service) ->{
+            servicesArray.put(makeServiceJSONObject(service));
+        });
+
+        return servicesArray;
+    }
+
+    public static JSONObject makeServiceJSONObject(PrestationsModel service){
+        JSONObject serviceObject = new JSONObject();
+
+        try{
+            serviceObject.put("name", service.getName());
+            serviceObject.put("price", service.getPrice());
+        }
+        catch(JSONException ex){
+            Log.i("parsejson", ex.getMessage());
+        }
+
+        return new JSONObject();
+    }
+
+    public static JSONObject makeCompanyJSONObject(){
+        JSONObject  company = new JSONObject();
+        try{
+            company.put("name", R.string.company_name);
+            company.put("siret", R.string.company_siret);
+            company.put("city", R.string.company_city);
+            company.put("zipcode", R.string.company_zipcode);
+            company.put("street", R.string.company_street);
+            company.put("vat_number", R.string.company_vat_number);
+            company.put("vat_percent", R.string.company_vat_percent);
+        }
+        catch(JSONException ex){
+            Log.i("parsejson", ex.getMessage());
+        }
+
+        return company;
     }
 
 }
