@@ -68,7 +68,7 @@ public class AppointmentPrestations extends AppCompatActivity {
 
         listServiceAdded.setAdapter(arrayAdapterPresta);
 
-        ArrayAdapter servicesAdapter = new ArrayAdapter(this, R.layout.spinner, );
+        ArrayAdapter servicesAdapter = new ArrayAdapter(this, R.layout.spinner);
         spinnerPresta.setAdapter(servicesAdapter);
 
         ValidateBtn.setOnClickListener(new View.OnClickListener() {
