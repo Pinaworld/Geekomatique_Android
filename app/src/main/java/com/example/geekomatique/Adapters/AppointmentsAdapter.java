@@ -90,9 +90,9 @@ public class AppointmentsAdapter extends RecyclerView.Adapter<AppointmentsAdapte
             myViewHolder.deleteBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    VolleyJSONObjectCallback callback = new VolleyJSONObjectCallback(){
+                    VolleyJSONArrayCallback callback = new VolleyJSONArrayCallback(){
                         @Override
-                        public void onResponse(JSONObject result) {
+                        public void onResponse(JSONArray result) {
                             VolleyJSONArrayCallback callback2 = new VolleyJSONArrayCallback(){
                                 @Override
                                 public void onResponse(JSONArray result) {
@@ -120,7 +120,7 @@ public class AppointmentsAdapter extends RecyclerView.Adapter<AppointmentsAdapte
                         }
 
                     };
-                    HTTPRequestHelper.putRequest(context,"https://geekomatique.fr:5000"+ "/appointment/validate/" + appointment.getId(), callback, new JSONObject());
+                    HTTPRequestHelper.deleteRequest(context,"https://geekomatique.fr:5000"+ "/appointment/" + appointment.getId(), callback);
                 }
             });
         }
