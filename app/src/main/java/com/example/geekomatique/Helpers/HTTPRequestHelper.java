@@ -134,8 +134,12 @@ public class HTTPRequestHelper {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Log.i("delete", error.toString());
-                        parseErrorMEssage(error, context);
+                        try{
+
+                            Log.i("post",  new String(error.networkResponse.data,"UTF-8"));
+                        }catch (Exception ex){
+
+                        }
                     }
                 }){
             @Override
@@ -164,8 +168,12 @@ public class HTTPRequestHelper {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Log.i("put", error.toString());
-                        parseErrorMEssage(error, context);
+                        try{
+
+                            Log.i("post",  new String(error.networkResponse.data,"UTF-8"));
+                        }catch (Exception ex){
+
+                        }
                     }
                 }){
             @Override

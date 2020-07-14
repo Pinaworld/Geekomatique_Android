@@ -7,10 +7,9 @@
 
 package com.example.geekomatique.Activities;
 
-import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -24,7 +23,6 @@ import android.widget.Toast;
 
 import com.example.geekomatique.Helpers.HTTPRequestHelper;
 import com.example.geekomatique.Helpers.JSONHelper;
-import com.example.geekomatique.MailService;
 import com.example.geekomatique.Models.AddressModel;
 import com.example.geekomatique.Models.AppointmentModel;
 import com.example.geekomatique.Models.PrestationsModel;
@@ -36,6 +34,7 @@ import com.example.geekomatique.VolleyJSONObjectCallback;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 

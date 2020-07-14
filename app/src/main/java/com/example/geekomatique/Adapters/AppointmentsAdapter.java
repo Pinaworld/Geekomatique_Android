@@ -135,7 +135,7 @@ public class AppointmentsAdapter extends RecyclerView.Adapter<AppointmentsAdapte
                         }
 
                     };
-                    HTTPRequestHelper.putRequest(context,"https://geekomatique.fr:5000"+ "/appointment/cancel/" + appointment.getUserId(), callback2, new JSONArray());
+                    HTTPRequestHelper.putRequest(context,"https://geekomatique.fr:5000"+ "/appointment/cancel/" + appointment.getId(), callback2, new JSONArray());
                 }
             });
         }

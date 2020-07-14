@@ -41,7 +41,7 @@ public class MailService {
         catch (JSONException exception){
 
         }
-        HTTPRequestHelper.postRequest(context,"https://geekomatique.fr:5000"+ "/mail/send/client", callback, jsonObject);
+        HTTPRequestHelper.postRequest(context,"https://geekomatique.fr:5000"+ "/mail/send/user", callback, jsonObject);
     }
 
     public static void sendMailToWithAttachment(Context context, String subject, String message, String email, JSONObject invoice, VolleyJSONObjectCallback callback){
