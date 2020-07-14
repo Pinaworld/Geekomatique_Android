@@ -40,7 +40,6 @@ public class Prestations extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prestations);
 
-
         //On implemente les differents composants presents dans l'activité
         prestationName = findViewById(R.id.PrestationName);
         prestationPrice = findViewById(R.id.PrestationPrice);
