@@ -48,6 +48,7 @@ public class AppointmentPrestations extends AppCompatActivity {
     AppointmentModel appointment;
     List<PrestationsModel> services;
     List<PrestationsModel> selectedServices;
+    List<String> stringServices;
     AddressModel address;
     UserModel user;
 
@@ -64,39 +65,69 @@ public class AppointmentPrestations extends AppCompatActivity {
         listServiceAdded = findViewById(R.id.listServiceAdded);
         resetListBtn = findViewById(R.id.resetListBtn);
         resetListBtn = findViewById(R.id.resetListBtn);
-
+        stringServices = new ArrayList<>();
         selectedServices = new ArrayList<>();
         services = new ArrayList<>();
 
-        ArrayAdapter arrayAdapterPresta = new ArrayAdapter(this, android.R.layout.simple_list_item_1, selectedServices);
+        totalPriceTextView.setText("0");
+
+        ArrayAdapter arrayAdapterPresta = new ArrayAdapter(this, android.R.layout.simple_list_item_1, stringServices);
         listServiceAdded.setAdapter(arrayAdapterPresta);
-
-
 
         ValidateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ValidatePrestaAppointment(v);
+                ValidatePrestaAppointment();
+            }
+        });
+
+        resetListBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                stringServices = new ArrayList<>();
+                selectedServices = new ArrayList<>();
+                totalPriceTextView.setText("0");
+                ArrayAdapter adapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, stringServices);
+                listServiceAdded.setAdapter(adapter);
             }
         });
 
         AddPrestaBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String presta = spinnerPresta.getTag().toString();
-                String quantity = quantity_presta.getText().toString();
+                Integer quantity = Integer.parseInt(quantity_presta.getText().toString());
 
-                if( quantity == null){
-                    quantity = "1";
+                if(quantity > 0){
+                    PrestationsModel service = (PrestationsModel) spinnerPresta.getSelectedItem();
+                    service.setQuantity(quantity);
+                    selectedServices.add(service);
+                    String serviceString = service.getName() + " - " + service.getPrice() + "€" + " - Quantité: " + service.getQuantity();
+                    stringServices.add(serviceString);
+                    updatePrice(Integer.parseInt(service.getPrice()), service.getQuantity());
+
+                    setListAdapter();
                 }
-
-                //UpdateListServiceAdded(arrayAdapterPresta, services, quantity, presta);
             }
         });
 
         getUser();
         getAppointmentAddress();
         getAllServices();
+    }
+
+    private void updatePrice(Integer price, Integer quantity){
+        Integer totalPrice = Integer.parseInt(totalPriceTextView.getText().toString());
+
+        for(int i =0; i < quantity; i++){
+            totalPrice += price;
+        }
+
+        totalPriceTextView.setText(totalPrice.toString());
+    }
+
+    private void setListAdapter(){
+        ArrayAdapter arrayAdapterPresta = new ArrayAdapter(this, android.R.layout.simple_list_item_1, stringServices);
+        listServiceAdded.setAdapter(arrayAdapterPresta);
     }
 
     private void refreshSpinnerAdapter(){
@@ -127,7 +158,7 @@ public class AppointmentPrestations extends AppCompatActivity {
             }
         };
 
-        HTTPRequestHelper.getRequest(getApplicationContext(),"https://geekomatique.fr:5000"+ "/address/" + appointment.getId(), callback);
+        HTTPRequestHelper.getRequest(getApplicationContext(),"https://geekomatique.fr:5000"+ "/address/" + appointment.getAdressInvoiceId(), callback);
     }
 
     private void getUser(){
@@ -146,46 +177,66 @@ public class AppointmentPrestations extends AppCompatActivity {
     }
 
 
-    public void ValidatePrestaAppointment(View view){
+    public void ValidatePrestaAppointment(){
         if(selectedServices.size() > 0) {
-            createInvoice();
+            createInvoice(getAllSelectedServices());
         }
-        else {
+        else{
 
         }
     }
 
-    public void UpdateListServiceAdded(String quantity, String presta){
+    private List<PrestationsModel> getAllSelectedServices() {
+        List<PrestationsModel> services = new ArrayList<>();
+        selectedServices.forEach((service) ->{
+            for(int i = 0; i < service.getQuantity(); i ++){
+                services.add(service);
+            }
+        });
 
+        return services;
     }
 
     public void sendEmailWithAttachment(JSONObject invoice){
+
+        String message = "Votre rendez-vous du " + appointment.getDate() +
+                " est validé. <br><br>" + (appointment.isRemote() ? "Un technicien se présentera chez vous à la date indiquée." : "Un technicien vous contactera au numéro de téléphone de votre compte à la date indiquée.<br><br> assurez vous d\'être disponible.");
+        String subject = "Confirmation de rendez-vous";
+        String email = user.getEmail();
+
+
+        VolleyJSONObjectCallback callback = new VolleyJSONObjectCallback(){
+            @Override
+            public void onResponse(JSONObject result) {
+
+                startActivity(new Intent(getApplicationContext(), CalendarAppointments.class));
+            }
+        };
+
+        HTTPRequestHelper.postRequest(getApplicationContext(),"https://geekomatique.fr:5000"+ "/mail/send/invoice", callback, JSONHelper.makeMailJSONObject(message, subject, email, invoice));
+    }
+
+    public void finishAppointment(JSONObject invoice){
+
         VolleyJSONArrayCallback callback = new VolleyJSONArrayCallback(){
             @Override
             public void onResponse(JSONArray result) {
-                String message = "Votre rendez-vous du " + appointment.getDate() +
-                        " est validé. <br><br>" + (appointment.isRemote() ? "Un technicien se présentera chez vous à la date indiquée." : "Un technicien vous contactera au numéro de téléphone de votre compte à la date indiquée.<br><br> assurez vous d\'être disponible.");
-
-                MailService.sendMailToWithAttachment(getApplicationContext(), "Confirmation de rendez-vous", message, user.getEmail(), invoice, new VolleyJSONObjectCallback() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-
-                    }
-                });
+                sendEmailWithAttachment(invoice);
             }
         };
-        HTTPRequestHelper.getRequest(getApplicationContext(),"https://geekomatique.fr:5000"+ "/mail/send/invoice" + appointment.getUserId(), callback);
+
+        HTTPRequestHelper.putRequest(getApplicationContext(),"https://geekomatique.fr:5000"+ "/appointment/finish/" + appointment.getId(), callback, new JSONArray());
     }
 
     public void generatePdf(JSONObject invoice){
-        JSONObject invoicePdf = JSONHelper.makePdfJSONObject(invoice);
+        JSONObject invoicePdf = JSONHelper.makePdfJSONObject(invoice, getApplicationContext());
 
         VolleyJSONObjectCallback callback = new VolleyJSONObjectCallback(){
             @Override
             public void onResponse(JSONObject result) {
                 try{
                     invoice.put("Invoice_Base64", result.getString("Invoice_Base64"));
-                    sendEmailWithAttachment(invoice);
+                    finishAppointment(invoice);
                 }catch (JSONException ex){
                     Log.i("jsonex", ex.getMessage());
                 }
@@ -195,8 +246,8 @@ public class AppointmentPrestations extends AppCompatActivity {
         HTTPRequestHelper.postRequest(getApplicationContext(),"https://geekomatique.fr:5000"+ "/invoice/generate", callback, invoicePdf);
     }
 
-    public void createInvoice(){
-        JSONObject invoice = JSONHelper.makeInvoiceJSONObject(user, selectedServices, address, appointment);
+    public void createInvoice(List<PrestationsModel> services){
+        JSONObject invoice = JSONHelper.makeInvoiceJSONObject(user, services, address, appointment);
 
         VolleyJSONObjectCallback callback = new VolleyJSONObjectCallback(){
             @Override
@@ -204,6 +255,8 @@ public class AppointmentPrestations extends AppCompatActivity {
                 try{
                     invoice.put("invoice_number", result.getString("invoice_number"));
                     invoice.put("invoice_date", result.getString("invoice_date"));
+                    invoice.put("id", result.getString("id"));
+
                 }catch (JSONException ex){
                     Log.i("jsonex", ex.getMessage());
                 }

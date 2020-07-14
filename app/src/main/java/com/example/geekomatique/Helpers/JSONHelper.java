@@ -7,12 +7,13 @@
 
 package com.example.geekomatique.Helpers;
 
+import android.content.Context;
 import android.util.Log;
 
-import com.example.geekomatique.Activities.Appointment;
 import com.example.geekomatique.Models.AddressModel;
 import com.example.geekomatique.Models.AppointmentModel;
 import com.example.geekomatique.Models.DisponibilitiesModel;
+import com.example.geekomatique.Models.InvoiceModel;
 import com.example.geekomatique.Models.PrestationsModel;
 import com.example.geekomatique.Models.UserModel;
 import com.example.geekomatique.R;
@@ -176,12 +177,12 @@ public class JSONHelper {
                 try {
                     Integer id = userJSONObject.getInt("id");
                     String email = userJSONObject.getString("email");
-                    String firstName= userJSONObject.getString("firstName");
-                    String lastName= userJSONObject.getString("lastName");
+                    String firstName= userJSONObject.getString("firstname");
+                    String lastName= userJSONObject.getString("lastname");
                     String login = userJSONObject.getString("login");
                     String roleName = userJSONObject.getString("role_name");
                     Integer roleID = userJSONObject.getInt("role_id");
-                    String phoneNumber = userJSONObject.getString("phoneNumber");
+                    String phoneNumber = userJSONObject.getString("phone_number");
 
                     user = new UserModel(id, firstName, lastName, phoneNumber, login, roleName, email, roleID, id);
 
@@ -220,9 +221,9 @@ public class JSONHelper {
 
 
 
-    public static JSONObject makePdfJSONObject(JSONObject invoice){
+    public static JSONObject makePdfJSONObject(JSONObject invoice, Context context){
         JSONObject invoicePdf = new JSONObject();
-        JSONObject  company = makeCompanyJSONObject();
+        JSONObject  company = makeCompanyJSONObject(context);
 
         try{
             invoicePdf.put("company", company);
@@ -244,9 +245,10 @@ public class JSONHelper {
             invoice.put("user_name", user.getFirstName() + " " + user.getLastName());
             invoice.put("zipcode", address.getZipcode());
             invoice.put("phone_number", user.getPhoneNumber());
+            invoice.put("email", user.getEmail());
             invoice.put("country", address.getCountry());
             invoice.put("appointment_id", appointment.getId());
-            invoice.put("user_id", address.getCity());
+            invoice.put("user_id", (int)address.getUserId());
             invoice.put("services", makeServicesJSONArray(services));
 
         }catch (JSONException ex){
@@ -277,25 +279,42 @@ public class JSONHelper {
             Log.i("parsejson", ex.getMessage());
         }
 
-        return new JSONObject();
+        return serviceObject;
     }
 
-    public static JSONObject makeCompanyJSONObject(){
+    public static JSONObject makeCompanyJSONObject(Context context){
         JSONObject  company = new JSONObject();
         try{
-            company.put("name", R.string.company_name);
-            company.put("siret", R.string.company_siret);
-            company.put("city", R.string.company_city);
-            company.put("zipcode", R.string.company_zipcode);
-            company.put("street", R.string.company_street);
-            company.put("vat_number", R.string.company_vat_number);
-            company.put("vat_percent", R.string.company_vat_percent);
+            company.put("name", context.getResources().getString(R.string.company_name));
+            company.put("siret", context.getResources().getString(R.string.company_siret));
+            company.put("city", context.getResources().getString(R.string.company_city));
+            company.put("zipcode", context.getResources().getString(R.string.company_zipcode));
+            company.put("street", context.getResources().getString(R.string.company_street));
+            company.put("vat_number", context.getResources().getString(R.string.company_vat_number));
+            company.put("vat_percent", context.getResources().getString(R.string.company_vat_percent));
         }
         catch(JSONException ex){
             Log.i("parsejson", ex.getMessage());
         }
 
         return company;
+    }
+
+    public static JSONObject makeMailJSONObject(String message, String subject, String email, JSONObject invoice){
+        JSONObject  mailObject = new JSONObject();
+        try{
+            mailObject.put("subject", subject);
+            mailObject.put("message", message);
+            mailObject.put("receiverMail", email);
+            mailObject.put("invoiceBase64", invoice.get("Invoice_Base64"));
+            mailObject.put("invoiceNumber", invoice.get("invoice_number"));
+
+        }
+        catch(JSONException ex){
+            Log.i("parsejson", ex.getMessage());
+        }
+
+        return mailObject;
     }
 
 }

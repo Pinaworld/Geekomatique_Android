@@ -52,7 +52,6 @@ public class CalendarAppointments extends AppCompatActivity {
             @Override
             public void onResponse(JSONArray result) {
                 List<AppointmentModel> appointmentList= JSONHelper.appointmentListFromJSONArray(result);
-                Log.i("getAllAppointments", appointmentList.toString());
                 final RecyclerView.Adapter adapter = new AppointmentsAdapter(context, appointmentList);
                 recyclerView.setAdapter(adapter);
             }

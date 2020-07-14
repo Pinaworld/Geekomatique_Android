@@ -98,9 +98,12 @@ public class HTTPRequestHelper {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Log.i("post", error.toString());
+                        try{
 
-                        parseErrorMEssage(error, context);
+                            Log.i("post",  new String(error.networkResponse.data,"UTF-8"));
+                        }catch (Exception ex){
+
+                        }
                     }
                 }){
             @Override

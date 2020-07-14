@@ -40,7 +40,6 @@ public class AppointmentsAdapter extends RecyclerView.Adapter<AppointmentsAdapte
     public AppointmentsAdapter(Context context, List<AppointmentModel> appointments) {
         this.context = context;
         this.appointments = appointments;
-        Log.i("adapt", appointments.toString());
     }
 
     @Override
@@ -54,12 +53,13 @@ public class AppointmentsAdapter extends RecyclerView.Adapter<AppointmentsAdapte
         final AppointmentModel appointment = appointments.get(myViewHolder.getLayoutPosition());
 
         myViewHolder.appointmentDecriptionRow.setText(appointment.getDescription());
-        myViewHolder.appointmentStatusRow.setText((appointment.isDone()) ? "Terminé": "En cours");
+        myViewHolder.appointmentStatusRow.setText((appointment.isDone()) ? "Terminé": (appointment.isValidate() ? "En cours" : "A valider"));
         myViewHolder.appointmentDateRow.setText(appointment.getDate());
 
         if(appointment.isDone()){
             myViewHolder.deleteBtn.setVisibility(View.GONE);
             myViewHolder.validateAppButton.setVisibility(View.GONE);
+            myViewHolder.finishAppButton.setVisibility(View.GONE);
         }
         else if(appointment.isValidate()){
             myViewHolder.validateAppButton.setVisibility(View.GONE);
@@ -128,7 +128,7 @@ public class AppointmentsAdapter extends RecyclerView.Adapter<AppointmentsAdapte
                             MailService.sendMailToClient(context, "Rendez-vous Annulé", message, email, new VolleyJSONObjectCallback() {
                                 @Override
                                 public void onResponse(JSONObject response) {
-                                    appointments.remove(position);
+                                    appointments.get(position).setValidate(false);
                                     notifyDataSetChanged();
                                 }
                             });
