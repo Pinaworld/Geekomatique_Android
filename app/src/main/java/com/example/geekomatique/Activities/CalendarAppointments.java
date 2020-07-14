@@ -61,17 +61,9 @@ public class CalendarAppointments extends AppCompatActivity {
         //Cette requete doit recuperer les differents rendez-vous
     }
 
-
     public void ReturnHomeAtivity(View view) {
         Intent intent = new Intent(this, HomeActivity.class);
         startActivity(intent);
     }
 
-    public void ListAppointmentbyDayActivity(View view) {
-
-        int valueIdClicked = 52; //GET FROM RECYCLERVIEW
-        Intent intent = new Intent(this, Appointment.class); //On va envoyer la valeur de l'id dans l'intent de l'activité suivante
-        intent.putExtra("id", valueIdClicked); //valueIdClicked a comme clé "id", on va le récuperer grâce à la clé
-        startActivity(intent);
-    }
 }

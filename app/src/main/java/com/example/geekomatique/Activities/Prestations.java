@@ -97,5 +97,8 @@ public class Prestations extends AppCompatActivity {
 
         Toast toastConfirmedCancel = Toast.makeText(getApplicationContext(), "Prestation ajoutée !", Toast.LENGTH_SHORT);
         toastConfirmedCancel.show();
+
+        Intent intent = new Intent(this, Prestations.class);
+        startActivity(intent);
     }
 }
