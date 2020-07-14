@@ -145,8 +145,8 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/prestationsAdapterView"
-        android:layout_width="354dp"
-        android:layout_height="223dp"
+        android:layout_width="352dp"
+        android:layout_height="242dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"

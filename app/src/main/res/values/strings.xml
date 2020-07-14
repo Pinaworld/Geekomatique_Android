@@ -17,11 +17,10 @@
 
     <string name="calendar_butt">Gestion des rendez-vous</string>
     <string name="disponibili_butt">Afficher mes disponibilités</string>
-    <string name="presta_butt">Modifier mes prestations</string>
+    <string name="presta_butt">Modifier mes services</string>
     <string name="disconnection">Déconnexion</string>
 
     <string name="return_butt">Retour</string>
-
 
     <string name="lundi">Lundi :</string>
     <string name="mardi">Mardi :</string>
@@ -38,7 +37,7 @@
     <string name="h">h</string>
     <string name="validate_butt">Valider</string>
 
-    <string name="modif_presta">Modifier prestations</string>
+    <string name="modif_presta">Modifier services</string>
 
     <string name="appointment">Rendez vous : </string>
     <string name="appointment_hour">Heure rendez vous :</string>
@@ -62,8 +61,8 @@
     <string name="adding_admin_user">Ajouter un administrateur</string>
     <string name="edit_admin_user">Modification administrateur</string>
 
-    <string name="adding_presta">Ajouter une prestation</string>
-    <string name="prestation_name">Nom de la prestation</string>
+    <string name="adding_presta">Ajouter un service</string>
+    <string name="prestation_name">Nom du service</string>
     <string name="prestation_price">Prix :</string>
     <string name="money">€</string>
 
@@ -82,7 +81,7 @@
     <string name="company_vat_number"></string>
 
     <string name="choice_presta">Services ajoutés à la facture</string>
-    <string name="choosed_presta">Prestation effectuée :</string>
+    <string name="choosed_presta">Service effectuée :</string>
     <string name="quantity_presta">Quantité :</string>
     <string name="adding_service">Ajouter service</string>
     <string name="validate_invoice">Valider la facture</string>
