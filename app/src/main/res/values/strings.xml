@@ -11,7 +11,7 @@
     <string name="copyright">2020 Powered By Lapiei</string>
 
     <string name="admin_version">Version administrateur</string>
-    <string name="login">Identifiant</string>
+    <string name="login">Nom du compte</string>
     <string name="psswd">Mot de passe</string>
     <string name="connection_butt">Connexion</string>
 

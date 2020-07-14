@@ -8,6 +8,7 @@
 package com.example.geekomatique.Helpers;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Debug;
 import android.util.Log;
 
@@ -16,6 +17,7 @@ import com.example.geekomatique.Models.AppointmentModel;
 import com.example.geekomatique.Models.DisponibilitiesModel;
 import com.example.geekomatique.Models.InvoiceModel;
 import com.example.geekomatique.Models.PrestationsModel;
+import com.example.geekomatique.Models.RoleModel;
 import com.example.geekomatique.Models.UserModel;
 import com.example.geekomatique.R;
 
@@ -196,6 +198,48 @@ public class JSONHelper {
         return user;
     }
 
+
+
+    public static List<RoleModel> roleFromJSONArray(JSONArray jsonArray){
+        List<RoleModel> roleModelList= new ArrayList<>();
+
+        if(jsonArray != null) {
+            for (int i = 0; i < jsonArray.length(); i++) {
+                try {
+                    roleModelList.add(roleFromJSONObject(jsonArray.getJSONObject(i)));
+                } catch (JSONException exception) {
+                    Log.i("jsonexcept", exception.toString());
+
+                }
+            }
+            return roleModelList ;
+        }
+
+        return null;
+    }
+
+    public static RoleModel roleFromJSONObject(JSONObject roleJsonObject) {
+
+        RoleModel roleModel= null;
+
+        if(roleJsonObject != null) {
+            try {
+
+                int id = roleJsonObject.getInt("id");
+                String name = roleJsonObject.getString("name");
+
+                roleModel = new RoleModel(id, name);
+
+            } catch (JSONException exception) {
+                Log.i("jsonexcept", exception.toString());
+
+            }
+        }
+
+        return roleModel;
+    }
+
+
     public static AddressModel addressListFromJSONObject(JSONObject userJSONObject) {
 
         AddressModel address = null;
@@ -267,6 +311,38 @@ public class JSONHelper {
         });
 
         return servicesArray;
+    }
+
+    public static JSONObject makeUserJSONObject(UserModel userModel){
+        JSONObject userObject = new JSONObject();
+
+        try {
+            userObject.put("firstname", userModel.getFirstName());
+            userObject.put("lastname", userModel.getLastName());
+            userObject.put("phoneNumber", userModel.getPhoneNumber());
+            userObject.put("email", userModel.getEmail());
+            userObject.put("userCredentialsId", userModel.getCredentialId());
+        }
+        catch(JSONException ex){
+            Log.i("parsejson", ex.getMessage());
+        }
+
+        return userObject;
+    }
+
+    public static JSONObject makeUserCredentialsJSONObject(String passwd, String login, Integer roleId){
+        JSONObject credentials = new JSONObject();
+
+        try {
+            credentials.put("password", passwd);
+            credentials.put("login", login);
+            credentials.put("role_id", roleId);
+        }
+        catch(JSONException ex){
+            Log.i("parsejson", ex.getMessage());
+        }
+
+        return credentials;
     }
 
     public static JSONObject makeServiceJSONObject(PrestationsModel service){

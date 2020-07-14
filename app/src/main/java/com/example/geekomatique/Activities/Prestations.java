@@ -21,11 +21,14 @@ import android.widget.Toast;
 import com.example.geekomatique.Helpers.HTTPRequestHelper;
 import com.example.geekomatique.Helpers.JSONHelper;
 import com.example.geekomatique.Adapters.PrestationsAdapter;
+import com.example.geekomatique.Models.PrestationsModel;
 import com.example.geekomatique.R;
 import com.example.geekomatique.VolleyJSONArrayCallback;
+import com.example.geekomatique.VolleyJSONObjectCallback;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 
 public class Prestations extends AppCompatActivity {
@@ -80,9 +83,17 @@ public class Prestations extends AppCompatActivity {
     }
 
     public void AddingPrestation() {
+        VolleyJSONObjectCallback callback1 = new VolleyJSONObjectCallback() {
+            @Override
+            public void onResponse(JSONObject response) {
+
+            }
+        };
         String prestaName = prestationName.getText().toString();
         String prestaValuePrice = prestationPrice.getText().toString();
         int prestaPrice =Integer.parseInt(prestaValuePrice);
+        PrestationsModel prestaNew = new PrestationsModel(prestaName, prestaValuePrice);
+        HTTPRequestHelper.postRequest(getApplicationContext(), getString(R.string.api_url) + "/service/", callback1, JSONHelper.makeServiceJSONObject(prestaNew));
 
         Toast toastConfirmedCancel = Toast.makeText(getApplicationContext(), "Prestation ajoutée !", Toast.LENGTH_SHORT);
         toastConfirmedCancel.show();

@@ -16,7 +16,6 @@ public class UserModel implements Serializable {
     //Model d'un user
 
     private Integer id;
-    //private String email;
     private String firstName;
     private String lastName;
     private String phoneNumber;
@@ -25,6 +24,7 @@ public class UserModel implements Serializable {
     private String email;
     private Integer roleID;
     private Integer credentialId;
+    private String password;
 
     public UserModel(Integer id, String firstName, String lastName, String phoneNumber, String login, String roleName, String email, Integer roleID, Integer credentialId) {
         this.id = id;
@@ -47,6 +47,16 @@ public class UserModel implements Serializable {
         this.email = email;
         this.roleID = roleID;
         this.credentialId = credentialId;
+    }
+
+    public UserModel(String firstName, String lastName, String phoneNumber, String login, String roleName, String email, Integer roleID) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phoneNumber = phoneNumber;
+        this.login = login;
+        this.roleName = roleName;
+        this.email = email;
+        this.roleID = roleID;
     }
 
     public String getEmail() {
@@ -119,6 +129,14 @@ public class UserModel implements Serializable {
 
     public void setCredentialId(Integer credentialId) {
         this.credentialId = credentialId;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public HashMap<String, String> getUserHashMap(){
