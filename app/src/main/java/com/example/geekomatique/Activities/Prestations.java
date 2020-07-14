@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -91,14 +92,34 @@ public class Prestations extends AppCompatActivity {
         };
         String prestaName = prestationName.getText().toString();
         String prestaValuePrice = prestationPrice.getText().toString();
-        int prestaPrice =Integer.parseInt(prestaValuePrice);
+        //int prestaPrice =Integer.parseInt(prestaValuePrice);
         PrestationsModel prestaNew = new PrestationsModel(prestaName, prestaValuePrice);
-        HTTPRequestHelper.postRequest(getApplicationContext(), getString(R.string.api_url) + "/service/", callback1, JSONHelper.makeServiceJSONObject(prestaNew));
 
-        Toast toastConfirmedCancel = Toast.makeText(getApplicationContext(), "Prestation ajoutée !", Toast.LENGTH_SHORT);
-        toastConfirmedCancel.show();
+        boolean inputsAreValid = validateInputs(prestaName, prestaValuePrice);
+        if(inputsAreValid) {
+            HTTPRequestHelper.postRequest(getApplicationContext(), getString(R.string.api_url) + "/service/", callback1, JSONHelper.makeServiceJSONObject(prestaNew));
 
-        Intent intent = new Intent(this, Prestations.class);
-        startActivity(intent);
+            Toast toastConfirmedCancel = Toast.makeText(getApplicationContext(), "Prestation ajoutée !", Toast.LENGTH_SHORT);
+            toastConfirmedCancel.show();
+
+            Intent intent = new Intent(this, Prestations.class);
+            startActivity(intent);
+        }
+
+    }
+
+    private boolean validateInputs(String prestaName, String prestaValuePrice){//Si les entrées sont vides, on envoie un message sur l'entrée manquante
+
+        if (TextUtils.isEmpty(prestaName)) {
+            Toast.makeText(getApplicationContext(), "Choisissez une prestation.", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        if (TextUtils.isEmpty(prestaValuePrice)) {
+            Toast.makeText(getApplicationContext(), "Entrez un montant.", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        return true;
     }
 }
