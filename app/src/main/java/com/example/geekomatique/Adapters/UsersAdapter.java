@@ -67,7 +67,6 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.MyViewHolder
                     }
 
                 };
-
                 HTTPRequestHelper.deleteRequest(context,"https://geekomatique.fr:5000"+ "/user/" + user.getId(), callback);
             }
         });
@@ -89,6 +88,7 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.MyViewHolder
             super(itemView);
             userRow = itemView.findViewById(R.id.usersRow);
 
+            deleteBtn = itemView.findViewById(R.id.deleteBtn);
             loginRow = itemView.findViewById(R.id.loginRow);
             lastName = itemView.findViewById(R.id.lastName);
             firstName = itemView.findViewById(R.id.firstName);

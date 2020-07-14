@@ -39,10 +39,13 @@ public class LoginActivity extends AppCompatActivity {
     private EditText inputLogin, inputPassword;
     private Button btnLogin;
     private TextView errorText;
+    ProgressBar progressBar;
 
     private boolean authenticated = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
         userIsAuthenticated();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
@@ -59,6 +62,9 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 attemptLogin();
+                progressBar = (ProgressBar)findViewById(R.id.progressBar);
+                progressBar.setVisibility(View.VISIBLE);
+
             }
         });
 

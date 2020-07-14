@@ -7,6 +7,7 @@
 
 package com.example.geekomatique.Activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.geekomatique.Helpers.HTTPRequestHelper;
 import com.example.geekomatique.Helpers.JSONHelper;
@@ -222,6 +224,8 @@ public class AppointmentPrestations extends AppCompatActivity {
             @Override
             public void onResponse(JSONArray result) {
                 sendEmailWithAttachment(invoice);
+                Toast toast = Toast.makeText( getApplicationContext(),"Le mail a bien été envoyé.", Toast.LENGTH_SHORT);
+                toast.show();
             }
         };
 

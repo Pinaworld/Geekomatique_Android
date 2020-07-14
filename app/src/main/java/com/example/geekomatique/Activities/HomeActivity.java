@@ -36,7 +36,6 @@ public class HomeActivity extends AppCompatActivity {
 
         //On genere les differents composants du Layout
         Button CalendarButt = (Button) findViewById(R.id.CalendarButt);
-        Button DisponibilitiesButt = (Button) findViewById(R.id.DisponibilitiesButt);
         Button PrestationsButt = (Button) findViewById(R.id.PrestationsButt);
         Button AdminUserBtn = (Button) findViewById(R.id.AdminUserBtn);
 
