@@ -89,4 +89,9 @@
     <string name="modify_own_info">Modifier mes informations</string>
     <string name="reset_list">Réinitialiser</string>
 
+    <string name="missing_lastName">le nom !</string>
+    <string name="missing_firstName">le prénom !</string>
+    <string name="missing_phone">le téléphone !</string>
+    <string name="missing_mail">le mail !</string>
+
 </resources>

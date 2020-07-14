@@ -11,6 +11,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -108,9 +109,18 @@ public class AddingUser extends AppCompatActivity {
         RoleModel role = (RoleModel) spinnerRole.getSelectedItem();
         Integer roleId = role.getId();
         String roleName = role.getName();
-        UserModel userModel = new UserModel(firstNamePost,lastNamePost, phoneFieldPost,  loginFieldPost, roleName, emailFieldPost, roleId);
-        userModel.setPassword(psswdFieldPost);
-        userExist(userModel);
+
+        boolean inputsAreValid = validateInputs(lastNamePost, firstNamePost,phoneFieldPost,emailFieldPost,loginFieldPost,psswdFieldPost);
+
+        if(inputsAreValid) {
+            UserModel userModel = new UserModel(firstNamePost,lastNamePost, phoneFieldPost,  loginFieldPost, roleName, emailFieldPost, roleId);
+            userModel.setPassword(psswdFieldPost);
+            userExist(userModel);
+            Toast toast = Toast.makeText(getApplicationContext(), "Utilisateur "+ loginFieldPost + " crée !", Toast.LENGTH_SHORT );
+            toast.show();
+
+        }
+
     }
 
     public void createUser(UserModel user){
@@ -163,10 +173,37 @@ public class AddingUser extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void ValidateNewUser() {
+    private boolean validateInputs(String lastName, String firstName, String phone, String email,String login, String psswd){//Si les entrées sont vides, on envoie un message sur l'entrée manquante
 
-        Toast toast = Toast.makeText(getApplicationContext(), "L'utilisateur a été créé !", Toast.LENGTH_SHORT);
-        toast.show();
+        if (TextUtils.isEmpty(lastName)) {
+            Toast.makeText(getApplicationContext(), "Entrez le nom.", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (TextUtils.isEmpty(firstName)) {
+            Toast.makeText(getApplicationContext(), "Entrez le prénom.", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (TextUtils.isEmpty(phone)) {
+            Toast.makeText(getApplicationContext(), "Entrez le téléphone.", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (TextUtils.isEmpty(email)) {
+            Toast.makeText(getApplicationContext(), "Entrez le mail.", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (TextUtils.isEmpty(login)) {
+            Toast.makeText(getApplicationContext(), "Entrez le nom du compte.", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (TextUtils.isEmpty(psswd)) {
+            Toast.makeText(getApplicationContext(), "Entrez le mot de passe.", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        return true;
+    }
+
+    public void ValidateNewUser() {
 
         Intent intent = new Intent(this, AdminUser.class);
         startActivity(intent);
