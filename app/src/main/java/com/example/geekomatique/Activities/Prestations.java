@@ -80,6 +80,9 @@ public class Prestations extends AppCompatActivity {
     }
 
     public void AddingPrestation() {
+        String prestaName = prestationName.getText().toString();
+        String prestaValuePrice = prestationPrice.getText().toString();
+        int prestaPrice =Integer.parseInt(prestaValuePrice);
 
         Toast toastConfirmedCancel = Toast.makeText(getApplicationContext(), "Prestation ajoutée !", Toast.LENGTH_SHORT);
         toastConfirmedCancel.show();

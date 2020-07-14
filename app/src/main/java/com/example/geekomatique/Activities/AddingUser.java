@@ -48,10 +48,19 @@ public class AddingUser extends AppCompatActivity {
         validationBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                AddingNewUser();
             }
         });
     }
 
+
+    public void AddingNewUser(){
+        String lastNamePost = lastName.getText().toString();
+        String firstNamePost = firstName.getText().toString();
+        String phoneFieldPost = phoneField.getText().toString();
+        String emailFieldPost = emailField.getText().toString();
+
+    }
     public void ReturnAdminUser(View view) {
         Intent intent = new Intent(this, AdminUser.class);
         startActivity(intent);
