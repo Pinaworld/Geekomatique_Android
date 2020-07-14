@@ -72,7 +72,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:background="@color/ColorSecond"
+        android:background="@drawable/btn_rounded"
         android:onClick="AddingUserActivity"
         android:text="@string/adding_admin_user"
         app:layout_constraintBottom_toBottomOf="parent"

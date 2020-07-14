@@ -12,6 +12,7 @@
     <color name="colorAccent">#F44336</color>
     <color name="ColorSecond">#F3CB51</color>
     <color name="ColorBlue">#F3CB51</color>
+    <color name="ColorGreenTouch">#26EE07</color>
     <color name="ColorBlueTouch">#26EE07</color>
     <color name="BackGroundApp">#FFFFFF</color>
 </resources>

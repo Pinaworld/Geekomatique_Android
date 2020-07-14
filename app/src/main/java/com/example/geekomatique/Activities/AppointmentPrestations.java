@@ -17,6 +17,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -53,6 +54,7 @@ public class AppointmentPrestations extends AppCompatActivity {
     List<String> stringServices;
     AddressModel address;
     UserModel user;
+    ProgressBar progressBarAP;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -224,8 +226,12 @@ public class AppointmentPrestations extends AppCompatActivity {
             @Override
             public void onResponse(JSONArray result) {
                 sendEmailWithAttachment(invoice);
+
+
                 Toast toast = Toast.makeText( getApplicationContext(),"Le mail a bien été envoyé.", Toast.LENGTH_SHORT);
                 toast.show();
+                progressBarAP = (ProgressBar)findViewById(R.id.progressBar);
+                progressBarAP.setVisibility(View.VISIBLE);
             }
         };
 

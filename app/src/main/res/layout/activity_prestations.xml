@@ -133,7 +133,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:background="@color/ColorSecond"
+        android:background="@drawable/btn_rounded"
         android:elevation="0dp"
         android:text="@string/adding_presta"
         app:layout_constraintBottom_toBottomOf="parent"
