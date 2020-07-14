@@ -41,8 +41,9 @@ public class AppointmentPrestations extends AppCompatActivity {
 //Cette activité doit donner les prestations effectués par l'admin en vue d'envoyer la facture
 
     EditText quantity_presta;
+    TextView totalPriceTextView;
     Spinner spinnerPresta;
-    Button ValidateBtn, AddPrestaBtn;
+    Button ValidateBtn, AddPrestaBtn, resetListBtn;
     ListView listServiceAdded;
     AppointmentModel appointment;
     List<PrestationsModel> services;
@@ -56,10 +57,13 @@ public class AppointmentPrestations extends AppCompatActivity {
         setContentView(R.layout.activity_appointment_prestations);
         appointment = (AppointmentModel) getIntent().getSerializableExtra("appointment");
         quantity_presta = findViewById(R.id.quantity_presta);
+        totalPriceTextView = findViewById(R.id.totalPriceTextView);
         spinnerPresta = findViewById(R.id.spinnerPresta);
         ValidateBtn = findViewById(R.id.ValidateBtn);
         AddPrestaBtn = findViewById(R.id.AddPrestaBtn);
         listServiceAdded = findViewById(R.id.listServiceAdded);
+        resetListBtn = findViewById(R.id.resetListBtn);
+        resetListBtn = findViewById(R.id.resetListBtn);
 
         selectedServices = new ArrayList<>();
         services = new ArrayList<>();

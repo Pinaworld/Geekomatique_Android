@@ -87,5 +87,6 @@
     <string name="adding_service">Ajouter service</string>
     <string name="validate_invoice">Valider la facture</string>
     <string name="modify_own_info">Modifier mes informations</string>
+    <string name="reset_list">Réinitialiser</string>
 
 </resources>

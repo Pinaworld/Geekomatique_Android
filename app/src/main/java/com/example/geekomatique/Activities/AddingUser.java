@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import com.example.geekomatique.R;
 
@@ -24,6 +25,7 @@ public class AddingUser extends AppCompatActivity {
     private EditText firstName;
     private EditText phoneField;
     private EditText emailField;
+    Spinner spinnerRole;
     Button returnBut;
     Button validationBtn;
     @Override
@@ -36,6 +38,8 @@ public class AddingUser extends AppCompatActivity {
         firstName = findViewById(R.id.firstName);
         phoneField = findViewById(R.id.phoneField);
         emailField = findViewById(R.id.emailField);
+
+        spinnerRole = findViewById(R.id.spinnerRole);
 
         returnBut = findViewById(R.id.ReturnBut);
         validationBtn = findViewById(R.id.Validate);
